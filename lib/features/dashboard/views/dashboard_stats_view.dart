@@ -5,6 +5,55 @@ import '../../../core/utils/responsive_utils.dart';
 import '../view_model/dashboard_stats_view_model.dart';
 import 'widgets/responsive_stats_grid.dart';
 
+// class DashboardStatsView extends StatelessWidget {
+//   const DashboardStatsView({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Consumer<DashboardStatsViewModel>(
+//       builder: (context, viewModel, child) {
+//         return Container(
+//           width: double.infinity,
+//           padding: EdgeInsets.all(
+//             ResponsiveUtils.isMobile(context) 
+//                 ? AppDimensions.paddingMedium 
+//                 : AppDimensions.paddingLarge,
+//           ),
+//           child: viewModel.isLoading
+//               ? const Center(
+//                   child: CircularProgressIndicator(),
+//                 )
+//               : Column(
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     if (ResponsiveUtils.isDesktop(context))
+//                       const Padding(
+//                         padding: EdgeInsets.only(bottom: AppDimensions.paddingMedium),
+//                         child: Text(
+//                           'Dashboard Overview',
+//                           style: TextStyle(
+//                             fontSize: 24,
+//                             fontWeight: FontWeight.w600,
+//                             color: Color(0xFF1F2937),
+//                           ),
+//                         ),
+//                       ),
+                    
+//                     // Stats Cards
+//                     ResponsiveStatsGrid(
+//                       cards: viewModel.statsCards,
+//                     ),
+                    
+//                     // Add more dashboard content here if needed
+//                     const SizedBox(height: AppDimensions.paddingLarge),
+//                   ],
+//                 ),
+//         );
+//       },
+//     );
+//   }
+// }
+
 class DashboardStatsView extends StatelessWidget {
   const DashboardStatsView({super.key});
 
@@ -26,6 +75,7 @@ class DashboardStatsView extends StatelessWidget {
               : Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // Page Title (Optional)
                     if (ResponsiveUtils.isDesktop(context))
                       const Padding(
                         padding: EdgeInsets.only(bottom: AppDimensions.paddingMedium),

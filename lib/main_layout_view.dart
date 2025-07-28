@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../core/utils/responsive_utils.dart';
-import '../../header/views/header_view.dart';
-import '../../sidebar/views/mobile_drawer.dart';
-import '../../sidebar/views/sidebar_view.dart';
-import 'dashboard_stats_view.dart';
+import '../core/utils/responsive_utils.dart';
+import '../features/header/views/header_view.dart';
+import '../features/sidebar/views/sidebar_view.dart';
+import '../features/sidebar/views/mobile_drawer.dart';
+import 'content_area_view.dart';
 
-class CompleteDashboardView extends StatelessWidget {
-  const CompleteDashboardView({super.key});
+class MainLayoutView extends StatelessWidget {
+  const MainLayoutView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +33,12 @@ class CompleteDashboardView extends StatelessWidget {
                 // Header at top
                 const HeaderView(),
                 
-                // Main Dashboard Content
+                // Dynamic Content Area
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    color: const Color(0xFFF8F9FA), // Light gray background
-                    child: const SingleChildScrollView(
-                      child: DashboardStatsView(),
-                    ),
+                    color: const Color(0xFFF8F9FA),
+                    child: const ContentAreaView(),
                   ),
                 ),
               ],
@@ -59,9 +57,7 @@ class CompleteDashboardView extends StatelessWidget {
       ),
       drawer: const MobileDrawer(),
       backgroundColor: const Color(0xFFF8F9FA),
-      body: const SingleChildScrollView(
-        child: DashboardStatsView(),
-      ),
+      body: const ContentAreaView(),
     );
   }
 }

@@ -9,6 +9,8 @@ import 'widgets/navigation_item.dart';
 import 'widgets/profile_avatar.dart';
 import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
+
+
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
 
