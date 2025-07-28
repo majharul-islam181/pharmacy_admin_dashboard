@@ -8,6 +8,7 @@ import 'dispenser_page.dart';
 import 'dispenser_view_page.dart';
 import 'employee_page.dart';
 import 'features/navigation/view_model/navigation_view_model.dart';
+import 'features/settings/settings_page.dart';
 import 'manufacturer_page.dart';
 import 'product_page.dart';
 import 'purchase_add_page.dart';
