@@ -15,6 +15,7 @@ class HeaderViewModel extends ChangeNotifier {
   String get currentRoute => _currentRoute;
   UserModel get currentUser => _currentUser;
 
+
   List<NavigationItemModel> get navigationItems => [
     NavigationItemModel(
       title: 'Home',
