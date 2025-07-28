@@ -8,13 +8,13 @@ class AppLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logoSize = ResponsiveUtils.getLogoSize(context);
-    final isMobile = ResponsiveUtils.isMobile(context) || ResponsiveUtils.isTablet(context);
+    final showMenuButton = ResponsiveUtils.isMobile(context) || ResponsiveUtils.isTablet(context);
     
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Menu icon for mobile/tablet
-        if (isMobile)
+        // Menu icon for mobile/tablet (only show if drawer available)
+        if (showMenuButton && Scaffold.maybeOf(context)?.hasDrawer == true)
           IconButton(
             onPressed: () => Scaffold.of(context).openDrawer(),
             icon: const Icon(

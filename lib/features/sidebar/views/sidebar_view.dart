@@ -6,6 +6,7 @@ import '../view_model/sidebar_view_model.dart';
 import 'widgets/sidebar_header.dart';
 import 'widgets/sidebar_item.dart';
 
+
 class SidebarView extends StatelessWidget {
   final double width;
   
@@ -18,6 +19,7 @@ class SidebarView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: width,
+      height: double.infinity,
       decoration: const BoxDecoration(
         color: AppColors.surface,
         border: Border(

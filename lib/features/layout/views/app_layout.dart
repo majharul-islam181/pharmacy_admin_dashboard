@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../core/utils/responsive_utils.dart';
+import '../../dashboard/view_model/dashboard_stats_view_model.dart';
 import '../../header/views/header_view.dart';
+import '../../sidebar/view_model/sidebar_view_model.dart';
 import '../../sidebar/views/sidebar_view.dart';
 import '../../sidebar/views/mobile_drawer.dart';
-import '../view_model/sidebar_view_model.dart';
+import '../../dashboard/views/dashboard_stats_view.dart';
 
 class AppLayout extends StatelessWidget {
-  final Widget child;
+  final Widget? child;
   
   const AppLayout({
     super.key,
-    required this.child,
+    this.child,
   });
 
   @override
@@ -19,6 +21,7 @@ class AppLayout extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SidebarViewModel()),
+        ChangeNotifierProvider(create: (_) => DashboardStatsViewModel()),
       ],
       child: Builder(
         builder: (context) {
@@ -46,14 +49,23 @@ class AppLayout extends StatelessWidget {
             child: Column(
               children: [
                 const HeaderView(),
-                Expanded(child: child),
-               
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // Stats Cards
+                        const DashboardStatsView(),
+                        
+                        // Additional content
+                        if (child != null) child!,
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
-
-
-
         ],
       ),
     );
@@ -66,7 +78,17 @@ class AppLayout extends StatelessWidget {
         child: const HeaderView(),
       ),
       drawer: const MobileDrawer(),
-      body: child,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            // Stats Cards
+            const DashboardStatsView(),
+            
+            // Additional content  
+            if (child != null) child!,
+          ],
+        ),
+      ),
     );
   }
 }
