@@ -78,5 +78,30 @@
     "in_progress": "In Progress",
     "total_value": "Total Value",
     
-    "admin_panel": "Admin Panel"
+    "admin_panel": "Admin Panel",
+
+    "expiring_list": "Expiring List",
+  "recent_orders": "Recent Orders",
+  "see_all": "See All",
+  "medicine_name": "Medicine name",
+  "expire_date": "Expire Date",
+  "quantity": "Quantity",
+  "chart": "Chart",
+  "return": "Return",
+  "batch_no": "Batch No",
+  "status": "Status",
+  "price": "Price",
+  "delivered": "Delivered",
+  "pending": "Pending",
+  "cancelled": "Cancelled",
+  "monthly_progress": "Monthly Progress",
+  "todays_report": "Today's Report",
+  "total_earning": "Total Earning",
+  "total_purchase": "Total Purchase",
+  "cash_received": "Cash Received",
+  "bank_receive": "Bank Receive",
+  "total_service": "Total Service",
+  "monthly": "Monthly",
+  "weekly": "Weekly",
+  "yearly": "Yearly"
   }
