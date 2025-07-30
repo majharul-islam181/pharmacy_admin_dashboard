@@ -36,6 +36,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   provider: ^6.1.5
   easy_localization:
+  fl_chart: ^0.65.0
+  syncfusion_flutter_charts: ^29.1.38
 
 dev_dependencies:
   flutter_test:

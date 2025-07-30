@@ -1,8 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences_web/shared_preferences_web.dart';
 import 'core/language_provider.dart';
 import 'core/localization/locale_service.dart';
 import 'core/theme/app_theme.dart';

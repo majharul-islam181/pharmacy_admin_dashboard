@@ -55,15 +55,11 @@ import 'widgets/responsive_stats_grid.dart';
 //   }
 // }
 
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 import 'package:easy_localization/easy_localization.dart';
-import '../../../core/constants/app_dimensions.dart';
-import '../../../core/utils/responsive_utils.dart';
 import '../../../core/localization/locale_keys.dart';
-import '../view_models/dashboard_stats_view_model.dart';
-import 'widgets/responsive_stats_grid.dart';
 import 'widgets/dashboard_tables_section.dart';
+import 'widgets/dashboard_charts_section.dart';
 
 class DashboardStatsView extends StatelessWidget {
   const DashboardStatsView({super.key});
@@ -100,7 +96,7 @@ class DashboardStatsView extends StatelessWidget {
                         ),
                       ),
                     
-                    // Stats Cards
+                    // Stats Cards (4 cards)
                     ResponsiveStatsGrid(
                       cards: viewModel.statsCards,
                     ),
@@ -109,6 +105,11 @@ class DashboardStatsView extends StatelessWidget {
                     
                     // Dashboard Tables Section (Expiring List + Recent Orders)
                     const DashboardTablesSection(),
+                    
+                    const SizedBox(height: AppDimensions.paddingLarge),
+                    
+                    // Dashboard Charts Section (Monthly Progress + Today's Report)
+                    const DashboardChartsSection(),
                     
                     const SizedBox(height: AppDimensions.paddingLarge),
                   ],

@@ -63,11 +63,21 @@ class DashboardStatsViewModel extends ChangeNotifier {
 }
 
 */
+import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import '../../../core/localization/locale_keys.dart';
+import '../models/stats_card_model.dart';
+import '../models/expiring_medicine_model.dart';
+import '../models/recent_order_model.dart';
+import '../models/monthly_progress_model.dart';
+import '../models/todays_report_model.dart';
 
 class DashboardStatsViewModel extends ChangeNotifier {
   bool _isLoading = false;
+  String _selectedPeriod = 'Monthly';
   
   bool get isLoading => _isLoading;
+  String get selectedPeriod => _selectedPeriod;
 
   List<StatsCardModel> get statsCards => [
     StatsCardModel(
@@ -190,8 +200,37 @@ class DashboardStatsViewModel extends ChangeNotifier {
     ),
   ];
 
+  List<MonthlyProgressModel> get monthlyProgressData => [
+    MonthlyProgressModel(month: 'Jan', value: 70),
+    MonthlyProgressModel(month: 'Feb', value: 45),
+    MonthlyProgressModel(month: 'Mar', value: 55),
+    MonthlyProgressModel(month: 'Apr', value: 80),
+    MonthlyProgressModel(month: 'May', value: 20),
+    MonthlyProgressModel(month: 'Jun', value: 45),
+    MonthlyProgressModel(month: 'Jul', value: 85, isHighlighted: true), // September in the image
+    MonthlyProgressModel(month: 'Aug', value: 50),
+    MonthlyProgressModel(month: 'Sep', value: 70),
+    MonthlyProgressModel(month: 'Oct', value: 50),
+    MonthlyProgressModel(month: 'Nov', value: 75),
+    MonthlyProgressModel(month: 'Dec', value: 30),
+  ];
+
+  TodaysReportModel get todaysReport => TodaysReportModel(
+    totalEarning: 5098.00,
+    totalPurchase: 1200.00,
+    cashReceived: 800.00,
+    bankReceive: 1500.00,
+    totalService: 1598.00,
+    growthPercentage: 35.0,
+  );
+
   void _showDetails(String cardTitle) {
     debugPrint('Show details for: $cardTitle');
+  }
+
+  void changePeriod(String period) {
+    _selectedPeriod = period;
+    notifyListeners();
   }
 
   Future<void> refreshStats() async {
