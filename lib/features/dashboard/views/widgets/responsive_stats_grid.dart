@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/responsive_utils.dart';
 import '../../../../core/constants/app_dimensions.dart';
-import '../../model/stats_card_model.dart';
+import '../../models/stats_card_model.dart';
 import 'stats_card.dart';
 
 class ResponsiveStatsGrid extends StatelessWidget {

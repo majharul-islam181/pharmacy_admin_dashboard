@@ -164,7 +164,7 @@ import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/localization/locale_service.dart';
-import '../../dashboard/view_model/dashboard_stats_view_model.dart';
+import '../../dashboard/view_models/dashboard_stats_view_model.dart';
 import '../../navigation/view_model/navigation_view_model.dart';
 import '../../sidebar/view_model/sidebar_view_model.dart';
 

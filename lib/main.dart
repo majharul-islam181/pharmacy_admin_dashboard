@@ -6,7 +6,7 @@ import 'package:shared_preferences_web/shared_preferences_web.dart';
 import 'core/language_provider.dart';
 import 'core/localization/locale_service.dart';
 import 'core/theme/app_theme.dart';
-import 'features/dashboard/view_model/dashboard_stats_view_model.dart';
+import 'features/dashboard/view_models/dashboard_stats_view_model.dart';
 import 'features/header/view_model/header_view_model.dart';
 import 'features/navigation/view_model/navigation_view_model.dart';
 import 'features/sidebar/view_model/sidebar_view_model.dart';
