@@ -11,7 +11,7 @@
 //   @override
 //   Widget build(BuildContext context) {
 //     final currentLanguage = LocaleService.getCurrentLanguageCode(context);
-    
+
 //     return Container(
 //       padding: const EdgeInsets.all(AppDimensions.paddingLarge),
 //       decoration: BoxDecoration(
@@ -47,9 +47,9 @@
 //               ),
 //             ],
 //           ),
-          
+
 //           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
 //           // Language Options
 //           const Text(
 //             'Select Language',
@@ -59,9 +59,9 @@
 //               color: AppColors.textSecondary,
 //             ),
 //           ),
-          
+
 //           const SizedBox(height: AppDimensions.paddingMedium),
-          
+
 //           // Language List
 //           _buildLanguageOption(
 //             context,
@@ -155,8 +155,6 @@
 //   }
 // }
 
-
-
 // lib/features/settings/widgets/language_selector.dart
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -174,7 +172,7 @@ class LanguageSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final currentLanguage = LocaleService.getCurrentLanguageCode(context);
-    
+
     return Container(
       padding: const EdgeInsets.all(AppDimensions.paddingLarge),
       decoration: BoxDecoration(
@@ -210,9 +208,9 @@ class LanguageSelector extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
           // Language Options
           const Text(
             'Select Language',
@@ -222,9 +220,9 @@ class LanguageSelector extends StatelessWidget {
               color: AppColors.textSecondary,
             ),
           ),
-          
+
           const SizedBox(height: AppDimensions.paddingMedium),
-          
+
           // Language List
           _buildLanguageOption(
             context,
@@ -262,14 +260,13 @@ class LanguageSelector extends StatelessWidget {
     return InkWell(
       onTap: () async {
         await LocaleService.changeLanguage(context, languageCode);
-        
+
         // Force rebuild all ViewModels to update translations
         if (context.mounted) {
-          // Notify all providers to rebuild with new language
+          // Notify key view models to rebuild with new language
           context.read<SidebarViewModel>().notifyListeners();
-          context.read<NavigationViewModel>().notifyListeners();
           context.read<DashboardStatsViewModel>().notifyListeners();
-          
+
           // Show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -288,7 +285,9 @@ class LanguageSelector extends StatelessWidget {
         ),
         margin: const EdgeInsets.only(bottom: AppDimensions.paddingSmall),
         decoration: BoxDecoration(
-          color: isSelected ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
+          color: isSelected
+              ? AppColors.primary.withOpacity(0.1)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
           border: Border.all(
             color: isSelected ? AppColors.primary : AppColors.border,

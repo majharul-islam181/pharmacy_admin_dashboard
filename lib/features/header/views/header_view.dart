@@ -10,7 +10,6 @@ import 'widgets/profile_avatar.dart';
 import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
 
-
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
 
@@ -38,7 +37,8 @@ class HeaderView extends StatelessWidget {
     );
   }
 
-  Widget _buildResponsiveHeader(BuildContext context, HeaderViewModel viewModel) {
+  Widget _buildResponsiveHeader(
+      BuildContext context, HeaderViewModel viewModel) {
     if (ResponsiveUtils.isMobile(context)) {
       return _buildMobileHeader(viewModel);
     } else if (ResponsiveUtils.isTablet(context)) {
@@ -52,14 +52,14 @@ class HeaderView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
-        
+
         return Row(
           children: [
             // Logo
             const AppLogo(),
-            
+
             const SizedBox(width: AppDimensions.paddingLarge),
-            
+
             // Navigation Items - Flexible to prevent overflow
             Expanded(
               flex: 3,
@@ -70,13 +70,14 @@ class HeaderView extends StatelessWidget {
                       .take(visibleItems)
                       .map((item) => NavigationItem(
                             item: item,
-                            onTap: () => viewModel.navigateToRoute(item.route),
+                            onTap: () =>
+                                viewModel.navigateToRoute(context, item.route),
                           ))
                       .toList(),
                 ),
               ),
             ),
-            
+
             // Right side actions
             Expanded(
               flex: 2,
@@ -89,17 +90,17 @@ class HeaderView extends StatelessWidget {
                       onTap: viewModel.openSearch,
                     ),
                   ),
-                  
+
                   const SizedBox(width: AppDimensions.paddingMedium),
-                  
+
                   // Notifications
                   NotificationIcon(
                     count: viewModel.currentUser.notificationCount,
                     onTap: viewModel.openNotifications,
                   ),
-                  
+
                   const SizedBox(width: AppDimensions.paddingSmall),
-                  
+
                   // Profile
                   ProfileAvatar(
                     user: viewModel.currentUser,
@@ -118,14 +119,14 @@ class HeaderView extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
-        
+
         return Row(
           children: [
             // Logo
             const AppLogo(),
-            
+
             const SizedBox(width: AppDimensions.paddingMedium),
-            
+
             // Navigation Items - Compact
             if (visibleItems > 0)
               Expanded(
@@ -137,16 +138,17 @@ class HeaderView extends StatelessWidget {
                         .take(visibleItems)
                         .map((item) => NavigationItem(
                               item: item,
-                              onTap: () => viewModel.navigateToRoute(item.route),
+                              onTap: () => viewModel.navigateToRoute(
+                                  context, item.route),
                             ))
                         .toList(),
                   ),
                 ),
               ),
-            
+
             // Spacer
             const Spacer(),
-            
+
             // Right side actions
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -155,15 +157,15 @@ class HeaderView extends StatelessWidget {
                 CustomSearchBar(
                   onTap: viewModel.openSearch,
                 ),
-                
+
                 const SizedBox(width: AppDimensions.paddingSmall),
-                
+
                 // Notifications
                 NotificationIcon(
                   count: viewModel.currentUser.notificationCount,
                   onTap: viewModel.openNotifications,
                 ),
-                
+
                 // Profile
                 ProfileAvatar(
                   user: viewModel.currentUser,
@@ -182,9 +184,9 @@ class HeaderView extends StatelessWidget {
       children: [
         // Logo
         const AppLogo(),
-        
+
         const Spacer(),
-        
+
         // Right side actions - Compact
         Row(
           mainAxisSize: MainAxisSize.min,
@@ -203,13 +205,13 @@ class HeaderView extends StatelessWidget {
               ),
               padding: const EdgeInsets.all(AppDimensions.paddingSmall),
             ),
-            
+
             // Notifications
             NotificationIcon(
               count: viewModel.currentUser.notificationCount,
               onTap: viewModel.openNotifications,
             ),
-            
+
             // Profile
             ProfileAvatar(
               user: viewModel.currentUser,

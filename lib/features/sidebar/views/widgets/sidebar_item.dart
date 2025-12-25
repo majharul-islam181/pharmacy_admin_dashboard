@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
-import '../../../navigation/view_model/navigation_view_model.dart';
 import '../../model/sidebar_item_model.dart';
-
-import 'package:provider/provider.dart';
+import '../../view_model/sidebar_view_model.dart';
 
 class SidebarItem extends StatelessWidget {
   final SidebarItemModel item;
@@ -27,8 +27,10 @@ class SidebarItem extends StatelessWidget {
             if (item.hasSubItems) {
               onExpansionToggle?.call();
             } else {
-              // Navigate to the page
-              context.read<NavigationViewModel>().navigateToPage(item.route);
+              // Navigate to the page using go_router via SidebarViewModel
+              context
+                  .read<SidebarViewModel>()
+                  .navigateToRoute(context, item.route);
               onTap();
             }
           },
@@ -38,7 +40,9 @@ class SidebarItem extends StatelessWidget {
               vertical: 2,
             ),
             decoration: BoxDecoration(
-              color: item.isActive ? AppColors.primary.withOpacity(0.1) : Colors.transparent,
+              color: item.isActive
+                  ? AppColors.primary.withOpacity(0.1)
+                  : Colors.transparent,
               borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
             ),
             child: Padding(
@@ -51,7 +55,9 @@ class SidebarItem extends StatelessWidget {
                   Icon(
                     item.icon,
                     size: AppDimensions.iconMedium,
-                    color: item.isActive ? AppColors.primary : AppColors.iconSecondary,
+                    color: item.isActive
+                        ? AppColors.primary
+                        : AppColors.iconSecondary,
                   ),
                   const SizedBox(width: AppDimensions.paddingMedium),
                   Expanded(
@@ -59,14 +65,19 @@ class SidebarItem extends StatelessWidget {
                       item.title,
                       style: TextStyle(
                         fontSize: 14,
-                        fontWeight: item.isActive ? FontWeight.w600 : FontWeight.w400,
-                        color: item.isActive ? AppColors.primary : AppColors.textSecondary,
+                        fontWeight:
+                            item.isActive ? FontWeight.w600 : FontWeight.w400,
+                        color: item.isActive
+                            ? AppColors.primary
+                            : AppColors.textSecondary,
                       ),
                     ),
                   ),
                   if (item.hasSubItems)
                     Icon(
-                      item.isExpanded ? Icons.keyboard_arrow_down : Icons.keyboard_arrow_right,
+                      item.isExpanded
+                          ? Icons.keyboard_arrow_down
+                          : Icons.keyboard_arrow_right,
                       size: AppDimensions.iconMedium,
                       color: AppColors.iconSecondary,
                     ),
@@ -81,9 +92,12 @@ class SidebarItem extends StatelessWidget {
             margin: const EdgeInsets.only(left: AppDimensions.paddingLarge),
             child: Column(
               children: [
-                _buildSubItem(context, 'Add ${item.title}', '${item.route}_add'),
-                _buildSubItem(context, 'Manage ${item.title}', '${item.route}_manage'),
-                _buildSubItem(context, 'View ${item.title}', '${item.route}_view'),
+                _buildSubItem(
+                    context, 'Add ${item.title}', '${item.route}/add'),
+                _buildSubItem(
+                    context, 'Manage ${item.title}', '${item.route}/manage'),
+                _buildSubItem(
+                    context, 'View ${item.title}', '${item.route}/view'),
               ],
             ),
           ),
@@ -94,7 +108,7 @@ class SidebarItem extends StatelessWidget {
   Widget _buildSubItem(BuildContext context, String title, String route) {
     return InkWell(
       onTap: () {
-        context.read<NavigationViewModel>().navigateToPage(route);
+        context.read<SidebarViewModel>().navigateToRoute(context, route);
         onTap();
       },
       child: Container(
@@ -110,7 +124,7 @@ class SidebarItem extends StatelessWidget {
           child: Row(
             children: [
               const SizedBox(width: AppDimensions.paddingMedium),
-              Icon(
+              const Icon(
                 Icons.circle,
                 size: 6,
                 color: AppColors.iconSecondary,

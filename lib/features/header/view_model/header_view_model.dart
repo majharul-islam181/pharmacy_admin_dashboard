@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../core/routes/app_routes.dart';
 import '../model/navigation_item_model.dart';
 import '../model/user_model.dart';
 
 class HeaderViewModel extends ChangeNotifier {
-  String _currentRoute = AppRoutes.home;
+  String _currentRoute = AppRoutes.dashboard;
   final UserModel _currentUser = UserModel(
     id: '1',
     name: 'John Doe',
@@ -15,43 +16,44 @@ class HeaderViewModel extends ChangeNotifier {
   String get currentRoute => _currentRoute;
   UserModel get currentUser => _currentUser;
 
-
   List<NavigationItemModel> get navigationItems => [
-    NavigationItemModel(
-      title: 'Home',
-      icon: Icons.home_outlined,
-      route: AppRoutes.home,
-      isActive: _currentRoute == AppRoutes.home,
-    ),
-    NavigationItemModel(
-      title: 'Explore',
-      icon: Icons.explore_outlined,
-      route: AppRoutes.explore,
-      isActive: _currentRoute == AppRoutes.explore,
-    ),
-    NavigationItemModel(
-      title: 'My Accounts',
-      icon: Icons.account_balance_wallet_outlined,
-      route: AppRoutes.myAccounts,
-      isActive: _currentRoute == AppRoutes.myAccounts,
-    ),
-    NavigationItemModel(
-      title: 'Accountants',
-      icon: Icons.people_outline,
-      route: AppRoutes.accountants,
-      isActive: _currentRoute == AppRoutes.accountants,
-    ),
-    NavigationItemModel(
-      title: 'Stakeholders',
-      icon: Icons.business_outlined,
-      route: AppRoutes.stakeholders,
-      isActive: _currentRoute == AppRoutes.stakeholders,
-    ),
-  ];
+        NavigationItemModel(
+          title: 'Dashboard',
+          icon: Icons.dashboard_outlined,
+          route: AppRoutes.dashboard,
+          isActive: _currentRoute == AppRoutes.dashboard,
+        ),
+        NavigationItemModel(
+          title: 'Purchases',
+          icon: Icons.shopping_cart_outlined,
+          route: AppRoutes.purchase,
+          isActive: _currentRoute == AppRoutes.purchase,
+        ),
+        NavigationItemModel(
+          title: 'Products',
+          icon: Icons.inventory_2_outlined,
+          route: AppRoutes.product,
+          isActive: _currentRoute == AppRoutes.product,
+        ),
+        NavigationItemModel(
+          title: 'Reports',
+          icon: Icons.assessment_outlined,
+          route: AppRoutes.reports,
+          isActive: _currentRoute == AppRoutes.reports,
+        ),
+        NavigationItemModel(
+          title: 'Settings',
+          icon: Icons.settings_outlined,
+          route: AppRoutes.settings,
+          isActive: _currentRoute == AppRoutes.settings,
+        ),
+      ];
 
-  void navigateToRoute(String route) {
+  void navigateToRoute(BuildContext context, String route) {
+    if (_currentRoute == route) return;
     _currentRoute = route;
     notifyListeners();
+    context.go(route);
   }
 
   void openProfile() {

@@ -3,15 +3,16 @@ import '../core/utils/responsive_utils.dart';
 import '../features/header/views/header_view.dart';
 import '../features/sidebar/views/sidebar_view.dart';
 import '../features/sidebar/views/mobile_drawer.dart';
-import 'content_area_view.dart';
 
 class MainLayoutView extends StatelessWidget {
-  const MainLayoutView({super.key});
+  const MainLayoutView({super.key, required this.child});
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     final isDesktop = ResponsiveUtils.isDesktop(context);
-    
+
     if (isDesktop) {
       return _buildDesktopLayout();
     } else {
@@ -25,20 +26,20 @@ class MainLayoutView extends StatelessWidget {
         children: [
           // Left Sidebar (Fixed)
           const SidebarView(width: 280),
-          
+
           // Right Content Area
           Expanded(
             child: Column(
               children: [
                 // Header at top
                 const HeaderView(),
-                
+
                 // Dynamic Content Area
                 Expanded(
                   child: Container(
                     width: double.infinity,
                     color: const Color(0xFFF8F9FA),
-                    child: const ContentAreaView(),
+                    child: child,
                   ),
                 ),
               ],
@@ -52,12 +53,13 @@ class MainLayoutView extends StatelessWidget {
   Widget _buildMobileLayout(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(ResponsiveUtils.getHeaderHeight(context)),
+        preferredSize:
+            Size.fromHeight(ResponsiveUtils.getHeaderHeight(context)),
         child: const HeaderView(),
       ),
       drawer: const MobileDrawer(),
       backgroundColor: const Color(0xFFF8F9FA),
-      body: const ContentAreaView(),
+      body: child,
     );
   }
 }

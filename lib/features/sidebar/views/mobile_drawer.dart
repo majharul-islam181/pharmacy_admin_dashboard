@@ -28,7 +28,6 @@ class MobileDrawer extends StatelessWidget {
                     return SidebarItem(
                       item: item,
                       onTap: () {
-                        viewModel.navigateToRoute(item.route);
                         Navigator.of(context)
                             .pop(); // Close drawer after navigation
                       },

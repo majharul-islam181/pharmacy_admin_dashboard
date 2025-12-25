@@ -6,10 +6,9 @@ import '../view_model/sidebar_view_model.dart';
 import 'widgets/sidebar_header.dart';
 import 'widgets/sidebar_item.dart';
 
-
 // class SidebarView extends StatelessWidget {
 //   final double width;
-  
+
 //   const SidebarView({
 //     super.key,
 //     this.width = 280,
@@ -45,7 +44,7 @@ import 'widgets/sidebar_item.dart';
 //                     return SidebarItem(
 //                       item: item,
 //                       onTap: () => viewModel.navigateToRoute(item.route),
-//                       onExpansionToggle: item.hasSubItems 
+//                       onExpansionToggle: item.hasSubItems
 //                           ? () => viewModel.toggleExpansion(item.id)
 //                           : null,
 //                     );
@@ -62,7 +61,7 @@ import 'widgets/sidebar_item.dart';
 
 class SidebarView extends StatelessWidget {
   final double width;
-  
+
   const SidebarView({
     super.key,
     this.width = 280,
@@ -97,8 +96,8 @@ class SidebarView extends StatelessWidget {
                     final item = viewModel.sidebarItems[index];
                     return SidebarItem(
                       item: item,
-                      onTap: () => viewModel.navigateToRoute(item.route),
-                      onExpansionToggle: item.hasSubItems 
+                      onTap: () {},
+                      onExpansionToggle: item.hasSubItems
                           ? () => viewModel.toggleExpansion(item.id)
                           : null,
                     );

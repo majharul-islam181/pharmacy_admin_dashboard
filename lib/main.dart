@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'core/language_provider.dart';
 import 'core/localization/locale_service.dart';
+import 'core/routes/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'features/dashboard/view_models/dashboard_stats_view_model.dart';
 import 'features/header/view_model/header_view_model.dart';
-import 'features/navigation/view_model/navigation_view_model.dart';
 import 'features/sidebar/view_model/sidebar_view_model.dart';
 import 'main_layout_view.dart';
-
-
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +53,6 @@ import 'main_layout_view.dart';
 //   }
 // }
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
@@ -81,18 +78,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HeaderViewModel()),
         ChangeNotifierProvider(create: (_) => SidebarViewModel()),
         ChangeNotifierProvider(create: (_) => DashboardStatsViewModel()),
-        ChangeNotifierProvider(create: (_) => NavigationViewModel()),
       ],
       child: Consumer<LanguageProvider>(
         builder: (context, languageProvider, child) {
-          return MaterialApp(
+          return MaterialApp.router(
             title: 'app_title'.tr(),
             theme: AppTheme.lightTheme,
             debugShowCheckedModeBanner: false,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
-            home: const MainLayoutView(),
+            routerConfig: appRouter,
           );
         },
       ),
