@@ -1,16 +1,35 @@
-# restaurant_admin_dashboard
+# Pharmacy Admin Dashboard
 
-A new Flutter project.
+Pharmacy Admin Dashboard is a Flutter-based admin panel template focused on web (and desktop). It provides ready-made UI for dashboards, purchases, stock management, products, customers, employees, and reports – ideal for CodeCanyon buyers who want a clean starting point for pharmacy, inventory, POS or any custom management system.
+
+## Features
+
+- Responsive Flutter UI (web-first) with sidebar + header layout
+- Dashboard with analytics widgets and charts
+- Purchase, stock, product, customer, manufacturer and employee pages
+- Reports page for sales/stock insights
+- Multi-language support (EN, BN, HI) via `easy_localization`
+- Theming via centralized `AppTheme`
+
+## Branding & Customization
+
+- App name: **Pharmacy Admin Dashboard**
+- Update logo, app icon and splash in `assets/icons/` and regenerate using:
+  - `flutter pub run flutter_launcher_icons`
+  - `flutter pub run flutter_native_splash:create`
+- Change primary colors and typography in `lib/core/theme/app_theme.dart`
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+```bash
+flutter pub get
+flutter run -d chrome
+```
 
-A few resources to get you started if this is your first Flutter project:
+To build for web:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+flutter build web --release
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For more details on Flutter, see the official [documentation](https://docs.flutter.dev/).
