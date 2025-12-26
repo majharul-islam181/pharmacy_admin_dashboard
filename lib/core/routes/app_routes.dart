@@ -15,6 +15,9 @@ class AppRoutes {
 
   // Other
   static const String product = '/products';
+  static const String productAdd = '/products/add';
+  static const String productManage = '/products/manage';
+  static const String productView = '/products/view';
   static const String reports = '/reports';
   static const String stock = '/stock';
   static const String customer = '/customers';

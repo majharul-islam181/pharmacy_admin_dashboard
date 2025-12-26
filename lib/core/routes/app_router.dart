@@ -12,6 +12,9 @@ import '../../features/dispenser/presentation/pages/dispenser_add_page.dart';
 import '../../features/dispenser/presentation/pages/dispenser_manage_page.dart';
 import '../../features/dispenser/presentation/pages/dispenser_view_page.dart';
 import '../../features/products/presentation/pages/product_page.dart';
+import '../../features/products/presentation/pages/product_add_page.dart';
+import '../../features/products/presentation/pages/product_manage_page.dart';
+import '../../features/products/presentation/pages/product_view_page.dart';
 import '../../features/reports/presentation/pages/reports_page.dart';
 import '../../features/stock/presentation/pages/stock_page.dart';
 import '../../features/customers/presentation/pages/customer_page.dart';
@@ -73,6 +76,18 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.product,
           builder: (context, state) => const ProductPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.productAdd,
+          builder: (context, state) => const ProductAddPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.productManage,
+          builder: (context, state) => const ProductManagePage(),
+        ),
+        GoRoute(
+          path: AppRoutes.productView,
+          builder: (context, state) => const ProductViewPage(),
         ),
         GoRoute(
           path: AppRoutes.reports,

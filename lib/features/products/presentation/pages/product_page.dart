@@ -6,11 +6,13 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _buildPageTemplate(
-      title: 'Product Management',
-      icon: Icons.inventory_2_outlined,
-      description:
-          'This is where product management functionality will be implemented.',
+    return SingleChildScrollView(
+      child: _buildPageTemplate(
+        title: 'Product Management',
+        icon: Icons.inventory_2_outlined,
+        description:
+            'This is where product management functionality will be implemented.',
+      ),
     );
   }
 
