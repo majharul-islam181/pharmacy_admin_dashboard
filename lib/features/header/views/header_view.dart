@@ -10,6 +10,7 @@ import 'widgets/profile_avatar.dart';
 import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
 import '../../sidebar/view_model/sidebar_view_model.dart';
+import 'widgets/notifications_panel.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
@@ -93,7 +94,7 @@ class HeaderView extends StatelessWidget {
                 // Notifications
                 NotificationIcon(
                   count: viewModel.currentUser.notificationCount,
-                  onTap: viewModel.openNotifications,
+                  onTap: () => _showNotifications(context, viewModel),
                 ),
 
                 const SizedBox(width: AppDimensions.paddingSmall),
@@ -153,7 +154,7 @@ class HeaderView extends StatelessWidget {
                 // Notifications
                 NotificationIcon(
                   count: viewModel.currentUser.notificationCount,
-                  onTap: viewModel.openNotifications,
+                  onTap: () => _showNotifications(context, viewModel),
                 ),
 
                 // Profile
@@ -202,7 +203,7 @@ class HeaderView extends StatelessWidget {
             // Notifications
             NotificationIcon(
               count: viewModel.currentUser.notificationCount,
-              onTap: viewModel.openNotifications,
+              onTap: () => _showNotifications(context, viewModel),
             ),
 
             // Profile
@@ -215,6 +216,39 @@ class HeaderView extends StatelessWidget {
       ],
     );
   }
+}
+
+void _showNotifications(BuildContext context, HeaderViewModel viewModel) {
+  showDialog(
+    context: context,
+    barrierColor: Colors.black.withOpacity(0.05),
+    builder: (dialogContext) {
+      return Stack(
+        children: [
+          // Tap outside to close
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () => Navigator.of(dialogContext).pop(),
+              behavior: HitTestBehavior.opaque,
+              child: const SizedBox.shrink(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 80,
+                right: AppDimensions.paddingLarge,
+              ),
+              child: NotificationsPanel(
+                notifications: viewModel.notifications,
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 class _ThemeToggleButton extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../../../core/routes/app_routes.dart';
 import '../model/navigation_item_model.dart';
 import '../model/user_model.dart';
+import '../model/notification_model.dart';
 
 class HeaderViewModel extends ChangeNotifier {
   String _currentRoute = AppRoutes.dashboard;
@@ -15,6 +16,39 @@ class HeaderViewModel extends ChangeNotifier {
 
   String get currentRoute => _currentRoute;
   UserModel get currentUser => _currentUser;
+
+  final List<NotificationModel> _notifications = const [
+    NotificationModel(
+      icon: Icons.shopping_bag_outlined,
+      iconColor: Color(0xFF10B981),
+      title: 'Your order is placed',
+      message: 'If several languages coalesce the grammar.',
+      timeAgo: '3 min ago',
+    ),
+    NotificationModel(
+      icon: Icons.person_outline,
+      iconColor: Color(0xFFF59E0B),
+      title: 'James Lemire',
+      message: 'It will seem like simplified English.',
+      timeAgo: '1 hour ago',
+    ),
+    NotificationModel(
+      icon: Icons.check_circle_outline,
+      iconColor: Color(0xFF10B981),
+      title: 'Your item is shipped',
+      message: 'If several languages coalesce the grammar.',
+      timeAgo: '3 min ago',
+    ),
+    NotificationModel(
+      icon: Icons.chat_bubble_outline,
+      iconColor: Color(0xFF3B82F6),
+      title: 'Salena Layfield',
+      message: 'As a skeptical Cambridge friend of mine.',
+      timeAgo: '2 hours ago',
+    ),
+  ];
+
+  List<NotificationModel> get notifications => _notifications;
 
   List<NavigationItemModel> get navigationItems => [
         NavigationItemModel(
