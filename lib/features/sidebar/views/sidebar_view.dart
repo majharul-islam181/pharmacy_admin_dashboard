@@ -69,25 +69,28 @@ class SidebarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: double.infinity,
-      decoration: const BoxDecoration(
-        color: AppColors.surface,
-        border: Border(
-          right: BorderSide(
-            color: AppColors.border,
-            width: 1,
+    return Consumer<SidebarViewModel>(
+      builder: (context, viewModel, child) {
+        final isCollapsed = viewModel.isCollapsed;
+        final sidebarWidth = isCollapsed ? 80.0 : width;
+
+        return Container(
+          width: sidebarWidth,
+          height: double.infinity,
+          decoration: const BoxDecoration(
+            color: AppColors.surface,
+            border: Border(
+              right: BorderSide(
+                color: AppColors.border,
+                width: 1,
+              ),
+            ),
           ),
-        ),
-      ),
-      child: Column(
-        children: [
-          const SidebarHeader(),
-          Expanded(
-            child: Consumer<SidebarViewModel>(
-              builder: (context, viewModel, child) {
-                return ListView.builder(
+          child: Column(
+            children: [
+              SidebarHeader(isCollapsed: isCollapsed),
+              Expanded(
+                child: ListView.builder(
                   padding: const EdgeInsets.symmetric(
                     vertical: AppDimensions.paddingMedium,
                   ),
@@ -96,18 +99,19 @@ class SidebarView extends StatelessWidget {
                     final item = viewModel.sidebarItems[index];
                     return SidebarItem(
                       item: item,
+                      isCollapsed: isCollapsed,
                       onTap: () {},
                       onExpansionToggle: item.hasSubItems
                           ? () => viewModel.toggleExpansion(item.id)
                           : null,
                     );
                   },
-                );
-              },
-            ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

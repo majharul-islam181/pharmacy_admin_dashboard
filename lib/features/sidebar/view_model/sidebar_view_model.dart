@@ -116,8 +116,10 @@ import '../model/sidebar_item_model.dart';
 class SidebarViewModel extends ChangeNotifier {
   String _activeRoute = AppRoutes.dashboard;
   final Map<String, bool> _expandedItems = {};
+  bool _isCollapsed = false;
 
   String get activeRoute => _activeRoute;
+  bool get isCollapsed => _isCollapsed;
 
   List<SidebarItemModel> get sidebarItems => [
         SidebarItemModel(
@@ -205,6 +207,11 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute == AppRoutes.settings,
         ),
       ];
+
+  void toggleCollapse() {
+    _isCollapsed = !_isCollapsed;
+    notifyListeners();
+  }
 
   void navigateToRoute(BuildContext context, String route) {
     if (_activeRoute == route) return;

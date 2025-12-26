@@ -3,7 +3,9 @@ import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class SidebarHeader extends StatelessWidget {
-  const SidebarHeader({super.key});
+  final bool isCollapsed;
+
+  const SidebarHeader({super.key, this.isCollapsed = false});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,8 @@ class SidebarHeader extends StatelessWidget {
         ),
       ),
       child: Row(
+        mainAxisAlignment:
+            isCollapsed ? MainAxisAlignment.center : MainAxisAlignment.start,
         children: [
           Container(
             width: 40,
@@ -32,17 +36,19 @@ class SidebarHeader extends StatelessWidget {
               size: 24,
             ),
           ),
-          const SizedBox(width: AppDimensions.paddingMedium),
-          const Expanded(
-            child: Text(
-              'Admin Panel',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: AppColors.textPrimary,
+          if (!isCollapsed) ...[
+            const SizedBox(width: AppDimensions.paddingMedium),
+            const Expanded(
+              child: Text(
+                'Admin Panel',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textPrimary,
+                ),
               ),
             ),
-          ),
+          ],
         ],
       ),
     );

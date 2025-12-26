@@ -9,6 +9,7 @@ import 'widgets/app_logo.dart';
 import 'widgets/profile_avatar.dart';
 import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
+import '../../sidebar/view_model/sidebar_view_model.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
@@ -55,6 +56,18 @@ class HeaderView extends StatelessWidget {
           children: [
             // Logo
             const AppLogo(),
+
+            // Sidebar collapse / expand toggle
+            IconButton(
+              onPressed: () =>
+                  context.read<SidebarViewModel>().toggleCollapse(),
+              icon: const Icon(
+                Icons.menu_open_outlined,
+                color: AppColors.iconPrimary,
+                size: AppDimensions.iconMedium,
+              ),
+              tooltip: 'Toggle sidebar',
+            ),
 
             const Spacer(),
 
@@ -105,6 +118,18 @@ class HeaderView extends StatelessWidget {
           children: [
             // Logo
             const AppLogo(),
+
+            // Sidebar collapse / expand toggle (tablet)
+            IconButton(
+              onPressed: () =>
+                  context.read<SidebarViewModel>().toggleCollapse(),
+              icon: const Icon(
+                Icons.menu_open_outlined,
+                color: AppColors.iconPrimary,
+                size: AppDimensions.iconMedium,
+              ),
+              tooltip: 'Toggle sidebar',
+            ),
 
             // Spacer
             const Spacer(),

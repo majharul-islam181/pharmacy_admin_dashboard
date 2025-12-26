@@ -9,11 +9,13 @@ class SidebarItem extends StatelessWidget {
   final SidebarItemModel item;
   final VoidCallback onTap;
   final VoidCallback? onExpansionToggle;
+  final bool isCollapsed;
 
   const SidebarItem({
     super.key,
     required this.item,
     required this.onTap,
+    required this.isCollapsed,
     this.onExpansionToggle,
   });
 
@@ -58,35 +60,37 @@ class SidebarItem extends StatelessWidget {
                         ? AppColors.primary
                         : AppColors.iconSecondary,
                   ),
-                  const SizedBox(width: AppDimensions.paddingMedium),
-                  Expanded(
-                    child: Text(
-                      item.title,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight:
-                            item.isActive ? FontWeight.w600 : FontWeight.w400,
-                        color: item.isActive
-                            ? AppColors.primary
-                            : AppColors.textSecondary,
+                  if (!isCollapsed) ...[
+                    const SizedBox(width: AppDimensions.paddingMedium),
+                    Expanded(
+                      child: Text(
+                        item.title,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight:
+                              item.isActive ? FontWeight.w600 : FontWeight.w400,
+                          color: item.isActive
+                              ? AppColors.primary
+                              : AppColors.textSecondary,
+                        ),
                       ),
                     ),
-                  ),
-                  if (item.hasSubItems)
-                    Icon(
-                      item.isExpanded
-                          ? Icons.keyboard_arrow_down
-                          : Icons.keyboard_arrow_right,
-                      size: AppDimensions.iconMedium,
-                      color: AppColors.iconSecondary,
-                    ),
+                    if (item.hasSubItems)
+                      Icon(
+                        item.isExpanded
+                            ? Icons.keyboard_arrow_down
+                            : Icons.keyboard_arrow_right,
+                        size: AppDimensions.iconMedium,
+                        color: AppColors.iconSecondary,
+                      ),
+                  ],
                 ],
               ),
             ),
           ),
         ),
         // Sub-items for expandable items
-        if (item.hasSubItems && item.isExpanded)
+        if (item.hasSubItems && item.isExpanded && !isCollapsed)
           Container(
             margin: const EdgeInsets.only(left: AppDimensions.paddingLarge),
             child: Column(

@@ -14,8 +14,8 @@ class MobileDrawer extends StatelessWidget {
       backgroundColor: AppColors.surface,
       child: Column(
         children: [
-          // Custom header instead of DrawerHeader
-          const SidebarHeader(),
+          // Custom header instead of DrawerHeader (always expanded in mobile)
+          const SidebarHeader(isCollapsed: false),
 
           Expanded(
             child: Consumer<SidebarViewModel>(
@@ -27,6 +27,7 @@ class MobileDrawer extends StatelessWidget {
                     final item = viewModel.sidebarItems[index];
                     return SidebarItem(
                       item: item,
+                      isCollapsed: false,
                       onTap: () {
                         Navigator.of(context)
                             .pop(); // Close drawer after navigation
