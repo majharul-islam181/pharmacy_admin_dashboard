@@ -11,6 +11,7 @@ import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
 import '../../sidebar/view_model/sidebar_view_model.dart';
 import 'widgets/notifications_panel.dart';
+import 'widgets/profile_menu_panel.dart';
 
 class HeaderView extends StatelessWidget {
   const HeaderView({super.key});
@@ -102,7 +103,7 @@ class HeaderView extends StatelessWidget {
                 // Profile
                 ProfileAvatar(
                   user: viewModel.currentUser,
-                  onTap: viewModel.toggleProfileMenu,
+                  onTap: () => _showProfileMenu(context, viewModel),
                 ),
               ],
             ),
@@ -160,7 +161,7 @@ class HeaderView extends StatelessWidget {
                 // Profile
                 ProfileAvatar(
                   user: viewModel.currentUser,
-                  onTap: viewModel.toggleProfileMenu,
+                  onTap: () => _showProfileMenu(context, viewModel),
                 ),
               ],
             ),
@@ -209,7 +210,7 @@ class HeaderView extends StatelessWidget {
             // Profile
             ProfileAvatar(
               user: viewModel.currentUser,
-              onTap: viewModel.toggleProfileMenu,
+              onTap: () => _showProfileMenu(context, viewModel),
             ),
           ],
         ),
@@ -242,6 +243,38 @@ void _showNotifications(BuildContext context, HeaderViewModel viewModel) {
               ),
               child: NotificationsPanel(
                 notifications: viewModel.notifications,
+              ),
+            ),
+          ),
+        ],
+      );
+    },
+  );
+}
+
+void _showProfileMenu(BuildContext context, HeaderViewModel viewModel) {
+  showDialog(
+    context: context,
+    barrierColor: Colors.transparent,
+    builder: (dialogContext) {
+      return Stack(
+        children: [
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () => Navigator.of(dialogContext).pop(),
+              behavior: HitTestBehavior.opaque,
+              child: const SizedBox.shrink(),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 80,
+                right: AppDimensions.paddingLarge,
+              ),
+              child: ProfileMenuPanel(
+                user: viewModel.currentUser,
               ),
             ),
           ),
