@@ -6,7 +6,6 @@ import '../../../core/utils/responsive_utils.dart';
 import '../../../core/theme/theme_provider.dart';
 import '../view_model/header_view_model.dart';
 import 'widgets/app_logo.dart';
-import 'widgets/navigation_item.dart';
 import 'widgets/profile_avatar.dart';
 import 'widgets/notification_icon.dart';
 import 'widgets/search_bar.dart';
@@ -52,68 +51,46 @@ class HeaderView extends StatelessWidget {
   Widget _buildDesktopHeader(BuildContext context, HeaderViewModel viewModel) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
-
         return Row(
           children: [
             // Logo
             const AppLogo(),
 
-            const SizedBox(width: AppDimensions.paddingLarge),
-
-            // Navigation Items - Flexible to prevent overflow
-            Expanded(
-              flex: 3,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: viewModel.navigationItems
-                      .take(visibleItems)
-                      .map((item) => NavigationItem(
-                            item: item,
-                            onTap: () =>
-                                viewModel.navigateToRoute(context, item.route),
-                          ))
-                      .toList(),
-                ),
-              ),
-            ),
+            const Spacer(),
 
             // Right side actions
-            Expanded(
-              flex: 2,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  // Search Bar - Flexible width
-                  Flexible(
-                    child: CustomSearchBar(
-                      onTap: viewModel.openSearch,
-                    ),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Search Bar - Flexible width
+                SizedBox(
+                  width: 260,
+                  child: CustomSearchBar(
+                    onTap: viewModel.openSearch,
                   ),
+                ),
 
-                  const SizedBox(width: AppDimensions.paddingMedium),
+                const SizedBox(width: AppDimensions.paddingMedium),
 
-                  // Theme toggle
-                  const _ThemeToggleButton(),
+                // Theme toggle
+                const _ThemeToggleButton(),
 
-                  const SizedBox(width: AppDimensions.paddingMedium),
+                const SizedBox(width: AppDimensions.paddingMedium),
 
-                  // Notifications
-                  NotificationIcon(
-                    count: viewModel.currentUser.notificationCount,
-                    onTap: viewModel.openNotifications,
-                  ),
+                // Notifications
+                NotificationIcon(
+                  count: viewModel.currentUser.notificationCount,
+                  onTap: viewModel.openNotifications,
+                ),
 
-                  const SizedBox(width: AppDimensions.paddingSmall),
+                const SizedBox(width: AppDimensions.paddingSmall),
 
-                  // Profile
-                  ProfileAvatar(
-                    user: viewModel.currentUser,
-                    onTap: viewModel.toggleProfileMenu,
-                  ),
-                ],
-              ),
+                // Profile
+                ProfileAvatar(
+                  user: viewModel.currentUser,
+                  onTap: viewModel.toggleProfileMenu,
+                ),
+              ],
             ),
           ],
         );
@@ -124,33 +101,10 @@ class HeaderView extends StatelessWidget {
   Widget _buildTabletHeader(BuildContext context, HeaderViewModel viewModel) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
-
         return Row(
           children: [
             // Logo
             const AppLogo(),
-
-            const SizedBox(width: AppDimensions.paddingMedium),
-
-            // Navigation Items - Compact
-            if (visibleItems > 0)
-              Expanded(
-                flex: 2,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: viewModel.navigationItems
-                        .take(visibleItems)
-                        .map((item) => NavigationItem(
-                              item: item,
-                              onTap: () => viewModel.navigateToRoute(
-                                  context, item.route),
-                            ))
-                        .toList(),
-                  ),
-                ),
-              ),
 
             // Spacer
             const Spacer(),
