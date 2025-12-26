@@ -1,24 +1,23 @@
-// lib/views/pages/settings_page.dart
+// lib/features/settings/settings_page.dart
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 import '../../core/constants/app_dimensions.dart';
-import '../../core/localization/locale_keys.dart';
-import '../../features/settings/widgets/language_selector.dart';
+import '../settings/widgets/language_selector.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.all(AppDimensions.paddingLarge),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           // Page Title
-          Text(
+          const Text(
             'Settings', // Or use LocaleKeys.settings.tr() if translations work
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
               color: Color(0xFF1F2937),
@@ -75,6 +74,6 @@ class SettingsPage extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
