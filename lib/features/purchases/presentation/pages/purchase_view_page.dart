@@ -6,7 +6,8 @@ class PurchaseViewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
+        child: Container(
       padding: const EdgeInsets.all(AppDimensions.paddingLarge),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +64,7 @@ class PurchaseViewPage extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 
   Widget _buildStatCard(String title, String value, Color color) {

@@ -15,8 +15,8 @@ import 'widgets/responsive_stats_grid.dart';
 //         return Container(
 //           width: double.infinity,
 //           padding: EdgeInsets.all(
-//             ResponsiveUtils.isMobile(context) 
-//                 ? AppDimensions.paddingMedium 
+//             ResponsiveUtils.isMobile(context)
+//                 ? AppDimensions.paddingMedium
 //                 : AppDimensions.paddingLarge,
 //           ),
 //           child: viewModel.isLoading
@@ -39,12 +39,12 @@ import 'widgets/responsive_stats_grid.dart';
 //                           ),
 //                         ),
 //                       ),
-                    
+
 //                     // Stats Cards
 //                     ResponsiveStatsGrid(
 //                       cards: viewModel.statsCards,
 //                     ),
-                    
+
 //                     // Add more dashboard content here if needed
 //                     const SizedBox(height: AppDimensions.paddingLarge),
 //                   ],
@@ -54,7 +54,6 @@ import 'widgets/responsive_stats_grid.dart';
 //     );
 //   }
 // }
-
 
 import 'package:easy_localization/easy_localization.dart';
 import '../../../core/localization/locale_keys.dart';
@@ -71,48 +70,51 @@ class DashboardStatsView extends StatelessWidget {
         return Container(
           width: double.infinity,
           padding: EdgeInsets.all(
-            ResponsiveUtils.isMobile(context) 
-                ? AppDimensions.paddingMedium 
+            ResponsiveUtils.isMobile(context)
+                ? AppDimensions.paddingMedium
                 : AppDimensions.paddingLarge,
           ),
           child: viewModel.isLoading
               ? const Center(
                   child: CircularProgressIndicator(),
                 )
-              : Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Page Title
-                    if (ResponsiveUtils.isDesktop(context))
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: AppDimensions.paddingMedium),
-                        child: Text(
-                          LocaleKeys.dashboardOverview.tr(),
-                          style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xFF1F2937),
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Page Title
+                      if (ResponsiveUtils.isDesktop(context))
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              bottom: AppDimensions.paddingMedium),
+                          child: Text(
+                            LocaleKeys.dashboardOverview.tr(),
+                            style: const TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xFF1F2937),
+                            ),
                           ),
                         ),
+
+                      // Stats Cards (4 cards)
+                      ResponsiveStatsGrid(
+                        cards: viewModel.statsCards,
                       ),
-                    
-                    // Stats Cards (4 cards)
-                    ResponsiveStatsGrid(
-                      cards: viewModel.statsCards,
-                    ),
-                    
-                    const SizedBox(height: AppDimensions.paddingLarge),
-                    
-                    // Dashboard Tables Section (Expiring List + Recent Orders)
-                    const DashboardTablesSection(),
-                    
-                    const SizedBox(height: AppDimensions.paddingLarge),
-                    
-                    // Dashboard Charts Section (Monthly Progress + Today's Report)
-                    const DashboardChartsSection(),
-                    
-                    const SizedBox(height: AppDimensions.paddingLarge),
-                  ],
+
+                      const SizedBox(height: AppDimensions.paddingLarge),
+
+                      // Dashboard Tables Section (Expiring List + Recent Orders)
+                      const DashboardTablesSection(),
+
+                      const SizedBox(height: AppDimensions.paddingLarge),
+
+                      // Dashboard Charts Section (Monthly Progress + Today's Report)
+                      const DashboardChartsSection(),
+
+                      const SizedBox(height: AppDimensions.paddingLarge),
+                    ],
+                  ),
                 ),
         );
       },

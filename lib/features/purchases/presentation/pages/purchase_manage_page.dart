@@ -6,11 +6,12 @@ class PurchaseManagePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+    return SingleChildScrollView(
+      child: Container(
+        padding: const EdgeInsets.all(AppDimensions.paddingLarge),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
           // Breadcrumb
           Row(
             children: [
@@ -86,7 +87,7 @@ class PurchaseManagePage extends StatelessWidget {
           ),
         ],
       ),
-    );
+     ) );
   }
 
   Widget _buildPurchaseItem(
