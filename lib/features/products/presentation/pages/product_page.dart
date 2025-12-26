@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -9,7 +9,8 @@ class ProductPage extends StatelessWidget {
     return _buildPageTemplate(
       title: 'Product Management',
       icon: Icons.inventory_2_outlined,
-      description: 'This is where product management functionality will be implemented.',
+      description:
+          'This is where product management functionality will be implemented.',
     );
   }
 
@@ -32,7 +33,6 @@ class ProductPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLarge),

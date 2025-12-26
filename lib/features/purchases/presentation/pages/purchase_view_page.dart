@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class PurchaseViewPage extends StatelessWidget {
   const PurchaseViewPage({super.key});
@@ -25,9 +25,9 @@ class PurchaseViewPage extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: AppDimensions.paddingMedium),
-          
+
           const Text(
             'Purchase Reports & Analytics',
             style: TextStyle(
@@ -37,12 +37,13 @@ class PurchaseViewPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
           // Statistics Cards Row
           Row(
             children: [
               Expanded(
-                child: _buildStatCard('Total Orders', '45', const Color(0xFF3B82F6)),
+                child: _buildStatCard(
+                    'Total Orders', '45', const Color(0xFF3B82F6)),
               ),
               const SizedBox(width: 16),
               Expanded(
@@ -50,11 +51,13 @@ class PurchaseViewPage extends StatelessWidget {
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: _buildStatCard('Completed', '28', const Color(0xFF10B981)),
+                child:
+                    _buildStatCard('Completed', '28', const Color(0xFF10B981)),
               ),
               const SizedBox(width: 16),
               Expanded(
-                child: _buildStatCard('Total Value', '\$45,680', const Color(0xFF8B5CF6)),
+                child: _buildStatCard(
+                    'Total Value', '\$45,680', const Color(0xFF8B5CF6)),
               ),
             ],
           ),

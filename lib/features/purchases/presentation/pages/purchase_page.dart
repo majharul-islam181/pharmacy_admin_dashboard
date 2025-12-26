@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class PurchasePage extends StatelessWidget {
   const PurchasePage({super.key});
@@ -20,7 +20,7 @@ class PurchasePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
           // Purchase content here
           Container(
             width: double.infinity,

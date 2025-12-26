@@ -5,10 +5,10 @@ import 'core/language_provider.dart';
 import 'core/localization/locale_service.dart';
 import 'core/routes/app_router.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/theme_provider.dart';
 import 'features/dashboard/view_models/dashboard_stats_view_model.dart';
 import 'features/header/view_model/header_view_model.dart';
 import 'features/sidebar/view_model/sidebar_view_model.dart';
-import 'main_layout_view.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -75,15 +75,19 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider(create: (_) => ThemeProvider()),
         ChangeNotifierProvider(create: (_) => HeaderViewModel()),
         ChangeNotifierProvider(create: (_) => SidebarViewModel()),
         ChangeNotifierProvider(create: (_) => DashboardStatsViewModel()),
       ],
       child: Consumer<LanguageProvider>(
         builder: (context, languageProvider, child) {
+          final themeProvider = context.watch<ThemeProvider>();
           return MaterialApp.router(
             title: 'app_title'.tr(),
             theme: AppTheme.lightTheme,
+            darkTheme: AppTheme.darkTheme,
+            themeMode: themeProvider.themeMode,
             debugShowCheckedModeBanner: false,
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,

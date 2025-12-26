@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class DispenserManagePage extends StatelessWidget {
   const DispenserManagePage({super.key});
@@ -24,7 +24,6 @@ class DispenserManagePage extends StatelessWidget {
               ),
             ],
           ),
-          
           const Text(
             'Manage Dispensers',
             style: TextStyle(
@@ -34,7 +33,6 @@ class DispenserManagePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLarge),

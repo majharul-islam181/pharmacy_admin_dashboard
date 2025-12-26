@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class PurchaseManagePage extends StatelessWidget {
   const PurchaseManagePage({super.key});
@@ -25,9 +25,9 @@ class PurchaseManagePage extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: AppDimensions.paddingMedium),
-          
+
           const Text(
             'Manage Purchases',
             style: TextStyle(
@@ -37,7 +37,7 @@ class PurchaseManagePage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
           // Purchase List
           Container(
             width: double.infinity,
@@ -73,11 +73,14 @@ class PurchaseManagePage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 24),
-                
+
                 // Sample purchase list
-                _buildPurchaseItem('PO-001', 'Supplier ABC', '\$1,200.00', 'Pending'),
-                _buildPurchaseItem('PO-002', 'Supplier XYZ', '\$850.00', 'Completed'),
-                _buildPurchaseItem('PO-003', 'Supplier DEF', '\$2,100.00', 'In Progress'),
+                _buildPurchaseItem(
+                    'PO-001', 'Supplier ABC', '\$1,200.00', 'Pending'),
+                _buildPurchaseItem(
+                    'PO-002', 'Supplier XYZ', '\$850.00', 'Completed'),
+                _buildPurchaseItem(
+                    'PO-003', 'Supplier DEF', '\$2,100.00', 'In Progress'),
               ],
             ),
           ),
@@ -86,7 +89,8 @@ class PurchaseManagePage extends StatelessWidget {
     );
   }
 
-  Widget _buildPurchaseItem(String id, String supplier, String amount, String status) {
+  Widget _buildPurchaseItem(
+      String id, String supplier, String amount, String status) {
     Color statusColor;
     switch (status.toLowerCase()) {
       case 'completed':

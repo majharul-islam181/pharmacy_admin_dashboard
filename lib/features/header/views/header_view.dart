@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/utils/responsive_utils.dart';
+import '../../../core/theme/theme_provider.dart';
 import '../view_model/header_view_model.dart';
 import 'widgets/app_logo.dart';
 import 'widgets/navigation_item.dart';
@@ -40,15 +41,15 @@ class HeaderView extends StatelessWidget {
   Widget _buildResponsiveHeader(
       BuildContext context, HeaderViewModel viewModel) {
     if (ResponsiveUtils.isMobile(context)) {
-      return _buildMobileHeader(viewModel);
+      return _buildMobileHeader(context, viewModel);
     } else if (ResponsiveUtils.isTablet(context)) {
-      return _buildTabletHeader(viewModel);
+      return _buildTabletHeader(context, viewModel);
     } else {
-      return _buildDesktopHeader(viewModel);
+      return _buildDesktopHeader(context, viewModel);
     }
   }
 
-  Widget _buildDesktopHeader(HeaderViewModel viewModel) {
+  Widget _buildDesktopHeader(BuildContext context, HeaderViewModel viewModel) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
@@ -93,6 +94,11 @@ class HeaderView extends StatelessWidget {
 
                   const SizedBox(width: AppDimensions.paddingMedium),
 
+                  // Theme toggle
+                  const _ThemeToggleButton(),
+
+                  const SizedBox(width: AppDimensions.paddingMedium),
+
                   // Notifications
                   NotificationIcon(
                     count: viewModel.currentUser.notificationCount,
@@ -115,7 +121,7 @@ class HeaderView extends StatelessWidget {
     );
   }
 
-  Widget _buildTabletHeader(HeaderViewModel viewModel) {
+  Widget _buildTabletHeader(BuildContext context, HeaderViewModel viewModel) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final visibleItems = ResponsiveUtils.getVisibleNavigationItems(context);
@@ -160,6 +166,11 @@ class HeaderView extends StatelessWidget {
 
                 const SizedBox(width: AppDimensions.paddingSmall),
 
+                // Theme toggle
+                const _ThemeToggleButton(),
+
+                const SizedBox(width: AppDimensions.paddingSmall),
+
                 // Notifications
                 NotificationIcon(
                   count: viewModel.currentUser.notificationCount,
@@ -179,7 +190,7 @@ class HeaderView extends StatelessWidget {
     );
   }
 
-  Widget _buildMobileHeader(HeaderViewModel viewModel) {
+  Widget _buildMobileHeader(BuildContext context, HeaderViewModel viewModel) {
     return Row(
       children: [
         // Logo
@@ -206,6 +217,9 @@ class HeaderView extends StatelessWidget {
               padding: const EdgeInsets.all(AppDimensions.paddingSmall),
             ),
 
+            // Theme toggle
+            const _ThemeToggleButton(),
+
             // Notifications
             NotificationIcon(
               count: viewModel.currentUser.notificationCount,
@@ -220,6 +234,28 @@ class HeaderView extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+class _ThemeToggleButton extends StatelessWidget {
+  const _ThemeToggleButton();
+
+  @override
+  Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
+    final isDark = themeProvider.isDarkMode;
+
+    return IconButton(
+      tooltip: isDark ? 'Switch to light mode' : 'Switch to dark mode',
+      icon: Icon(
+        isDark ? Icons.dark_mode_outlined : Icons.light_mode_outlined,
+        size: AppDimensions.iconMedium,
+        color: AppColors.iconPrimary,
+      ),
+      onPressed: themeProvider.toggleTheme,
+      constraints: const BoxConstraints(minWidth: 40, minHeight: 40),
+      padding: const EdgeInsets.all(AppDimensions.paddingSmall),
     );
   }
 }

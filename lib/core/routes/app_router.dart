@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/settings/settings_page.dart';
 import '../../main_layout_view.dart';
 import '../../features/dashboard/views/dashboard_stats_view.dart';
-import '../../purchase_page.dart';
-import '../../purchase_add_page.dart';
-import '../../purchase_manage_page.dart';
-import '../../purchase_view_page.dart';
-import '../../dispenser_page.dart';
-import '../../dispenser_add_page.dart';
-import '../../dispenser_manage_page.dart';
-import '../../dispenser_view_page.dart';
-import '../../product_page.dart';
-import '../../reports_page.dart';
-import '../../stock_page.dart';
-import '../../customer_page.dart';
-import '../../manufacturer_page.dart';
-import '../../employee_page.dart';
+import '../../features/purchases/presentation/pages/purchase_page.dart';
+import '../../features/purchases/presentation/pages/purchase_add_page.dart';
+import '../../features/purchases/presentation/pages/purchase_manage_page.dart';
+import '../../features/purchases/presentation/pages/purchase_view_page.dart';
+import '../../features/dispenser/presentation/pages/dispenser_page.dart';
+import '../../features/dispenser/presentation/pages/dispenser_add_page.dart';
+import '../../features/dispenser/presentation/pages/dispenser_manage_page.dart';
+import '../../features/dispenser/presentation/pages/dispenser_view_page.dart';
+import '../../features/products/presentation/pages/product_page.dart';
+import '../../features/reports/presentation/pages/reports_page.dart';
+import '../../features/stock/presentation/pages/stock_page.dart';
+import '../../features/customers/presentation/pages/customer_page.dart';
+import '../../features/manufacturers/presentation/pages/manufacturer_page.dart';
+import '../../features/employees/presentation/pages/employee_page.dart';
 import '../../features/settings/settings_page.dart';
 import 'app_routes.dart';
 

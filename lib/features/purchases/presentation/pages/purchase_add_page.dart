@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class PurchaseAddPage extends StatelessWidget {
   const PurchaseAddPage({super.key});
@@ -27,9 +27,9 @@ class PurchaseAddPage extends StatelessWidget {
               ),
             ],
           ),
-          
+
           const SizedBox(height: AppDimensions.paddingMedium),
-          
+
           const Text(
             'Add New Purchase',
             style: TextStyle(
@@ -39,7 +39,7 @@ class PurchaseAddPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
+
           // Add Purchase Form
           Container(
             width: double.infinity,
@@ -76,7 +76,7 @@ class PurchaseAddPage extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 24),
-                
+
                 // Form fields
                 _buildFormField('Supplier Name', 'Enter supplier name'),
                 const SizedBox(height: 16),
@@ -86,7 +86,7 @@ class PurchaseAddPage extends StatelessWidget {
                 const SizedBox(height: 16),
                 _buildFormField('Unit Price', 'Enter unit price'),
                 const SizedBox(height: 24),
-                
+
                 // Action buttons
                 Row(
                   children: [

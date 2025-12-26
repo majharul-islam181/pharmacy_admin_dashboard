@@ -157,14 +157,9 @@
 
 // lib/features/settings/widgets/language_selector.dart
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:provider/provider.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/localization/locale_service.dart';
-import '../../dashboard/view_models/dashboard_stats_view_model.dart';
-import '../../navigation/view_model/navigation_view_model.dart';
-import '../../sidebar/view_model/sidebar_view_model.dart';
 
 class LanguageSelector extends StatelessWidget {
   const LanguageSelector({super.key});
@@ -263,10 +258,6 @@ class LanguageSelector extends StatelessWidget {
 
         // Force rebuild all ViewModels to update translations
         if (context.mounted) {
-          // Notify key view models to rebuild with new language
-          context.read<SidebarViewModel>().notifyListeners();
-          context.read<DashboardStatsViewModel>().notifyListeners();
-
           // Show success message
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(

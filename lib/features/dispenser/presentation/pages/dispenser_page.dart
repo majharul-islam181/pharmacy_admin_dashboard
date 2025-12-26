@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_dimensions.dart';
 
 class DispenserPage extends StatelessWidget {
   const DispenserPage({super.key});
@@ -9,7 +9,8 @@ class DispenserPage extends StatelessWidget {
     return _buildPageTemplate(
       title: 'Dispenser Control',
       icon: Icons.local_drink_outlined,
-      description: 'This is where dispenser control functionality will be implemented.',
+      description:
+          'This is where dispenser control functionality will be implemented.',
     );
   }
 
@@ -32,7 +33,6 @@ class DispenserPage extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          
           Container(
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLarge),

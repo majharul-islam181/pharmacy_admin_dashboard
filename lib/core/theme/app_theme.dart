@@ -32,9 +32,12 @@ class AppTheme {
         headlineLarge: TextStyle(color: AppColors.textPrimary),
         headlineMedium: TextStyle(color: AppColors.textPrimary),
         headlineSmall: TextStyle(color: AppColors.textPrimary),
-        titleLarge: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w600),
-        titleMedium: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w500),
-        titleSmall: TextStyle(color: AppColors.textPrimary, fontWeight: FontWeight.w500),
+        titleLarge: TextStyle(
+            color: AppColors.textPrimary, fontWeight: FontWeight.w600),
+        titleMedium: TextStyle(
+            color: AppColors.textPrimary, fontWeight: FontWeight.w500),
+        titleSmall: TextStyle(
+            color: AppColors.textPrimary, fontWeight: FontWeight.w500),
         bodyLarge: TextStyle(color: AppColors.textPrimary),
         bodyMedium: TextStyle(color: AppColors.textPrimary),
         bodySmall: TextStyle(color: AppColors.textSecondary),
@@ -49,6 +52,47 @@ class AppTheme {
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimensions.radiusMedium),
+          ),
+        ),
+      ),
+    );
+  }
+
+  static ThemeData get darkTheme {
+    final base = ThemeData.dark(useMaterial3: true);
+    return base.copyWith(
+      colorScheme: ColorScheme.fromSeed(
+        seedColor: AppColors.primary,
+        brightness: Brightness.dark,
+      ),
+      scaffoldBackgroundColor: const Color(0xFF0F172A),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Color(0xFF111827),
+        elevation: 0,
+        scrolledUnderElevation: 1,
+        surfaceTintColor: Colors.transparent,
+        iconTheme: IconThemeData(color: Colors.white70),
+        titleTextStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+      textTheme: base.textTheme.apply(
+        bodyColor: Colors.white,
+        displayColor: Colors.white,
+      ),
+      iconTheme: const IconThemeData(
+        color: Colors.white70,
+        size: AppDimensions.iconMedium,
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primaryLight,
           foregroundColor: Colors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
