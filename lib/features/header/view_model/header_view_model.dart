@@ -58,6 +58,12 @@ class HeaderViewModel extends ChangeNotifier {
           isActive: _currentRoute == AppRoutes.dashboard,
         ),
         NavigationItemModel(
+          title: 'CRM',
+          icon: Icons.people_alt_outlined,
+          route: AppRoutes.crm,
+          isActive: _currentRoute == AppRoutes.crm,
+        ),
+        NavigationItemModel(
           title: 'Purchases',
           icon: Icons.shopping_cart_outlined,
           route: AppRoutes.purchase,

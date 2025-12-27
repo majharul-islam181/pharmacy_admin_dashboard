@@ -130,6 +130,13 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute == AppRoutes.dashboard,
         ),
         SidebarItemModel(
+          id: 'crm',
+          title: 'CRM',
+          icon: Icons.people_alt_outlined,
+          route: AppRoutes.crm,
+          isActive: _activeRoute == AppRoutes.crm,
+        ),
+        SidebarItemModel(
           id: 'purchase',
           title: LocaleKeys.purchase.tr(),
           icon: Icons.shopping_cart_outlined,

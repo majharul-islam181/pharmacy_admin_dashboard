@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../main_layout_view.dart';
 import '../../features/dashboard/views/dashboard_stats_view.dart';
+import '../../features/crm/presentation/pages/crm_page.dart';
 import '../../features/purchases/presentation/pages/purchase_page.dart';
 import '../../features/purchases/presentation/pages/purchase_add_page.dart';
 import '../../features/purchases/presentation/pages/purchase_manage_page.dart';
@@ -40,6 +41,10 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.dashboard,
           builder: (context, state) => const DashboardStatsView(),
+        ),
+        GoRoute(
+          path: AppRoutes.crm,
+          builder: (context, state) => const CrmPage(),
         ),
         // Purchase
         GoRoute(
@@ -99,8 +104,8 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.reportsAdd,
           // builder: (context, state) => const ReportsAddPage(),
-          builder: (context, state) => const ReportsPage(), // Temporary redirect to ReportsPage
-
+          builder: (context, state) =>
+              const ReportsPage(), // Temporary redirect to ReportsPage
         ),
         GoRoute(
           path: AppRoutes.reportsManage,
