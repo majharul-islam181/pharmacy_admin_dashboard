@@ -1,8 +1,44 @@
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
+
 import '../../../../core/constants/app_dimensions.dart';
 
-class ProductAddPage extends StatelessWidget {
+class ProductAddPage extends StatefulWidget {
   const ProductAddPage({super.key});
+
+  @override
+  State<ProductAddPage> createState() => _ProductAddPageState();
+}
+
+class _ProductAddPageState extends State<ProductAddPage> {
+  final List<PlatformFile> _selectedImages = [];
+
+  Future<void> _pickImages() async {
+    try {
+      final result = await FilePicker.platform.pickFiles(
+        type: FileType.image,
+        allowMultiple: true,
+        withData: true,
+      );
+
+      if (!mounted || result == null) return;
+
+      setState(() {
+        _selectedImages
+          ..clear()
+          ..addAll(result.files);
+      });
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Image picker is not available on this platform: $e',
+          ),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,12 +117,25 @@ class ProductAddPage extends StatelessWidget {
                   _buildFormField('Unit Price', 'Enter unit price'),
                   const SizedBox(height: 16),
                   _buildFormField('Stock Quantity', 'Enter available quantity'),
+                  const SizedBox(height: 16),
+                  _buildImagePickerSection(),
                   const SizedBox(height: 24),
                   Row(
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          // TODO: Save product
+                          if (_selectedImages.isEmpty) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text(
+                                  'Please upload at least one product image.',
+                                ),
+                              ),
+                            );
+                            return;
+                          }
+
+                          // TODO: Save product with images
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF10B981),
@@ -118,7 +167,7 @@ class ProductAddPage extends StatelessWidget {
     );
   }
 
-  static Widget _buildFormField(String label, String hint) {
+  Widget _buildFormField(String label, String hint) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -149,6 +198,98 @@ class ProductAddPage extends StatelessWidget {
               horizontal: 12,
               vertical: 12,
             ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildImagePickerSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Product Images *',
+          style: TextStyle(
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF374151),
+          ),
+        ),
+        const SizedBox(height: 8),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(8),
+            border: Border.all(
+              color: const Color(0xFFD1D5DB),
+            ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: _pickImages,
+                    icon: const Icon(Icons.cloud_upload_outlined, size: 18),
+                    label: const Text('Upload Images'),
+                  ),
+                  const SizedBox(width: 12),
+                  const Expanded(
+                    child: Text(
+                      'Upload one or multiple images (PNG, JPG, JPEG).',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF6B7280),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              if (_selectedImages.isNotEmpty) ...[
+                const SizedBox(height: 12),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 8,
+                  children: _selectedImages.map((file) {
+                    if (file.bytes != null) {
+                      return ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.memory(
+                          file.bytes!,
+                          width: 72,
+                          height: 72,
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    }
+
+                    return Container(
+                      width: 72,
+                      height: 72,
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: const Color(0xFFF3F4F6),
+                        border: Border.all(
+                          color: const Color(0xFFE5E7EB),
+                        ),
+                      ),
+                      child: Text(
+                        file.name,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 10,
+                          color: Color(0xFF6B7280),
+                        ),
+                      ),
+                    );
+                  }).toList(),
+                ),
+              ],
+            ],
           ),
         ),
       ],
