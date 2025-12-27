@@ -1,9 +1,10 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
+import '../../view_model/product_images_provider.dart';
 
 class ProductAddPage extends StatefulWidget {
   const ProductAddPage({super.key});
@@ -13,43 +14,7 @@ class ProductAddPage extends StatefulWidget {
 }
 
 class _ProductAddPageState extends State<ProductAddPage> {
-  final List<_LocalImage> _selectedImages = [];
   DropzoneViewController? _dropzoneController;
-  bool _isDropHovered = false;
-
-  Future<void> _pickImages() async {
-    try {
-      final result = await FilePicker.platform.pickFiles(
-        type: FileType.image,
-        allowMultiple: true,
-        withData: true,
-      );
-
-      if (!mounted || result == null) return;
-
-      setState(() {
-        _selectedImages
-          ..clear()
-          ..addAll(
-            result.files.where((file) => file.bytes != null).map(
-                  (file) => _LocalImage(
-                    name: file.name,
-                    bytes: file.bytes!,
-                  ),
-                ),
-          );
-      });
-    } catch (e) {
-      if (!mounted) return;
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Image picker is not available on this platform: $e',
-          ),
-        ),
-      );
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -135,7 +100,9 @@ class _ProductAddPageState extends State<ProductAddPage> {
                     children: [
                       ElevatedButton(
                         onPressed: () {
-                          if (_selectedImages.isEmpty) {
+                          final imagesProvider =
+                              context.read<ProductImagesProvider>();
+                          if (imagesProvider.images.isEmpty) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 content: Text(
@@ -216,6 +183,9 @@ class _ProductAddPageState extends State<ProductAddPage> {
   }
 
   Widget _buildImagePickerSection() {
+    final imagesProvider = context.watch<ProductImagesProvider>();
+    final images = imagesProvider.images;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -238,14 +208,18 @@ class _ProductAddPageState extends State<ProductAddPage> {
                     cursor: CursorType.grab,
                     onCreated: (ctrl) => _dropzoneController = ctrl,
                     onHover: () {
-                      setState(() => _isDropHovered = true);
+                      imagesProvider.setHover(true);
                     },
                     onLeave: () {
-                      setState(() => _isDropHovered = false);
+                      imagesProvider.setHover(false);
                     },
                     onDropFiles: (files) {
                       if (files == null) return;
-                      _handleDropFiles(files);
+                      imagesProvider.handleDropFiles(
+                        context,
+                        files,
+                        _dropzoneController,
+                      );
                     },
                     onError: (String? ev) {
                       if (!mounted || ev == null) return;
@@ -262,7 +236,7 @@ class _ProductAddPageState extends State<ProductAddPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: _isDropHovered && kIsWeb
+                  color: imagesProvider.isDropHovered
                       ? const Color(0xFF3B82F6)
                       : const Color(0xFFD1D5DB),
                 ),
@@ -274,7 +248,11 @@ class _ProductAddPageState extends State<ProductAddPage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       ElevatedButton.icon(
-                        onPressed: _pickImages,
+                        onPressed: () {
+                          context
+                              .read<ProductImagesProvider>()
+                              .pickImages(context);
+                        },
                         icon: const Icon(Icons.cloud_upload_outlined, size: 18),
                         label: const Text('Upload Images'),
                       ),
@@ -292,12 +270,12 @@ class _ProductAddPageState extends State<ProductAddPage> {
                       ),
                     ],
                   ),
-                  if (_selectedImages.isNotEmpty) ...[
+                  if (images.isNotEmpty) ...[
                     const SizedBox(height: 12),
                     Wrap(
                       spacing: 8,
                       runSpacing: 8,
-                      children: _selectedImages.asMap().entries.map((entry) {
+                      children: images.asMap().entries.map((entry) {
                         final index = entry.key;
                         final image = entry.value;
                         return Stack(
@@ -317,9 +295,9 @@ class _ProductAddPageState extends State<ProductAddPage> {
                               right: -6,
                               child: InkWell(
                                 onTap: () {
-                                  setState(() {
-                                    _selectedImages.removeAt(index);
-                                  });
+                                  context
+                                      .read<ProductImagesProvider>()
+                                      .removeAt(index);
                                 },
                                 child: Container(
                                   width: 20,
@@ -349,35 +327,4 @@ class _ProductAddPageState extends State<ProductAddPage> {
       ],
     );
   }
-
-  Future<void> _handleDropFiles(List<DropzoneFileInterface> files) async {
-    if (!kIsWeb || _dropzoneController == null) return;
-
-    final List<_LocalImage> dropped = [];
-
-    for (final file in files) {
-      final mime = await _dropzoneController!.getFileMIME(file);
-      if (!mime.startsWith('image/')) continue;
-
-      final name = await _dropzoneController!.getFilename(file);
-      final data = await _dropzoneController!.getFileData(file);
-      dropped.add(_LocalImage(name: name, bytes: data));
-    }
-
-    if (!mounted || dropped.isEmpty) return;
-
-    setState(() {
-      _isDropHovered = false;
-      _selectedImages
-        ..clear()
-        ..addAll(dropped);
-    });
-  }
-}
-
-class _LocalImage {
-  final String name;
-  final Uint8List bytes;
-
-  _LocalImage({required this.name, required this.bytes});
 }

@@ -9,6 +9,7 @@ import 'core/theme/theme_provider.dart';
 import 'features/dashboard/view_models/dashboard_stats_view_model.dart';
 import 'features/header/view_model/header_view_model.dart';
 import 'features/sidebar/view_model/sidebar_view_model.dart';
+import 'features/products/view_model/product_images_provider.dart';
 
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -79,6 +80,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => HeaderViewModel()),
         ChangeNotifierProvider(create: (_) => SidebarViewModel()),
         ChangeNotifierProvider(create: (_) => DashboardStatsViewModel()),
+        ChangeNotifierProvider(create: (_) => ProductImagesProvider()),
       ],
       child: Consumer<LanguageProvider>(
         builder: (context, languageProvider, child) {
