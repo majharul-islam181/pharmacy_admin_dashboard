@@ -19,6 +19,9 @@ class AppRoutes {
   static const String productManage = '/products/manage';
   static const String productView = '/products/view';
   static const String reports = '/reports';
+  static const String reportsAdd = '/reports/add';
+  static const String reportsManage = '/reports/manage';
+  static const String reportsView = '/reports/view';
   static const String stock = '/stock';
   static const String customer = '/customers';
   static const String manufacturer = '/manufacturers';
