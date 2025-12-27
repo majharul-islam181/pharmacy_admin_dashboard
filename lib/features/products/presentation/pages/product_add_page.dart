@@ -1,5 +1,7 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dropzone/flutter_dropzone.dart';
 
 import '../../../../core/constants/app_dimensions.dart';
 
@@ -11,7 +13,9 @@ class ProductAddPage extends StatefulWidget {
 }
 
 class _ProductAddPageState extends State<ProductAddPage> {
-  final List<PlatformFile> _selectedImages = [];
+  final List<_LocalImage> _selectedImages = [];
+  DropzoneViewController? _dropzoneController;
+  bool _isDropHovered = false;
 
   Future<void> _pickImages() async {
     try {
@@ -26,7 +30,14 @@ class _ProductAddPageState extends State<ProductAddPage> {
       setState(() {
         _selectedImages
           ..clear()
-          ..addAll(result.files);
+          ..addAll(
+            result.files.where((file) => file.bytes != null).map(
+                  (file) => _LocalImage(
+                    name: file.name,
+                    bytes: file.bytes!,
+                  ),
+                ),
+          );
       });
     } catch (e) {
       if (!mounted) return;
@@ -216,83 +227,157 @@ class _ProductAddPageState extends State<ProductAddPage> {
           ),
         ),
         const SizedBox(height: 8),
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: const Color(0xFFD1D5DB),
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+        Stack(
+          children: [
+            if (kIsWeb)
+              Positioned.fill(
+                child: IgnorePointer(
+                  ignoring: false,
+                  child: DropzoneView(
+                    operation: DragOperation.copy,
+                    cursor: CursorType.grab,
+                    onCreated: (ctrl) => _dropzoneController = ctrl,
+                    onHover: () {
+                      setState(() => _isDropHovered = true);
+                    },
+                    onLeave: () {
+                      setState(() => _isDropHovered = false);
+                    },
+                    onDropFiles: (files) {
+                      if (files == null) return;
+                      _handleDropFiles(files);
+                    },
+                    onError: (String? ev) {
+                      if (!mounted || ev == null) return;
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Drag & drop error: $ev')),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: _isDropHovered && kIsWeb
+                      ? const Color(0xFF3B82F6)
+                      : const Color(0xFFD1D5DB),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ElevatedButton.icon(
-                    onPressed: _pickImages,
-                    icon: const Icon(Icons.cloud_upload_outlined, size: 18),
-                    label: const Text('Upload Images'),
-                  ),
-                  const SizedBox(width: 12),
-                  const Expanded(
-                    child: Text(
-                      'Upload one or multiple images (PNG, JPG, JPEG).',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xFF6B7280),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ElevatedButton.icon(
+                        onPressed: _pickImages,
+                        icon: const Icon(Icons.cloud_upload_outlined, size: 18),
+                        label: const Text('Upload Images'),
                       ),
-                    ),
+                      const SizedBox(width: 12),
+                      const Expanded(
+                        child: Text(
+                          kIsWeb
+                              ? 'Click to upload or drag & drop one or multiple images (PNG, JPG, JPEG).'
+                              : 'Upload one or multiple images (PNG, JPG, JPEG).',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Color(0xFF6B7280),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
+                  if (_selectedImages.isNotEmpty) ...[
+                    const SizedBox(height: 12),
+                    Wrap(
+                      spacing: 8,
+                      runSpacing: 8,
+                      children: _selectedImages.asMap().entries.map((entry) {
+                        final index = entry.key;
+                        final image = entry.value;
+                        return Stack(
+                          clipBehavior: Clip.none,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.memory(
+                                image.bytes,
+                                width: 72,
+                                height: 72,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned(
+                              top: -6,
+                              right: -6,
+                              child: InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    _selectedImages.removeAt(index);
+                                  });
+                                },
+                                child: Container(
+                                  width: 20,
+                                  height: 20,
+                                  decoration: BoxDecoration(
+                                    color: Colors.black.withOpacity(0.7),
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: const Icon(
+                                    Icons.close,
+                                    size: 14,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ],
               ),
-              if (_selectedImages.isNotEmpty) ...[
-                const SizedBox(height: 12),
-                Wrap(
-                  spacing: 8,
-                  runSpacing: 8,
-                  children: _selectedImages.map((file) {
-                    if (file.bytes != null) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.memory(
-                          file.bytes!,
-                          width: 72,
-                          height: 72,
-                          fit: BoxFit.cover,
-                        ),
-                      );
-                    }
-
-                    return Container(
-                      width: 72,
-                      height: 72,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xFFF3F4F6),
-                        border: Border.all(
-                          color: const Color(0xFFE5E7EB),
-                        ),
-                      ),
-                      child: Text(
-                        file.name,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 10,
-                          color: Color(0xFF6B7280),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ],
-            ],
-          ),
+            ),
+          ],
         ),
       ],
     );
   }
+
+  Future<void> _handleDropFiles(List<DropzoneFileInterface> files) async {
+    if (!kIsWeb || _dropzoneController == null) return;
+
+    final List<_LocalImage> dropped = [];
+
+    for (final file in files) {
+      final mime = await _dropzoneController!.getFileMIME(file);
+      if (!mime.startsWith('image/')) continue;
+
+      final name = await _dropzoneController!.getFilename(file);
+      final data = await _dropzoneController!.getFileData(file);
+      dropped.add(_LocalImage(name: name, bytes: data));
+    }
+
+    if (!mounted || dropped.isEmpty) return;
+
+    setState(() {
+      _isDropHovered = false;
+      _selectedImages
+        ..clear()
+        ..addAll(dropped);
+    });
+  }
+}
+
+class _LocalImage {
+  final String name;
+  final Uint8List bytes;
+
+  _LocalImage({required this.name, required this.bytes});
 }
