@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../view_model/chat_view_model.dart';
 import 'conversation_tile.dart';
@@ -14,11 +13,11 @@ class ConversationList extends StatelessWidget {
     final viewModel = context.watch<ChatViewModel>();
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         border: Border(
           right: BorderSide(
-            color: const Color(0xFFE5E7EB),
+            color: Color(0xFFE5E7EB),
             width: 1,
           ),
         ),
