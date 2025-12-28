@@ -30,9 +30,9 @@ class KanbanColumn extends StatelessWidget {
     return SizedBox(
       width: 280,
       child: DragTarget<KanbanTask>(
-        onWillAcceptWithDetails: (task) => task.data.status != status,
-        onAcceptWithDetails: (task) {
-          viewModel.moveTask(task.data.id, status);
+        onWillAcceptWithDetails: (details) => details.data.status != status,
+        onAcceptWithDetails: (details) {
+          viewModel.moveTask(details.data.id, status);
         },
         builder: (context, candidate, rejected) {
           final isHighlighted = candidate.isNotEmpty;
@@ -96,7 +96,7 @@ class KanbanColumn extends StatelessWidget {
                     itemCount: tasks.length,
                     itemBuilder: (context, index) {
                       final task = tasks[index];
-                      return LongPressDraggable<KanbanTask>(
+                      return Draggable<KanbanTask>(
                         data: task,
                         feedback: Material(
                           color: Colors.transparent,
