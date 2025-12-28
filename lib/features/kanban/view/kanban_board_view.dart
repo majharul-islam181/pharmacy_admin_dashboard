@@ -64,18 +64,21 @@ class KanbanBoardView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 for (final config in columns) ...[
-                  KanbanColumn(
-                    title: config.title,
-                    status: config.status,
-                    tasks: viewModel.tasksByStatus(config.status),
-                    onAddTask: () => _showTaskDialog(
-                      context,
-                      initialStatus: config.status,
-                    ),
-                    onEditTask: (task) => _showTaskDialog(
-                      context,
-                      task: task,
-                      initialStatus: task.status,
+                  SizedBox(
+                    height: 420,
+                    child: KanbanColumn(
+                      title: config.title,
+                      status: config.status,
+                      tasks: viewModel.tasksByStatus(config.status),
+                      onAddTask: () => _showTaskDialog(
+                        context,
+                        initialStatus: config.status,
+                      ),
+                      onEditTask: (task) => _showTaskDialog(
+                        context,
+                        task: task,
+                        initialStatus: task.status,
+                      ),
                     ),
                   ),
                   const SizedBox(height: AppDimensions.paddingLarge),
