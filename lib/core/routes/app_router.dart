@@ -32,6 +32,8 @@ import '../../features/widgets/presentation/pages/widgets_button_element_page.da
 import '../../features/widgets/presentation/pages/widgets_rating_bar_page.dart';
 import '../../features/widgets/presentation/pages/widgets_badge_page.dart';
 import '../../features/widgets/presentation/pages/widgets_modal_page.dart';
+import '../../features/chat/view/chat_view.dart';
+import '../../features/chat/view_model/chat_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -142,6 +144,14 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.employee,
           builder: (context, state) => const EmployeePage(),
+        ),
+        // Chat
+        GoRoute(
+          path: AppRoutes.chat,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => ChatViewModel(),
+            child: const ChatView(),
+          ),
         ),
         // Components / Widgets
         GoRoute(

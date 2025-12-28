@@ -30,6 +30,9 @@ class AppRoutes {
   static const String employee = '/employees';
   static const String settings = '/settings';
 
+  // Chat
+  static const String chat = '/chat';
+
   // Components / Widgets
   static const String widgets = '/widgets';
   static const String widgetsToast = '/widgets/toast';

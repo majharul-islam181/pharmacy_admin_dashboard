@@ -214,6 +214,13 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute.startsWith('/employees'),
         ),
         SidebarItemModel(
+          id: 'chat',
+          title: 'Chat',
+          icon: Icons.chat_bubble_outline,
+          route: AppRoutes.chat,
+          isActive: _activeRoute == AppRoutes.chat,
+        ),
+        SidebarItemModel(
           id: 'componentsHeader',
           title: 'Components',
           icon: Icons.circle,
