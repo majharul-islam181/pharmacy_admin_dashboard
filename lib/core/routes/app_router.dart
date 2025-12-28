@@ -53,14 +53,23 @@ import '../../features/login/view/classic_login_view.dart';
 import '../../features/login/view/modern_login_view.dart';
 import '../../features/login/view/animated_login_view.dart';
 import '../../features/login/view_model/login_view_model.dart';
+import '../../features/splash/view/animated_splash_view.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: AppRoutes.dashboard,
+  initialLocation: AppRoutes.splash,
   routes: [
+    // Splash Screen (No Shell)
+    GoRoute(
+      path: AppRoutes.splash,
+      pageBuilder: (context, state) => PageTransitions.fade(
+        child: const AnimatedSplashView(),
+        state: state,
+      ),
+    ),
     ShellRoute(
       builder: (context, state, child) {
         return MainLayoutView(child: child);
