@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 
 import '../../main_layout_view.dart';
 import '../../features/dashboard/views/dashboard_stats_view.dart';
@@ -17,7 +18,6 @@ import '../../features/products/presentation/pages/product_add_page.dart';
 import '../../features/products/presentation/pages/product_manage_page.dart';
 import '../../features/products/presentation/pages/product_view_page.dart';
 import '../../features/reports/presentation/pages/reports_page.dart';
-import '../../features/reports/presentation/pages/reports_add_page.dart';
 import '../../features/reports/presentation/pages/reports_manage_page.dart';
 import '../../features/reports/presentation/pages/reports_view_page.dart';
 import '../../features/stock/presentation/pages/stock_page.dart';
@@ -25,6 +25,8 @@ import '../../features/customers/presentation/pages/customer_page.dart';
 import '../../features/manufacturers/presentation/pages/manufacturer_page.dart';
 import '../../features/employees/presentation/pages/employee_page.dart';
 import '../../features/settings/settings_page.dart';
+import '../../features/kanban/view/kanban_board_view.dart';
+import '../../features/kanban/view_model/kanban_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -98,14 +100,19 @@ final GoRouter appRouter = GoRouter(
           builder: (context, state) => const ProductViewPage(),
         ),
         GoRoute(
+          path: AppRoutes.productKanban,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => KanbanViewModel(),
+            child: const KanbanBoardView(),
+          ),
+        ),
+        GoRoute(
           path: AppRoutes.reports,
           builder: (context, state) => const ReportsPage(),
         ),
         GoRoute(
           path: AppRoutes.reportsAdd,
-          // builder: (context, state) => const ReportsAddPage(),
-          builder: (context, state) =>
-              const ReportsPage(), // Temporary redirect to ReportsPage
+          builder: (context, state) => const ReportsPage(),
         ),
         GoRoute(
           path: AppRoutes.reportsManage,

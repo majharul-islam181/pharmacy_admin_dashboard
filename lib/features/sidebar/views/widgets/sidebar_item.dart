@@ -94,18 +94,19 @@ class SidebarItem extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(left: AppDimensions.paddingLarge),
             child: Column(
-              children: [
-                _buildSubItem(
-                    context, 'Add ${item.title}', '${item.route}/add'),
-                _buildSubItem(
-                    context, 'Manage ${item.title}', '${item.route}/manage'),
-                _buildSubItem(
-                    context, 'View ${item.title}', '${item.route}/view'),
-              ],
+              children: _buildDefaultSubItems(context),
             ),
           ),
       ],
     );
+  }
+
+  List<Widget> _buildDefaultSubItems(BuildContext context) {
+    return [
+      _buildSubItem(context, 'Add ${item.title}', '${item.route}/add'),
+      _buildSubItem(context, 'Manage ${item.title}', '${item.route}/manage'),
+      _buildSubItem(context, 'View ${item.title}', '${item.route}/view'),
+    ];
   }
 
   Widget _buildSubItem(BuildContext context, String title, String route) {

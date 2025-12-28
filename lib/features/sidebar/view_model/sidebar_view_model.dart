@@ -164,6 +164,13 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute.startsWith('/products'),
         ),
         SidebarItemModel(
+          id: 'productKanban',
+          title: 'Kanban Board',
+          icon: Icons.view_kanban_outlined,
+          route: AppRoutes.productKanban,
+          isActive: _activeRoute == AppRoutes.productKanban,
+        ),
+        SidebarItemModel(
           id: 'reports',
           title: LocaleKeys.reports.tr(),
           icon: Icons.assessment_outlined,
