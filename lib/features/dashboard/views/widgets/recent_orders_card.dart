@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:easy_localization/easy_localization.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../models/recent_order_model.dart';
@@ -69,7 +68,7 @@ class RecentOrdersCard extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Table Header
           Container(
             padding: const EdgeInsets.symmetric(
@@ -92,7 +91,7 @@ class RecentOrdersCard extends StatelessWidget {
               ],
             ),
           ),
-          
+
           // Table Rows
           ListView.builder(
             shrinkWrap: true,
@@ -129,9 +128,11 @@ class RecentOrdersCard extends StatelessWidget {
         vertical: AppDimensions.paddingMedium,
       ),
       decoration: BoxDecoration(
-        border: isLast ? null : const Border(
-          bottom: BorderSide(color: AppColors.border, width: 0.5),
-        ),
+        border: isLast
+            ? null
+            : const Border(
+                bottom: BorderSide(color: AppColors.border, width: 0.5),
+              ),
       ),
       child: Row(
         children: [
@@ -147,7 +148,7 @@ class RecentOrdersCard extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Batch No
           Expanded(
             flex: 2,
@@ -159,7 +160,7 @@ class RecentOrdersCard extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Quantity
           Expanded(
             flex: 2,
@@ -171,7 +172,7 @@ class RecentOrdersCard extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Status
           Expanded(
             flex: 2,
@@ -192,7 +193,7 @@ class RecentOrdersCard extends StatelessWidget {
               ),
             ),
           ),
-          
+
           // Price
           Expanded(
             flex: 2,

@@ -350,6 +350,35 @@ class SidebarViewModel extends ChangeNotifier {
           ],
         ),
         SidebarItemModel(
+          id: 'login',
+          title: 'Login Screens',
+          icon: Icons.login_outlined,
+          route: AppRoutes.loginShowcase,
+          hasSubItems: true,
+          isExpanded: _expandedItems['login'] ?? false,
+          isActive: _activeRoute.startsWith('/login'),
+          subItems: [
+            SidebarItemModel(
+              id: 'loginClassic',
+              title: 'Classic Login',
+              icon: Icons.circle,
+              route: AppRoutes.loginClassic,
+            ),
+            SidebarItemModel(
+              id: 'loginModern',
+              title: 'Modern Login',
+              icon: Icons.circle,
+              route: AppRoutes.loginModern,
+            ),
+            SidebarItemModel(
+              id: 'loginAnimated',
+              title: 'Animated Login',
+              icon: Icons.circle,
+              route: AppRoutes.loginAnimated,
+            ),
+          ],
+        ),
+        SidebarItemModel(
           id: 'settings',
           title: LocaleKeys.settings.tr(),
           icon: Icons.settings_outlined,

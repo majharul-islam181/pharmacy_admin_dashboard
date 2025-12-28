@@ -48,6 +48,11 @@ import '../../features/employee_management/view/employee_list_view.dart';
 import '../../features/employee_management/view/add_employee_view.dart';
 import '../../features/employee_management/view/edit_employee_view.dart';
 import '../../features/employee_management/view_model/employee_view_model.dart';
+import '../../features/login/view/login_showcase_view.dart';
+import '../../features/login/view/classic_login_view.dart';
+import '../../features/login/view/modern_login_view.dart';
+import '../../features/login/view/animated_login_view.dart';
+import '../../features/login/view_model/login_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -369,6 +374,47 @@ final GoRouter appRouter = GoRouter(
           path: AppRoutes.settings,
           pageBuilder: (context, state) => PageTransitions.fadeSlide(
             child: const SettingsPage(),
+            state: state,
+          ),
+        ),
+        // Login Screens
+        GoRoute(
+          path: AppRoutes.loginShowcase,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => LoginViewModel(),
+              child: const LoginShowcaseView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.loginClassic,
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: ChangeNotifierProvider(
+              create: (_) => LoginViewModel(),
+              child: const ClassicLoginView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.loginModern,
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: ChangeNotifierProvider(
+              create: (_) => LoginViewModel(),
+              child: const ModernLoginView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.loginAnimated,
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: ChangeNotifierProvider(
+              create: (_) => LoginViewModel(),
+              child: const AnimatedLoginView(),
+            ),
             state: state,
           ),
         ),

@@ -56,4 +56,10 @@ class AppRoutes {
   static const String widgetsRatingBar = '/widgets/rating-bar';
   static const String widgetsBadge = '/widgets/badge';
   static const String widgetsModal = '/widgets/modal';
+
+  // Login Screens
+  static const String loginShowcase = '/login';
+  static const String loginClassic = '/login/classic';
+  static const String loginModern = '/login/modern';
+  static const String loginAnimated = '/login/animated';
 }
