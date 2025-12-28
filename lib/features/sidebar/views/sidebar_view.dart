@@ -74,17 +74,26 @@ class SidebarView extends StatelessWidget {
         final isCollapsed = viewModel.isCollapsed;
         final sidebarWidth = isCollapsed ? 80.0 : width;
 
-        return Container(
+        return AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
           width: sidebarWidth,
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: AppColors.surface,
             border: Border(
               right: BorderSide(
-                color: AppColors.border,
+                color: AppColors.border.withOpacity(0.5),
                 width: 1,
               ),
             ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.03),
+                blurRadius: 10,
+                offset: const Offset(2, 0),
+              ),
+            ],
           ),
           child: Column(
             children: [
@@ -97,13 +106,25 @@ class SidebarView extends StatelessWidget {
                   itemCount: viewModel.sidebarItems.length,
                   itemBuilder: (context, index) {
                     final item = viewModel.sidebarItems[index];
-                    return SidebarItem(
-                      item: item,
-                      isCollapsed: isCollapsed,
-                      onTap: () {},
-                      onExpansionToggle: item.hasSubItems
-                          ? () => viewModel.toggleExpansion(item.id)
-                          : null,
+                    return TweenAnimationBuilder<double>(
+                      duration: Duration(milliseconds: 300 + (index * 30)),
+                      tween: Tween(begin: 0, end: 1),
+                      builder: (context, value, child) {
+                        return Opacity(
+                          opacity: value,
+                          child: Transform.translate(
+                            offset: Offset(0, 10 * (1 - value)),
+                            child: SidebarItem(
+                              item: item,
+                              isCollapsed: isCollapsed,
+                              onTap: () {},
+                              onExpansionToggle: item.hasSubItems
+                                  ? () => viewModel.toggleExpansion(item.id)
+                                  : null,
+                            ),
+                          ),
+                        );
+                      },
                     );
                   },
                 ),
