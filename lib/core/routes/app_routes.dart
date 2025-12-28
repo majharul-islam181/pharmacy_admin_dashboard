@@ -39,6 +39,10 @@ class AppRoutes {
   static const String hospitalReview = '/hospital/review';
   static const String hospitalPatient = '/hospital/patient';
 
+  // Attendance
+  static const String attendanceToday = '/attendance/today';
+  static const String attendanceEmployee = '/attendance/employee';
+
   // Components / Widgets
   static const String widgets = '/widgets';
   static const String widgetsToast = '/widgets/toast';

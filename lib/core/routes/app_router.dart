@@ -42,6 +42,7 @@ import '../../features/hospital/view_model/dashboard_view_model.dart';
 import '../../features/hospital/view_model/doctor_view_model.dart';
 import '../../features/hospital/view_model/review_view_model.dart';
 import '../../features/hospital/view_model/patient_view_model.dart';
+import '../../features/attendance/view/attendance_view.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -189,6 +190,15 @@ final GoRouter appRouter = GoRouter(
             create: (_) => PatientViewModel(),
             child: const PatientView(),
           ),
+        ),
+        // Attendance
+        GoRoute(
+          path: AppRoutes.attendanceToday,
+          builder: (context, state) => const AttendanceView(),
+        ),
+        GoRoute(
+          path: AppRoutes.attendanceEmployee,
+          builder: (context, state) => const AttendanceView(),
         ),
         // Components / Widgets
         GoRoute(

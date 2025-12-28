@@ -256,6 +256,29 @@ class SidebarViewModel extends ChangeNotifier {
           ],
         ),
         SidebarItemModel(
+          id: 'attendance',
+          title: 'Attendance',
+          icon: Icons.access_time,
+          route: AppRoutes.attendanceToday,
+          hasSubItems: true,
+          isExpanded: _expandedItems['attendance'] ?? false,
+          isActive: _activeRoute.startsWith('/attendance'),
+          subItems: [
+            SidebarItemModel(
+              id: 'attendanceToday',
+              title: 'Today Attendance',
+              icon: Icons.circle,
+              route: AppRoutes.attendanceToday,
+            ),
+            SidebarItemModel(
+              id: 'attendanceEmployee',
+              title: 'Employee Attendance',
+              icon: Icons.circle,
+              route: AppRoutes.attendanceEmployee,
+            ),
+          ],
+        ),
+        SidebarItemModel(
           id: 'componentsHeader',
           title: 'Components',
           icon: Icons.circle,
