@@ -65,7 +65,7 @@ class ProfileMenuPanel extends StatelessWidget {
               isDestructive: true,
               onTap: () {
                 Navigator.of(context).pop();
-                // TODO: Implement logout
+                _showLogoutDialog(context);
               },
             ),
           ],
@@ -125,6 +125,131 @@ class ProfileMenuPanel extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: true,
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
+          ),
+          title: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: AppColors.notificationRed.withOpacity(0.1),
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.radiusSmall),
+                ),
+                child: const Icon(
+                  Icons.logout,
+                  color: AppColors.notificationRed,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: AppDimensions.paddingMedium),
+              const Expanded(
+                child: Text(
+                  'Logout Confirmation',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textPrimary,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          content: const Padding(
+            padding: EdgeInsets.only(top: 8),
+            child: Text(
+              'Are you sure you want to logout from your account?',
+              style: TextStyle(
+                fontSize: 14,
+                color: AppColors.textSecondary,
+                height: 1.5,
+              ),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+              },
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
+              ),
+              child: const Text(
+                'Cancel',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textSecondary,
+                ),
+              ),
+            ),
+            const SizedBox(width: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(dialogContext).pop();
+                // TODO: Implement actual logout logic here
+                // For now, just show a message
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: const Row(
+                      children: [
+                        Icon(Icons.info_outline, color: Colors.white, size: 20),
+                        SizedBox(width: 12),
+                        Expanded(
+                          child: Text(
+                            'Logout functionality will be implemented here',
+                            style: TextStyle(fontSize: 14),
+                          ),
+                        ),
+                      ],
+                    ),
+                    backgroundColor: const Color(0xFF6366F1),
+                    behavior: SnackBarBehavior.floating,
+                    shape: RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.circular(AppDimensions.radiusSmall),
+                    ),
+                    duration: const Duration(seconds: 3),
+                  ),
+                );
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: AppColors.notificationRed,
+                foregroundColor: Colors.white,
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(AppDimensions.radiusSmall),
+                ),
+                elevation: 0,
+              ),
+              child: const Text(
+                'Logout',
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
