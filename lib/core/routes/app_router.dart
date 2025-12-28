@@ -43,6 +43,10 @@ import '../../features/hospital/view_model/doctor_view_model.dart';
 import '../../features/hospital/view_model/review_view_model.dart';
 import '../../features/hospital/view_model/patient_view_model.dart';
 import '../../features/attendance/view/attendance_view.dart';
+import '../../features/employee_management/view/employee_list_view.dart';
+import '../../features/employee_management/view/add_employee_view.dart';
+import '../../features/employee_management/view/edit_employee_view.dart';
+import '../../features/employee_management/view_model/employee_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -199,6 +203,31 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.attendanceEmployee,
           builder: (context, state) => const AttendanceView(),
+        ),
+        // Employee Management
+        GoRoute(
+          path: AppRoutes.employeeList,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => EmployeeViewModel(),
+            child: const EmployeeListView(),
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.employeeAdd,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => EmployeeViewModel(),
+            child: const AddEmployeeView(),
+          ),
+        ),
+        GoRoute(
+          path: '${AppRoutes.employeeEdit}/:id',
+          builder: (context, state) {
+            final id = state.pathParameters['id']!;
+            return ChangeNotifierProvider(
+              create: (_) => EmployeeViewModel(),
+              child: EditEmployeeView(employeeId: id),
+            );
+          },
         ),
         // Components / Widgets
         GoRoute(

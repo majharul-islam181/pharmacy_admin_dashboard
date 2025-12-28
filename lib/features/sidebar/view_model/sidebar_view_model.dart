@@ -279,6 +279,29 @@ class SidebarViewModel extends ChangeNotifier {
           ],
         ),
         SidebarItemModel(
+          id: 'employeeManagement',
+          title: 'Employee',
+          icon: Icons.people_outline,
+          route: AppRoutes.employeeList,
+          hasSubItems: true,
+          isExpanded: _expandedItems['employeeManagement'] ?? false,
+          isActive: _activeRoute.startsWith('/employee'),
+          subItems: [
+            SidebarItemModel(
+              id: 'employeeList',
+              title: 'Employee List',
+              icon: Icons.circle,
+              route: AppRoutes.employeeList,
+            ),
+            SidebarItemModel(
+              id: 'employeeAdd',
+              title: 'Add Employee',
+              icon: Icons.circle,
+              route: AppRoutes.employeeAdd,
+            ),
+          ],
+        ),
+        SidebarItemModel(
           id: 'componentsHeader',
           title: 'Components',
           icon: Icons.circle,

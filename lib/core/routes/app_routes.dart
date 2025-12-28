@@ -28,6 +28,12 @@ class AppRoutes {
   static const String customer = '/customers';
   static const String manufacturer = '/manufacturers';
   static const String employee = '/employees';
+
+  // Employee Management
+  static const String employeeList = '/employee';
+  static const String employeeAdd = '/employee/add';
+  static const String employeeEdit = '/employee/edit';
+
   static const String settings = '/settings';
 
   // Chat
