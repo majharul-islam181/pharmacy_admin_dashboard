@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../../main_layout_view.dart';
 import '../../features/dashboard/views/dashboard_stats_view.dart';
+import 'page_transitions.dart';
 import '../../features/crm/presentation/pages/crm_page.dart';
 import '../../features/purchases/presentation/pages/purchase_page.dart';
 import '../../features/purchases/presentation/pages/purchase_add_page.dart';
@@ -62,197 +63,314 @@ final GoRouter appRouter = GoRouter(
       routes: [
         GoRoute(
           path: AppRoutes.dashboard,
-          builder: (context, state) => const DashboardStatsView(),
+          pageBuilder: (context, state) => PageTransitions.fade(
+            child: const DashboardStatsView(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.crm,
-          builder: (context, state) => const CrmPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const CrmPage(),
+            state: state,
+          ),
         ),
         // Purchase
         GoRoute(
           path: AppRoutes.purchase,
-          builder: (context, state) => const PurchasePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const PurchasePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.purchaseAdd,
-          builder: (context, state) => const PurchaseAddPage(),
+          pageBuilder: (context, state) => PageTransitions.verticalSlide(
+            child: const PurchaseAddPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.purchaseManage,
-          builder: (context, state) => const PurchaseManagePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const PurchaseManagePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.purchaseView,
-          builder: (context, state) => const PurchaseViewPage(),
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: const PurchaseViewPage(),
+            state: state,
+          ),
         ),
         // Dispenser
         GoRoute(
           path: AppRoutes.dispenser,
-          builder: (context, state) => const DispenserPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const DispenserPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.dispenserAdd,
-          builder: (context, state) => const DispenserAddPage(),
+          pageBuilder: (context, state) => PageTransitions.verticalSlide(
+            child: const DispenserAddPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.dispenserManage,
-          builder: (context, state) => const DispenserManagePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const DispenserManagePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.dispenserView,
-          builder: (context, state) => const DispenserViewPage(),
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: const DispenserViewPage(),
+            state: state,
+          ),
         ),
         // Other main routes
         GoRoute(
           path: AppRoutes.product,
-          builder: (context, state) => const ProductPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ProductPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.productAdd,
-          builder: (context, state) => const ProductAddPage(),
+          pageBuilder: (context, state) => PageTransitions.verticalSlide(
+            child: const ProductAddPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.productManage,
-          builder: (context, state) => const ProductManagePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ProductManagePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.productView,
-          builder: (context, state) => const ProductViewPage(),
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: const ProductViewPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.productKanban,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => KanbanViewModel(),
-            child: const KanbanBoardView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => KanbanViewModel(),
+              child: const KanbanBoardView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: AppRoutes.reports,
-          builder: (context, state) => const ReportsPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ReportsPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.reportsAdd,
-          builder: (context, state) => const ReportsPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ReportsPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.reportsManage,
-          builder: (context, state) => const ReportsManagePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ReportsManagePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.reportsView,
-          builder: (context, state) => const ReportsViewPage(),
+          pageBuilder: (context, state) => PageTransitions.scaleFade(
+            child: const ReportsViewPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.stock,
-          builder: (context, state) => const StockPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const StockPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.customer,
-          builder: (context, state) => const CustomerPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const CustomerPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.manufacturer,
-          builder: (context, state) => const ManufacturerPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const ManufacturerPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.employee,
-          builder: (context, state) => const EmployeePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const EmployeePage(),
+            state: state,
+          ),
         ),
         // Chat
         GoRoute(
           path: AppRoutes.chat,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => ChatViewModel(),
-            child: const ChatView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChatViewModel(),
+              child: const ChatView(),
+            ),
+            state: state,
           ),
         ),
         // Hospital
         GoRoute(
           path: AppRoutes.hospitalDashboard,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => DashboardViewModel(),
-            child: const HospitalDashboardView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => DashboardViewModel(),
+              child: const HospitalDashboardView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: AppRoutes.hospitalDoctor,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => DoctorViewModel(),
-            child: const DoctorView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => DoctorViewModel(),
+              child: const DoctorView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: AppRoutes.hospitalReview,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => ReviewViewModel(),
-            child: const ReviewView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ReviewViewModel(),
+              child: const ReviewView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: AppRoutes.hospitalPatient,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => PatientViewModel(),
-            child: const PatientView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => PatientViewModel(),
+              child: const PatientView(),
+            ),
+            state: state,
           ),
         ),
         // Attendance
         GoRoute(
           path: AppRoutes.attendanceToday,
-          builder: (context, state) => const AttendanceView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const AttendanceView(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.attendanceEmployee,
-          builder: (context, state) => const AttendanceView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const AttendanceView(),
+            state: state,
+          ),
         ),
         // Employee Management
         GoRoute(
           path: AppRoutes.employeeList,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => EmployeeViewModel(),
-            child: const EmployeeListView(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => EmployeeViewModel(),
+              child: const EmployeeListView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: AppRoutes.employeeAdd,
-          builder: (context, state) => ChangeNotifierProvider(
-            create: (_) => EmployeeViewModel(),
-            child: const AddEmployeeView(),
+          pageBuilder: (context, state) => PageTransitions.verticalSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => EmployeeViewModel(),
+              child: const AddEmployeeView(),
+            ),
+            state: state,
           ),
         ),
         GoRoute(
           path: '${AppRoutes.employeeEdit}/:id',
-          builder: (context, state) {
+          pageBuilder: (context, state) {
             final id = state.pathParameters['id']!;
-            return ChangeNotifierProvider(
-              create: (_) => EmployeeViewModel(),
-              child: EditEmployeeView(employeeId: id),
+            return PageTransitions.verticalSlide(
+              child: ChangeNotifierProvider(
+                create: (_) => EmployeeViewModel(),
+                child: EditEmployeeView(employeeId: id),
+              ),
+              state: state,
             );
           },
         ),
         // Components / Widgets
         GoRoute(
           path: AppRoutes.widgetsToast,
-          builder: (context, state) => const WidgetsToastPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const WidgetsToastPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.widgetsButtonElement,
-          builder: (context, state) => const WidgetsButtonElementPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const WidgetsButtonElementPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.widgetsRatingBar,
-          builder: (context, state) => const WidgetsRatingBarPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const WidgetsRatingBarPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.widgetsBadge,
-          builder: (context, state) => const WidgetsBadgePage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const WidgetsBadgePage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.widgetsModal,
-          builder: (context, state) => const WidgetsModalPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const WidgetsModalPage(),
+            state: state,
+          ),
         ),
         GoRoute(
           path: AppRoutes.settings,
-          builder: (context, state) => const SettingsPage(),
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: const SettingsPage(),
+            state: state,
+          ),
         ),
       ],
     ),
