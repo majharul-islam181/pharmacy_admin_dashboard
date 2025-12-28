@@ -34,6 +34,14 @@ import '../../features/widgets/presentation/pages/widgets_badge_page.dart';
 import '../../features/widgets/presentation/pages/widgets_modal_page.dart';
 import '../../features/chat/view/chat_view.dart';
 import '../../features/chat/view_model/chat_view_model.dart';
+import '../../features/hospital/view/dashboard/hospital_dashboard_view.dart';
+import '../../features/hospital/view/doctor/doctor_view.dart';
+import '../../features/hospital/view/review/review_view.dart';
+import '../../features/hospital/view/patient/patient_view.dart';
+import '../../features/hospital/view_model/dashboard_view_model.dart';
+import '../../features/hospital/view_model/doctor_view_model.dart';
+import '../../features/hospital/view_model/review_view_model.dart';
+import '../../features/hospital/view_model/patient_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -151,6 +159,35 @@ final GoRouter appRouter = GoRouter(
           builder: (context, state) => ChangeNotifierProvider(
             create: (_) => ChatViewModel(),
             child: const ChatView(),
+          ),
+        ),
+        // Hospital
+        GoRoute(
+          path: AppRoutes.hospitalDashboard,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => DashboardViewModel(),
+            child: const HospitalDashboardView(),
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.hospitalDoctor,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => DoctorViewModel(),
+            child: const DoctorView(),
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.hospitalReview,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => ReviewViewModel(),
+            child: const ReviewView(),
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.hospitalPatient,
+          builder: (context, state) => ChangeNotifierProvider(
+            create: (_) => PatientViewModel(),
+            child: const PatientView(),
           ),
         ),
         // Components / Widgets

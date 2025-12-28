@@ -221,6 +221,41 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute == AppRoutes.chat,
         ),
         SidebarItemModel(
+          id: 'hospital',
+          title: 'Hospital',
+          icon: Icons.local_hospital_outlined,
+          route: AppRoutes.hospitalDashboard,
+          hasSubItems: true,
+          isExpanded: _expandedItems['hospital'] ?? false,
+          isActive: _activeRoute.startsWith('/hospital'),
+          subItems: [
+            SidebarItemModel(
+              id: 'hospitalDashboard',
+              title: 'Dashboard',
+              icon: Icons.circle,
+              route: AppRoutes.hospitalDashboard,
+            ),
+            SidebarItemModel(
+              id: 'hospitalDoctor',
+              title: 'Doctor',
+              icon: Icons.circle,
+              route: AppRoutes.hospitalDoctor,
+            ),
+            SidebarItemModel(
+              id: 'hospitalReview',
+              title: 'Review',
+              icon: Icons.circle,
+              route: AppRoutes.hospitalReview,
+            ),
+            SidebarItemModel(
+              id: 'hospitalPatient',
+              title: 'Patient',
+              icon: Icons.circle,
+              route: AppRoutes.hospitalPatient,
+            ),
+          ],
+        ),
+        SidebarItemModel(
           id: 'componentsHeader',
           title: 'Components',
           icon: Icons.circle,

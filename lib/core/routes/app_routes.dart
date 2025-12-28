@@ -33,6 +33,12 @@ class AppRoutes {
   // Chat
   static const String chat = '/chat';
 
+  // Hospital
+  static const String hospitalDashboard = '/hospital/dashboard';
+  static const String hospitalDoctor = '/hospital/doctor';
+  static const String hospitalReview = '/hospital/review';
+  static const String hospitalPatient = '/hospital/patient';
+
   // Components / Widgets
   static const String widgets = '/widgets';
   static const String widgetsToast = '/widgets/toast';
