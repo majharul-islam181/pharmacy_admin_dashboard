@@ -19,7 +19,7 @@ class AppRoutes {
   static const String productAdd = '/products/add';
   static const String productManage = '/products/manage';
   static const String productView = '/products/view';
-  static const String productKanban = '/products/kanban';
+  static const String productKanban = '/kanban';
   static const String reports = '/reports';
   static const String reportsAdd = '/reports/add';
   static const String reportsManage = '/reports/manage';

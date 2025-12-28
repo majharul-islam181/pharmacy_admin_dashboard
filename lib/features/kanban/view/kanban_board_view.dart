@@ -12,6 +12,11 @@ class KanbanBoardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<KanbanViewModel>();
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    final isMobile = screenWidth < 800;
+    final isTablet = screenWidth >= 800 && screenWidth < 1200;
+    final columnWidth = isTablet ? 280.0 : 320.0;
 
     final columns = [
       const _KanbanColumnConfig(
@@ -54,37 +59,64 @@ class KanbanBoardView extends StatelessWidget {
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
-          SizedBox(
-            height: 520,
-            child: Scrollbar(
-              thumbVisibility: true,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    for (final config in columns) ...[
-                      KanbanColumn(
-                        title: config.title,
-                        status: config.status,
-                        tasks: viewModel.tasksByStatus(config.status),
-                        onAddTask: () => _showTaskDialog(
-                          context,
-                          initialStatus: config.status,
+          if (isMobile)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                for (final config in columns) ...[
+                  KanbanColumn(
+                    title: config.title,
+                    status: config.status,
+                    tasks: viewModel.tasksByStatus(config.status),
+                    onAddTask: () => _showTaskDialog(
+                      context,
+                      initialStatus: config.status,
+                    ),
+                    onEditTask: (task) => _showTaskDialog(
+                      context,
+                      task: task,
+                      initialStatus: task.status,
+                    ),
+                  ),
+                  const SizedBox(height: AppDimensions.paddingLarge),
+                ],
+              ],
+            )
+          else
+            SizedBox(
+              height: isTablet ? 520 : 560,
+              child: Scrollbar(
+                thumbVisibility: true,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (final config in columns) ...[
+                        SizedBox(
+                          width: columnWidth,
+                          child: KanbanColumn(
+                            title: config.title,
+                            status: config.status,
+                            tasks: viewModel.tasksByStatus(config.status),
+                            onAddTask: () => _showTaskDialog(
+                              context,
+                              initialStatus: config.status,
+                            ),
+                            onEditTask: (task) => _showTaskDialog(
+                              context,
+                              task: task,
+                              initialStatus: task.status,
+                            ),
+                          ),
                         ),
-                        onEditTask: (task) => _showTaskDialog(
-                          context,
-                          task: task,
-                          initialStatus: task.status,
-                        ),
-                      ),
-                      const SizedBox(width: AppDimensions.paddingLarge),
+                        const SizedBox(width: AppDimensions.paddingLarge),
+                      ],
                     ],
-                  ],
+                  ),
                 ),
               ),
             ),
-          ),
         ],
       ),
     );
