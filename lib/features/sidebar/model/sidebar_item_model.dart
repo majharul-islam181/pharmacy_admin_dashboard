@@ -9,6 +9,7 @@ class SidebarItemModel {
   final bool hasSubItems;
   final bool isExpanded;
   final List<SidebarItemModel>? subItems;
+  final bool isSectionHeader;
 
   SidebarItemModel({
     required this.id,
@@ -19,6 +20,7 @@ class SidebarItemModel {
     this.hasSubItems = false,
     this.isExpanded = false,
     this.subItems,
+    this.isSectionHeader = false,
   });
 
   SidebarItemModel copyWith({
@@ -30,6 +32,7 @@ class SidebarItemModel {
     bool? hasSubItems,
     bool? isExpanded,
     List<SidebarItemModel>? subItems,
+    bool? isSectionHeader,
   }) {
     return SidebarItemModel(
       id: id ?? this.id,
@@ -40,6 +43,7 @@ class SidebarItemModel {
       hasSubItems: hasSubItems ?? this.hasSubItems,
       isExpanded: isExpanded ?? this.isExpanded,
       subItems: subItems ?? this.subItems,
+      isSectionHeader: isSectionHeader ?? this.isSectionHeader,
     );
   }
 }

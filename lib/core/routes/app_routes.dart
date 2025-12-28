@@ -29,4 +29,12 @@ class AppRoutes {
   static const String manufacturer = '/manufacturers';
   static const String employee = '/employees';
   static const String settings = '/settings';
+
+  // Components / Widgets
+  static const String widgets = '/widgets';
+  static const String widgetsToast = '/widgets/toast';
+  static const String widgetsButtonElement = '/widgets/button-element';
+  static const String widgetsRatingBar = '/widgets/rating-bar';
+  static const String widgetsBadge = '/widgets/badge';
+  static const String widgetsModal = '/widgets/modal';
 }

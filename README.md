@@ -1,5 +1,10 @@
 # Pharmacy Admin Dashboard
 
+```
+https://preview.codecanyon.net/item/flutter-admin-portal/full_screen_preview/42273274
+
+```
+
 Pharmacy Admin Dashboard is a Flutter-based admin panel template focused on web (and desktop). It provides ready-made UI for dashboards, purchases, stock management, products, customers, employees, and reports – ideal for CodeCanyon buyers who want a clean starting point for pharmacy, inventory, POS or any custom management system.
 
 ## Features

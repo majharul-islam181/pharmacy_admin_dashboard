@@ -21,6 +21,29 @@ class SidebarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (item.isSectionHeader) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(
+          AppDimensions.paddingMedium,
+          AppDimensions.paddingLarge,
+          AppDimensions.paddingMedium,
+          AppDimensions.paddingSmall,
+        ),
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            item.title.toUpperCase(),
+            style: const TextStyle(
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.8,
+              color: AppColors.textSecondary,
+            ),
+          ),
+        ),
+      );
+    }
+
     return Column(
       children: [
         InkWell(
@@ -94,14 +117,20 @@ class SidebarItem extends StatelessWidget {
           Container(
             margin: const EdgeInsets.only(left: AppDimensions.paddingLarge),
             child: Column(
-              children: _buildDefaultSubItems(context),
+              children: _buildSubItems(context),
             ),
           ),
       ],
     );
   }
 
-  List<Widget> _buildDefaultSubItems(BuildContext context) {
+  List<Widget> _buildSubItems(BuildContext context) {
+    if (item.subItems != null && item.subItems!.isNotEmpty) {
+      return item.subItems!
+          .map((sub) => _buildSubItem(context, sub.title, sub.route))
+          .toList();
+    }
+
     return [
       _buildSubItem(context, 'Add ${item.title}', '${item.route}/add'),
       _buildSubItem(context, 'Manage ${item.title}', '${item.route}/manage'),

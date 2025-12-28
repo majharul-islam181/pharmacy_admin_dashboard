@@ -27,6 +27,11 @@ import '../../features/employees/presentation/pages/employee_page.dart';
 import '../../features/settings/settings_page.dart';
 import '../../features/kanban/view/kanban_board_view.dart';
 import '../../features/kanban/view_model/kanban_view_model.dart';
+import '../../features/widgets/presentation/pages/widgets_toast_page.dart';
+import '../../features/widgets/presentation/pages/widgets_button_element_page.dart';
+import '../../features/widgets/presentation/pages/widgets_rating_bar_page.dart';
+import '../../features/widgets/presentation/pages/widgets_badge_page.dart';
+import '../../features/widgets/presentation/pages/widgets_modal_page.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -137,6 +142,27 @@ final GoRouter appRouter = GoRouter(
         GoRoute(
           path: AppRoutes.employee,
           builder: (context, state) => const EmployeePage(),
+        ),
+        // Components / Widgets
+        GoRoute(
+          path: AppRoutes.widgetsToast,
+          builder: (context, state) => const WidgetsToastPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.widgetsButtonElement,
+          builder: (context, state) => const WidgetsButtonElementPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.widgetsRatingBar,
+          builder: (context, state) => const WidgetsRatingBarPage(),
+        ),
+        GoRoute(
+          path: AppRoutes.widgetsBadge,
+          builder: (context, state) => const WidgetsBadgePage(),
+        ),
+        GoRoute(
+          path: AppRoutes.widgetsModal,
+          builder: (context, state) => const WidgetsModalPage(),
         ),
         GoRoute(
           path: AppRoutes.settings,
