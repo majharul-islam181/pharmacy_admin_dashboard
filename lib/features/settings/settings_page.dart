@@ -1,79 +1,12 @@
 // lib/features/settings/settings_page.dart
 import 'package:flutter/material.dart';
-import '../../core/constants/app_dimensions.dart';
-import '../settings/widgets/language_selector.dart';
+import 'view/settings_view.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-          // Page Title
-          const Text(
-            'Settings', // Or use LocaleKeys.settings.tr() if translations work
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF1F2937),
-            ),
-          ),
-          
-          const SizedBox(height: AppDimensions.paddingLarge),
-          
-          // Language Settings Section
-          const LanguageSelector(),
-          
-          const SizedBox(height: AppDimensions.paddingLarge),
-          
-          // Additional Settings
-          Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(AppDimensions.paddingLarge),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
-                  blurRadius: 10,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: const Column(
-              children: [
-                Icon(
-                  Icons.settings_outlined,
-                  size: 64,
-                  color: Colors.grey,
-                ),
-                SizedBox(height: 16),
-                Text(
-                  'Other Settings',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                SizedBox(height: 8),
-                Text(
-                  'Additional settings will be implemented here.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    ));
+    return const SettingsView();
   }
 }
