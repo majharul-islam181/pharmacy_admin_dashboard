@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_strings.dart';
 import '../view_model/login_view_model.dart';
 import 'widgets/animated_login_button.dart';
 import 'widgets/social_login_buttons.dart';
@@ -196,7 +197,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
     return Column(
       children: [
         const Text(
-          'Animated Login',
+          AppStrings.pageAnimatedLogin,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,
@@ -206,7 +207,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
         ),
         const SizedBox(height: 8),
         Text(
-          'Experience smooth animations',
+          AppStrings.textExperienceSmoothAnimations,
           style: TextStyle(
             fontSize: 16,
             color: Colors.grey.shade600,
@@ -222,8 +223,8 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Email Address',
-        hintText: 'your@email.com',
+        labelText: AppStrings.labelEmailAddress,
+        hintText: AppStrings.hintEmailPlaceholder,
         prefixIcon: Container(
           margin: const EdgeInsets.all(12),
           padding: const EdgeInsets.all(8),
@@ -253,7 +254,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
       ),
       validator: (value) {
         if (value == null || value.isEmpty || !value.contains('@')) {
-          return 'Please enter a valid email';
+          return AppStrings.errorValidEmail;
         }
         return null;
       },
@@ -267,8 +268,8 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
           controller: _passwordController,
           obscureText: viewModel.obscurePassword,
           decoration: InputDecoration(
-            labelText: 'Password',
-            hintText: '••••••••',
+            labelText: AppStrings.labelPassword,
+            hintText: AppStrings.hintPasswordPlaceholder,
             prefixIcon: Container(
               margin: const EdgeInsets.all(12),
               padding: const EdgeInsets.all(8),
@@ -307,7 +308,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
           ),
           validator: (value) {
             if (value == null || value.isEmpty || value.length < 6) {
-              return 'Password must be at least 6 characters';
+              return AppStrings.errorPasswordLength;
             }
             return null;
           },
@@ -320,7 +321,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
     return Consumer<LoginViewModel>(
       builder: (context, viewModel, child) {
         return AnimatedLoginButton(
-          text: 'Login with Animation',
+          text: AppStrings.buttonLoginWithAnimation,
           isLoading: viewModel.isLoading,
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
@@ -330,7 +331,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Login successful! (Animated UI Demo)'),
+                    content: const Text(AppStrings.messageLoginSuccessAnimated),
                     backgroundColor: Colors.green.shade600,
                   ),
                 );
@@ -351,7 +352,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            'OR CONTINUE WITH',
+            AppStrings.textOrContinueWith,
             style: TextStyle(
               color: Colors.grey.shade600,
               fontWeight: FontWeight.w600,

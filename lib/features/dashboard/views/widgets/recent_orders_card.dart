@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../models/recent_order_model.dart';
 
 class RecentOrdersCard extends StatelessWidget {
@@ -37,7 +38,7 @@ class RecentOrdersCard extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  'Recent Orders',
+                  AppStrings.textRecentOrders,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w600,
@@ -49,7 +50,7 @@ class RecentOrdersCard extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        'See All',
+                        AppStrings.buttonSeeAll,
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.blue[600],
@@ -83,11 +84,11 @@ class RecentOrdersCard extends StatelessWidget {
             ),
             child: Row(
               children: [
-                _buildHeaderCell('Medicine name', flex: 3),
-                _buildHeaderCell('Batch No', flex: 2),
-                _buildHeaderCell('Quantity', flex: 2),
-                _buildHeaderCell('Status', flex: 2),
-                _buildHeaderCell('Price', flex: 2),
+                _buildHeaderCell(AppStrings.headerMedicineName, flex: 3),
+                _buildHeaderCell(AppStrings.headerBatchNo, flex: 2),
+                _buildHeaderCell(AppStrings.headerQuantity, flex: 2),
+                _buildHeaderCell(AppStrings.headerStatus, flex: 2),
+                _buildHeaderCell(AppStrings.headerPrice, flex: 2),
               ],
             ),
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_strings.dart';
 import '../../model/patient_model.dart';
 
 class StatusBadge extends StatelessWidget {
@@ -54,11 +55,11 @@ class StatusBadge extends StatelessWidget {
   String _getStatusText() {
     switch (status) {
       case PatientStatus.pending:
-        return 'Pending';
+        return AppStrings.statusPending;
       case PatientStatus.progress:
-        return 'In Progress';
+        return AppStrings.textInProgress;
       case PatientStatus.complete:
-        return 'Complete';
+        return AppStrings.textComplete;
     }
   }
 }

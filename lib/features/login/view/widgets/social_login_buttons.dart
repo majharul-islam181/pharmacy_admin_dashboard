@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_strings.dart';
 
 class SocialLoginButtons extends StatelessWidget {
   const SocialLoginButtons({super.key});
@@ -10,12 +11,12 @@ class SocialLoginButtons extends StatelessWidget {
         Expanded(
           child: _SocialButton(
             icon: Icons.g_mobiledata,
-            label: 'Google',
+            label: AppStrings.socialGoogle,
             color: const Color(0xFFDB4437),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Google login UI only'),
+                  content: Text(AppStrings.messageGoogleLoginUiOnly),
                   duration: Duration(seconds: 2),
                 ),
               );
@@ -26,12 +27,12 @@ class SocialLoginButtons extends StatelessWidget {
         Expanded(
           child: _SocialButton(
             icon: Icons.facebook,
-            label: 'Facebook',
+            label: AppStrings.socialFacebook,
             color: const Color(0xFF1877F2),
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Facebook login UI only'),
+                  content: Text(AppStrings.messageFacebookLoginUiOnly),
                   duration: Duration(seconds: 2),
                 ),
               );

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_strings.dart';
 import '../view_model/login_view_model.dart';
 import 'widgets/animated_login_button.dart';
 import 'widgets/social_login_buttons.dart';
@@ -128,7 +129,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
         ),
         const SizedBox(height: 24),
         const Text(
-          'Welcome Back',
+          AppStrings.textWelcomeBack,
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w800,
@@ -138,7 +139,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
         ),
         const SizedBox(height: 8),
         Text(
-          'Sign in to your admin account',
+          AppStrings.textSignInToAdmin,
           style: TextStyle(
             fontSize: 15,
             color: Colors.grey.shade600,
@@ -154,8 +155,8 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
       controller: _emailController,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
-        labelText: 'Email Address',
-        hintText: 'Enter your email',
+        labelText: AppStrings.labelEmailAddress,
+        hintText: AppStrings.hintEnterYourEmail,
         prefixIcon: const Icon(Icons.email_outlined),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
@@ -174,10 +175,10 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter your email';
+          return AppStrings.errorEnterEmail;
         }
         if (!value.contains('@')) {
-          return 'Please enter a valid email';
+          return AppStrings.errorValidEmail;
         }
         return null;
       },
@@ -191,8 +192,8 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           controller: _passwordController,
           obscureText: viewModel.obscurePassword,
           decoration: InputDecoration(
-            labelText: 'Password',
-            hintText: 'Enter your password',
+            labelText: AppStrings.labelPassword,
+            hintText: AppStrings.hintEnterYourPassword,
             prefixIcon: const Icon(Icons.lock_outlined),
             suffixIcon: IconButton(
               icon: Icon(
@@ -219,10 +220,10 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter your password';
+              return AppStrings.errorEnterPassword;
             }
             if (value.length < 6) {
-              return 'Password must be at least 6 characters';
+              return AppStrings.errorPasswordLength;
             }
             return null;
           },
@@ -252,7 +253,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  'Remember me',
+                  AppStrings.buttonRememberMe,
                   style: TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
@@ -267,13 +268,13 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           onPressed: () {
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(
-                content: Text('Forgot password feature - UI only'),
+                content: Text(AppStrings.textForgotPasswordUiOnly),
                 duration: Duration(seconds: 2),
               ),
             );
           },
           child: const Text(
-            'Forgot Password?',
+            AppStrings.buttonForgotPassword,
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
@@ -289,7 +290,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
     return Consumer<LoginViewModel>(
       builder: (context, viewModel, child) {
         return AnimatedLoginButton(
-          text: 'Sign In',
+          text: AppStrings.buttonSignIn,
           isLoading: viewModel.isLoading,
           onPressed: () async {
             if (_formKey.currentState!.validate()) {
@@ -299,7 +300,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Login successful! (UI Demo)'),
+                    content: const Text(AppStrings.textLoginSuccessClassic),
                     backgroundColor: Colors.green.shade600,
                     duration: const Duration(seconds: 2),
                   ),
@@ -321,7 +322,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            'Or continue with',
+            AppStrings.textOrContinueWithLower,
             style: TextStyle(
               color: Colors.grey.shade600,
               fontSize: 14,
@@ -341,7 +342,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            "Don't have an account? ",
+            AppStrings.textDontHaveAccount,
             style: TextStyle(
               fontSize: 14,
               color: Colors.grey.shade600,
@@ -351,7 +352,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
-                  content: Text('Sign up feature - UI only'),
+                  content: Text(AppStrings.textSignUpUiOnly),
                   duration: Duration(seconds: 2),
                 ),
               );
@@ -362,7 +363,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
             child: const Text(
-              'Sign Up',
+              AppStrings.buttonSignUp,
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../core/localization/locale_keys.dart';
 import '../../../core/routes/app_routes.dart';
 import '../model/sidebar_item_model.dart';
@@ -215,14 +216,14 @@ class SidebarViewModel extends ChangeNotifier {
         ),
         SidebarItemModel(
           id: 'chat',
-          title: 'Chat',
+          title: AppStrings.menuChat,
           icon: Icons.chat_bubble_outline,
           route: AppRoutes.chat,
           isActive: _activeRoute == AppRoutes.chat,
         ),
         SidebarItemModel(
           id: 'hospital',
-          title: 'Hospital',
+          title: AppStrings.menuHospital,
           icon: Icons.local_hospital_outlined,
           route: AppRoutes.hospitalDashboard,
           hasSubItems: true,
@@ -231,25 +232,25 @@ class SidebarViewModel extends ChangeNotifier {
           subItems: [
             SidebarItemModel(
               id: 'hospitalDashboard',
-              title: 'Dashboard',
+              title: AppStrings.submenuDashboard,
               icon: Icons.circle,
               route: AppRoutes.hospitalDashboard,
             ),
             SidebarItemModel(
               id: 'hospitalDoctor',
-              title: 'Doctor',
+              title: AppStrings.submenuDoctor,
               icon: Icons.circle,
               route: AppRoutes.hospitalDoctor,
             ),
             SidebarItemModel(
               id: 'hospitalReview',
-              title: 'Review',
+              title: AppStrings.submenuReview,
               icon: Icons.circle,
               route: AppRoutes.hospitalReview,
             ),
             SidebarItemModel(
               id: 'hospitalPatient',
-              title: 'Patient',
+              title: AppStrings.submenuPatient,
               icon: Icons.circle,
               route: AppRoutes.hospitalPatient,
             ),
@@ -257,7 +258,7 @@ class SidebarViewModel extends ChangeNotifier {
         ),
         SidebarItemModel(
           id: 'attendance',
-          title: 'Attendance',
+          title: AppStrings.menuAttendance,
           icon: Icons.access_time,
           route: AppRoutes.attendanceToday,
           hasSubItems: true,
@@ -266,13 +267,13 @@ class SidebarViewModel extends ChangeNotifier {
           subItems: [
             SidebarItemModel(
               id: 'attendanceToday',
-              title: 'Today Attendance',
+              title: AppStrings.submenuTodayAttendance,
               icon: Icons.circle,
               route: AppRoutes.attendanceToday,
             ),
             SidebarItemModel(
               id: 'attendanceEmployee',
-              title: 'Employee Attendance',
+              title: AppStrings.submenuEmployeeAttendance,
               icon: Icons.circle,
               route: AppRoutes.attendanceEmployee,
             ),
@@ -280,7 +281,7 @@ class SidebarViewModel extends ChangeNotifier {
         ),
         SidebarItemModel(
           id: 'employeeManagement',
-          title: 'Employee',
+          title: AppStrings.menuEmployee,
           icon: Icons.people_outline,
           route: AppRoutes.employeeList,
           hasSubItems: true,
@@ -289,13 +290,13 @@ class SidebarViewModel extends ChangeNotifier {
           subItems: [
             SidebarItemModel(
               id: 'employeeList',
-              title: 'Employee List',
+              title: AppStrings.submenuEmployeeList,
               icon: Icons.circle,
               route: AppRoutes.employeeList,
             ),
             SidebarItemModel(
               id: 'employeeAdd',
-              title: 'Add Employee',
+              title: AppStrings.submenuAddEmployee,
               icon: Icons.circle,
               route: AppRoutes.employeeAdd,
             ),
@@ -303,14 +304,14 @@ class SidebarViewModel extends ChangeNotifier {
         ),
         SidebarItemModel(
           id: 'componentsHeader',
-          title: 'Components',
+          title: AppStrings.menuComponents,
           icon: Icons.circle,
           route: '',
           isSectionHeader: true,
         ),
         SidebarItemModel(
           id: 'widgets',
-          title: 'Widgets',
+          title: AppStrings.menuWidgets,
           icon: Icons.widgets_outlined,
           route: AppRoutes.widgets,
           hasSubItems: true,
@@ -319,31 +320,31 @@ class SidebarViewModel extends ChangeNotifier {
           subItems: [
             SidebarItemModel(
               id: 'widgetsToast',
-              title: 'Toast',
+              title: AppStrings.submenuToast,
               icon: Icons.circle,
               route: AppRoutes.widgetsToast,
             ),
             SidebarItemModel(
               id: 'widgetsButtonElement',
-              title: 'Button Element',
+              title: AppStrings.submenuButtonElement,
               icon: Icons.circle,
               route: AppRoutes.widgetsButtonElement,
             ),
             SidebarItemModel(
               id: 'widgetsRatingBar',
-              title: 'Rating Bar',
+              title: AppStrings.submenuRatingBar,
               icon: Icons.circle,
               route: AppRoutes.widgetsRatingBar,
             ),
             SidebarItemModel(
               id: 'widgetsBadge',
-              title: 'Badge',
+              title: AppStrings.submenuBadge,
               icon: Icons.circle,
               route: AppRoutes.widgetsBadge,
             ),
             SidebarItemModel(
               id: 'widgetsModal',
-              title: 'Modal',
+              title: AppStrings.submenuModal,
               icon: Icons.circle,
               route: AppRoutes.widgetsModal,
             ),
@@ -351,7 +352,7 @@ class SidebarViewModel extends ChangeNotifier {
         ),
         SidebarItemModel(
           id: 'login',
-          title: 'Login Screens',
+          title: AppStrings.menuLoginScreens,
           icon: Icons.login_outlined,
           route: AppRoutes.loginShowcase,
           hasSubItems: true,
@@ -360,19 +361,19 @@ class SidebarViewModel extends ChangeNotifier {
           subItems: [
             SidebarItemModel(
               id: 'loginClassic',
-              title: 'Classic Login',
+              title: AppStrings.submenuClassicLogin,
               icon: Icons.circle,
               route: AppRoutes.loginClassic,
             ),
             SidebarItemModel(
               id: 'loginModern',
-              title: 'Modern Login',
+              title: AppStrings.submenuModernLogin,
               icon: Icons.circle,
               route: AppRoutes.loginModern,
             ),
             SidebarItemModel(
               id: 'loginAnimated',
-              title: 'Animated Login',
+              title: AppStrings.submenuAnimatedLogin,
               icon: Icons.circle,
               route: AppRoutes.loginAnimated,
             ),

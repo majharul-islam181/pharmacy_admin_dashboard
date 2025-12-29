@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_strings.dart';
 
 class SplashText extends StatelessWidget {
   final Animation<double> fadeAnimation;
@@ -24,7 +25,7 @@ class SplashText extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              'Pharmacy Admin',
+              AppStrings.appName,
               style: TextStyle(
                 fontSize: isMobile ? 32 : (isTablet ? 40 : 48),
                 fontWeight: FontWeight.w900,
@@ -36,7 +37,7 @@ class SplashText extends StatelessWidget {
             ),
             const SizedBox(height: 12),
             Text(
-              'Professional Dashboard Solution',
+              AppStrings.appTagline,
               style: TextStyle(
                 fontSize: isMobile ? 14 : (isTablet ? 16 : 18),
                 fontWeight: FontWeight.w500,

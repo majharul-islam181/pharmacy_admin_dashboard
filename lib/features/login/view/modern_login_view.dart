@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_strings.dart';
 import '../view_model/login_view_model.dart';
 import 'widgets/animated_login_button.dart';
 import 'widgets/social_login_buttons.dart';
@@ -134,7 +135,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
         ),
         const SizedBox(height: 24),
         const Text(
-          'Modern Login',
+          AppStrings.pageModernLogin,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,
@@ -144,7 +145,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
         ),
         const SizedBox(height: 8),
         Text(
-          'Glassmorphic Design',
+          AppStrings.textGlassmorphicDesign,
           style: TextStyle(
             fontSize: 16,
             color: Colors.white.withOpacity(0.9),
@@ -164,12 +165,12 @@ class _ModernLoginViewState extends State<ModernLoginView> {
         keyboardType: TextInputType.emailAddress,
         style: const TextStyle(color: Colors.white),
         decoration: InputDecoration(
-          labelText: 'Email',
+          labelText: AppStrings.labelEmail,
           labelStyle: TextStyle(
             color: Colors.white.withOpacity(0.9),
             fontWeight: FontWeight.w500,
           ),
-          hintText: 'your@email.com',
+          hintText: AppStrings.hintEmailPlaceholder,
           hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
           prefixIcon: Icon(
             Icons.email_outlined,
@@ -192,7 +193,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
         ),
         validator: (value) {
           if (value == null || value.isEmpty || !value.contains('@')) {
-            return 'Please enter a valid email';
+            return AppStrings.errorValidEmail;
           }
           return null;
         },
@@ -211,12 +212,12 @@ class _ModernLoginViewState extends State<ModernLoginView> {
             obscureText: viewModel.obscurePassword,
             style: const TextStyle(color: Colors.white),
             decoration: InputDecoration(
-              labelText: 'Password',
+              labelText: AppStrings.labelPassword,
               labelStyle: TextStyle(
                 color: Colors.white.withOpacity(0.9),
                 fontWeight: FontWeight.w500,
               ),
-              hintText: '••••••••',
+              hintText: AppStrings.hintPasswordPlaceholder,
               hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
               prefixIcon: Icon(
                 Icons.lock_outlined,
@@ -248,7 +249,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
             ),
             validator: (value) {
               if (value == null || value.isEmpty || value.length < 6) {
-                return 'Password must be at least 6 characters';
+                return AppStrings.errorPasswordLength;
               }
               return null;
             },
@@ -262,7 +263,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
     return Consumer<LoginViewModel>(
       builder: (context, viewModel, child) {
         return AnimatedLoginButton(
-          text: 'Sign In Now',
+          text: AppStrings.buttonSignInNow,
           isLoading: viewModel.isLoading,
           gradient: const LinearGradient(
             colors: [Colors.white, Color(0xFFF3F4F6)],
@@ -275,7 +276,7 @@ class _ModernLoginViewState extends State<ModernLoginView> {
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
-                    content: const Text('Login successful! (Modern UI Demo)'),
+                    content: const Text(AppStrings.messageLoginSuccessModern),
                     backgroundColor: Colors.green.shade600,
                   ),
                 );
