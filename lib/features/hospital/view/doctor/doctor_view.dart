@@ -493,7 +493,7 @@ Widget _buildStatusCell(DoctorStatus status) {
         ],
       ),
       child: Text(
-        isAvailable ? 'Available' : 'Unavailable',
+        isAvailable ? AppStrings.statusAvailable : AppStrings.statusUnavailable,
         style: TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w700,
@@ -578,7 +578,7 @@ Widget _buildActionsCell() {
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  'Edit',
+                  AppStrings.buttonEdit,
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,
@@ -606,7 +606,7 @@ Widget _buildActionsCell() {
                 ),
                 const SizedBox(width: 10),
                 const Text(
-                  'Delete',
+                  AppStrings.buttonDelete,
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w500,

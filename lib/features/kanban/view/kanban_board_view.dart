@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../core/constants/app_dimensions.dart';
+import '../../../core/constants/app_strings.dart';
 import '../model/kanban_task.dart';
 import '../view_model/kanban_view_model.dart';
 import 'widgets/kanban_column.dart';
@@ -20,19 +21,19 @@ class KanbanBoardView extends StatelessWidget {
 
     final columns = [
       const _KanbanColumnConfig(
-        title: 'Todo',
+        title: AppStrings.statusTodo,
         status: KanbanStatus.todo,
       ),
       const _KanbanColumnConfig(
-        title: 'In Progress',
+        title: AppStrings.statusInProgress,
         status: KanbanStatus.inProgress,
       ),
       const _KanbanColumnConfig(
-        title: 'Review',
+        title: AppStrings.statusReview,
         status: KanbanStatus.review,
       ),
       const _KanbanColumnConfig(
-        title: 'Done',
+        title: AppStrings.statusDone,
         status: KanbanStatus.done,
       ),
     ];
@@ -43,7 +44,7 @@ class KanbanBoardView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Text(
-            'Kanban Board',
+            AppStrings.pageKanbanBoard,
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
@@ -52,7 +53,7 @@ class KanbanBoardView extends StatelessWidget {
           ),
           const SizedBox(height: AppDimensions.paddingMedium),
           const Text(
-            'Track product-related tasks across Todo, In Progress, Review and Done.',
+            AppStrings.descTrackProductTasks,
             style: TextStyle(
               fontSize: 14,
               color: Color(0xFF6B7280),
@@ -143,41 +144,45 @@ class KanbanBoardView extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(isEditing ? 'Edit Task' : 'Add Task'),
+          title: Text(
+              isEditing ? AppStrings.statusEditTask : AppStrings.statusAddTask),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextField(
                   controller: titleController,
-                  decoration: const InputDecoration(labelText: 'Title'),
+                  decoration:
+                      const InputDecoration(labelText: AppStrings.labelTitle),
                 ),
                 const SizedBox(height: 12),
                 TextField(
                   controller: descriptionController,
-                  decoration: const InputDecoration(labelText: 'Description'),
+                  decoration: const InputDecoration(
+                      labelText: AppStrings.labelDescription),
                   maxLines: 3,
                 ),
                 const SizedBox(height: 12),
                 DropdownButtonFormField<KanbanStatus>(
                   value: status,
-                  decoration: const InputDecoration(labelText: 'Status'),
+                  decoration:
+                      const InputDecoration(labelText: AppStrings.labelStatus),
                   items: const [
                     DropdownMenuItem(
                       value: KanbanStatus.todo,
-                      child: Text('Todo'),
+                      child: Text(AppStrings.statusTodo),
                     ),
                     DropdownMenuItem(
                       value: KanbanStatus.inProgress,
-                      child: Text('In Progress'),
+                      child: Text(AppStrings.statusInProgress),
                     ),
                     DropdownMenuItem(
                       value: KanbanStatus.review,
-                      child: Text('Review'),
+                      child: Text(AppStrings.statusReview),
                     ),
                     DropdownMenuItem(
                       value: KanbanStatus.done,
-                      child: Text('Done'),
+                      child: Text(AppStrings.statusDone),
                     ),
                   ],
                   onChanged: (value) {
@@ -189,11 +194,16 @@ class KanbanBoardView extends StatelessWidget {
                 const SizedBox(height: 12),
                 DropdownButtonFormField<String>(
                   value: priority,
-                  decoration: const InputDecoration(labelText: 'Priority'),
+                  decoration: const InputDecoration(
+                      labelText: AppStrings.labelPriority),
                   items: const [
-                    DropdownMenuItem(value: 'High', child: Text('High')),
-                    DropdownMenuItem(value: 'Medium', child: Text('Medium')),
-                    DropdownMenuItem(value: 'Low', child: Text('Low')),
+                    DropdownMenuItem(
+                        value: 'High', child: Text(AppStrings.priorityHigh)),
+                    DropdownMenuItem(
+                        value: 'Medium',
+                        child: Text(AppStrings.priorityMedium)),
+                    DropdownMenuItem(
+                        value: 'Low', child: Text(AppStrings.priorityLow)),
                   ],
                   onChanged: (value) {
                     priority = value;
@@ -210,13 +220,13 @@ class KanbanBoardView extends StatelessWidget {
                   _confirmDelete(context, task.id);
                 },
                 child: const Text(
-                  'Delete',
+                  AppStrings.buttonDelete,
                   style: TextStyle(color: Colors.red),
                 ),
               ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
+              child: const Text(AppStrings.buttonCancel),
             ),
             ElevatedButton(
               onPressed: () {
@@ -244,7 +254,8 @@ class KanbanBoardView extends StatelessWidget {
 
                 Navigator.of(context).pop();
               },
-              child: Text(isEditing ? 'Save' : 'Add'),
+              child:
+                  Text(isEditing ? AppStrings.labelSave : AppStrings.labelAdd),
             ),
           ],
         );
@@ -259,17 +270,17 @@ class KanbanBoardView extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: const Text('Delete Task'),
-          content: const Text('Are you sure you want to delete this task?'),
+          title: const Text(AppStrings.messageDeleteTask),
+          content: const Text(AppStrings.messageDeleteTaskConfirm),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(false),
-              child: const Text('Cancel'),
+              child: const Text(AppStrings.buttonCancel),
             ),
             TextButton(
               onPressed: () => Navigator.of(context).pop(true),
               child: const Text(
-                'Delete',
+                AppStrings.buttonDelete,
                 style: TextStyle(color: Colors.red),
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_strings.dart';
 import '../../../core/routes/app_routes.dart';
 import '../model/navigation_item_model.dart';
 import '../model/user_model.dart';
@@ -52,37 +53,37 @@ class HeaderViewModel extends ChangeNotifier {
 
   List<NavigationItemModel> get navigationItems => [
         NavigationItemModel(
-          title: 'Dashboard',
+          title: AppStrings.pageDashboard,
           icon: Icons.dashboard_outlined,
           route: AppRoutes.dashboard,
           isActive: _currentRoute == AppRoutes.dashboard,
         ),
         NavigationItemModel(
-          title: 'CRM',
+          title: AppStrings.menuCrm,
           icon: Icons.people_alt_outlined,
           route: AppRoutes.crm,
           isActive: _currentRoute == AppRoutes.crm,
         ),
         NavigationItemModel(
-          title: 'Purchases',
+          title: AppStrings.menuPurchases,
           icon: Icons.shopping_cart_outlined,
           route: AppRoutes.purchase,
           isActive: _currentRoute == AppRoutes.purchase,
         ),
         NavigationItemModel(
-          title: 'Products',
+          title: AppStrings.menuProducts,
           icon: Icons.inventory_2_outlined,
           route: AppRoutes.product,
           isActive: _currentRoute == AppRoutes.product,
         ),
         NavigationItemModel(
-          title: 'Reports',
+          title: AppStrings.menuReports,
           icon: Icons.assessment_outlined,
           route: AppRoutes.reports,
           isActive: _currentRoute == AppRoutes.reports,
         ),
         NavigationItemModel(
-          title: 'Settings',
+          title: AppStrings.menuSettings,
           icon: Icons.settings_outlined,
           route: AppRoutes.settings,
           isActive: _currentRoute == AppRoutes.settings,

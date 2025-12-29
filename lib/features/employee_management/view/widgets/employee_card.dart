@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../model/employee_model.dart';
 
 class EmployeeCard extends StatelessWidget {

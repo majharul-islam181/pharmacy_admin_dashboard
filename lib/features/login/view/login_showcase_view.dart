@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_strings.dart';
 
 class LoginShowcaseView extends StatefulWidget {
   const LoginShowcaseView({super.key});
@@ -101,7 +102,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                           ),
                           const SizedBox(height: 16),
                           Text(
-                            'Login Screen Showcase',
+                            AppStrings.pageLoginShowcase,
                             style: TextStyle(
                               fontSize: isMobile ? 24 : 32,
                               fontWeight: FontWeight.w900,
@@ -111,7 +112,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Choose your preferred login style',
+                            AppStrings.textChooseLoginStyle,
                             style: TextStyle(
                               fontSize: isMobile ? 14 : 16,
                               color: Colors.white.withOpacity(0.9),
@@ -136,9 +137,8 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                   delegate: SliverChildListDelegate([
                     _buildAnimatedCard(
                       index: 0,
-                      title: 'Classic Login',
-                      description:
-                          'Professional admin-style login with traditional layout',
+                      title: AppStrings.pageClassicLogin,
+                      description: AppStrings.textClassicLoginDesc,
                       icon: Icons.business_center,
                       gradient: const LinearGradient(
                         colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
@@ -147,9 +147,8 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                     ),
                     _buildAnimatedCard(
                       index: 1,
-                      title: 'Modern Login',
-                      description:
-                          'Glassmorphic design with floating labels and modern aesthetic',
+                      title: AppStrings.pageModernLogin,
+                      description: AppStrings.textModernLoginDesc,
                       icon: Icons.auto_awesome,
                       gradient: const LinearGradient(
                         colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
@@ -158,9 +157,8 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                     ),
                     _buildAnimatedCard(
                       index: 2,
-                      title: 'Animated Login',
-                      description:
-                          'Stunning animations with rotating logo and staggered inputs',
+                      title: AppStrings.pageAnimatedLogin,
+                      description: AppStrings.textAnimatedLoginDesc,
                       icon: Icons.animation,
                       gradient: const LinearGradient(
                         colors: [Color(0xFFEC4899), Color(0xFFF43F5E)],
@@ -276,7 +274,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                               shaderCallback: (bounds) =>
                                   gradient.createShader(bounds),
                               child: const Text(
-                                'View Demo',
+                                AppStrings.textViewDemo,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,

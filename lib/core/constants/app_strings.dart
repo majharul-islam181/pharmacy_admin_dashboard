@@ -82,6 +82,8 @@ class AppStrings {
   static const String pageDispenserManagement = 'Dispenser Management';
   static const String pageDispenserReports = 'Dispenser Reports';
   static const String pageButtonElements = 'Button Elements';
+  static const String pageLoginShowcase = 'Login Screen Showcase';
+  static const String pageClassicLogin = 'Classic Login';
   
   // ============================================================================
   // SIDEBAR MENU ITEMS
@@ -93,6 +95,11 @@ class AppStrings {
   static const String menuComponents = 'Components';
   static const String menuWidgets = 'Widgets';
   static const String menuLoginScreens = 'Login Screens';
+  static const String menuCrm = 'CRM';
+  static const String menuPurchases = 'Purchases';
+  static const String menuProducts = 'Products';
+  static const String menuReports = 'Reports';
+  static const String menuSettings = 'Settings';
   
   // Submenu Items
   static const String submenuDashboard = 'Dashboard';
@@ -130,6 +137,8 @@ class AppStrings {
   static const String labelDescription = 'Description';
   static const String labelStatus = 'Status';
   static const String labelPriority = 'Priority';
+  static const String labelSave = 'Save';
+  static const String labelAdd = 'Add';
   
   // Hints
   static const String hintEmailPlaceholder = 'your@email.com';
@@ -184,6 +193,8 @@ class AppStrings {
   static const String statusInProgress = 'In Progress';
   static const String statusReview = 'Review';
   static const String statusDone = 'Done';
+  static const String statusEditTask = 'Edit Task';
+  static const String statusAddTask = 'Add Task';
   
   // Priority Labels
   static const String priorityHigh = 'High';
@@ -201,6 +212,10 @@ class AppStrings {
   static const String messageFacebookLoginUiOnly = 'Facebook login UI only';
   static const String messageLogoutConfirmation = 'Logout Confirmation';
   static const String messageLogoutConfirmationDesc = 'Are you sure you want to logout from your account?';
+  static const String messageDeleteTask = 'Delete Task';
+  static const String messageDeleteTaskConfirm = 'Are you sure you want to delete this task?';
+  static const String messageDeleteEmployee = 'Delete Employee';
+  static const String messageDeleteEmployeeConfirm = 'Are you sure you want to delete this employee?';
   
   // ============================================================================
   // EMPTY STATE MESSAGES
@@ -226,7 +241,7 @@ class AppStrings {
   // ============================================================================
   static const String textRecentOrders = 'Recent Orders';
   static const String textExpiringList = 'Expiring List';
-  static const String textTodaysReport = 'Today's Report';
+  static const String textTodaysReport = 'Today\'s Report';
   static const String textTotalEarning = 'Total Earning';
   static const String textNotifications = 'Notifications';
   static const String textProducts = 'Products';
@@ -243,6 +258,11 @@ class AppStrings {
   static const String textLoginSuccessClassic = 'Login successful! (UI Demo)';
   static const String textInProgress = 'In Progress';
   static const String textComplete = 'Complete';
+  static const String textChooseLoginStyle = 'Choose your preferred login style';
+  static const String textClassicLoginDesc = 'Professional admin-style login with traditional layout';
+  static const String textModernLoginDesc = 'Glassmorphic design with floating labels and modern aesthetic';
+  static const String textAnimatedLoginDesc = 'Stunning animations with rotating logo and staggered inputs';
+  static const String textViewDemo = 'View Demo';
   
   // Descriptions
   static const String descTrackAttendance = 'Track and manage employee attendance';

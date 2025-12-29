@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../../core/constants/app_strings.dart';
 import '../../model/employee_model.dart';
 
 class EmployeeTable extends StatelessWidget {
@@ -48,7 +49,7 @@ class EmployeeTable extends StatelessWidget {
                 Expanded(
                   flex: 3,
                   child: Text(
-                    'Employee',
+                    AppStrings.menuEmployee,
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
@@ -361,13 +362,13 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                     icon: const Icon(Icons.edit_outlined, size: 18),
                     color: const Color(0xFF6366F1),
                     onPressed: widget.onEdit,
-                    tooltip: 'Edit',
+                    tooltip: AppStrings.buttonEdit,
                   ),
                   IconButton(
                     icon: const Icon(Icons.delete_outline, size: 18),
                     color: const Color(0xFFEF4444),
                     onPressed: widget.onDelete,
-                    tooltip: 'Delete',
+                    tooltip: AppStrings.buttonDelete,
                   ),
                 ],
               ),

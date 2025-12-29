@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_strings.dart';
 import '../view_model/employee_view_model.dart';
 import '../model/employee_model.dart';
 import 'widgets/employee_table.dart';
@@ -87,7 +88,7 @@ class EmployeeListView extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Employee Management',
+                                    AppStrings.pageEmployeeManagement,
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w800,
@@ -97,7 +98,7 @@ class EmployeeListView extends StatelessWidget {
                                   ),
                                   SizedBox(height: 4),
                                   Text(
-                                    'Manage your team members',
+                                    AppStrings.descManageTeamMembers,
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Color(0xFF64748B),
@@ -110,7 +111,7 @@ class EmployeeListView extends StatelessWidget {
                           ElevatedButton.icon(
                             onPressed: () => context.go('/employee/add'),
                             icon: const Icon(Icons.add, size: 20),
-                            label: const Text('Add Employee'),
+                            label: const Text(AppStrings.buttonAddEmployee),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: const Color(0xFF6366F1),
                               foregroundColor: Colors.white,
@@ -297,12 +298,12 @@ class EmployeeListView extends StatelessWidget {
       context: context,
       builder: (context) => AlertDialog(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        title: const Text('Delete Employee'),
-        content: const Text('Are you sure you want to delete this employee?'),
+        title: const Text(AppStrings.messageDeleteEmployee),
+        content: const Text(AppStrings.messageDeleteEmployeeConfirm),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
+            child: const Text(AppStrings.buttonCancel),
           ),
           ElevatedButton(
             onPressed: () {
@@ -311,14 +312,14 @@ class EmployeeListView extends StatelessWidget {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text('Employee deleted successfully'),
-                  backgroundColor: Color(0xFF10B981),
+                  backgroundColor: Color(0x0010b981),
                 ),
               );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFEF4444),
             ),
-            child: const Text('Delete'),
+            child: const Text(AppStrings.buttonDelete),
           ),
         ],
       ),
