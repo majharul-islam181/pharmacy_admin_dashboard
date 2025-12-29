@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../view_model/login_view_model.dart';
 import 'widgets/animated_login_button.dart';
@@ -31,13 +32,13 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
 
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              Colors.grey.shade50,
-              Colors.grey.shade100,
+              AppColors.gray50,
+              AppColors.gray100,
             ],
           ),
         ),
@@ -60,11 +61,11 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
                 width: isMobile ? double.infinity : 480,
                 padding: EdgeInsets.all(isMobile ? 28 : 48),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.white,
                   borderRadius: BorderRadius.circular(24),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
+                      color: AppColors.black.withOpacity(0.08),
                       blurRadius: 30,
                       offset: const Offset(0, 10),
                     ),
@@ -110,12 +111,12 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+              colors: [AppColors.purpleDeep, AppColors.purple],
             ),
             borderRadius: BorderRadius.circular(12),
             boxShadow: [
               BoxShadow(
-                color: const Color(0xFF6366F1).withOpacity(0.3),
+                color: AppColors.purpleDeep.withOpacity(0.3),
                 blurRadius: 12,
                 offset: const Offset(0, 4),
               ),
@@ -124,7 +125,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           child: const Icon(
             Icons.admin_panel_settings,
             size: 32,
-            color: Colors.white,
+            color: AppColors.white,
           ),
         ),
         const SizedBox(height: 24),
@@ -133,16 +134,16 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
           style: TextStyle(
             fontSize: 28,
             fontWeight: FontWeight.w800,
-            color: Color(0xFF1F2937),
+            color: AppColors.textDark,
             letterSpacing: -0.5,
           ),
         ),
         const SizedBox(height: 8),
-        Text(
+        const Text(
           AppStrings.textSignInToAdmin,
           style: TextStyle(
             fontSize: 15,
-            color: Colors.grey.shade600,
+            color: AppColors.gray600,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -160,18 +161,18 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
         prefixIcon: const Icon(Icons.email_outlined),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderSide: const BorderSide(color: AppColors.gray200),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderSide: const BorderSide(color: AppColors.gray200),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
-          borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+          borderSide: const BorderSide(color: AppColors.purpleDeep, width: 2),
         ),
         filled: true,
-        fillColor: Colors.grey.shade50,
+        fillColor: AppColors.gray50,
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -205,18 +206,19 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: AppColors.gray200),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: AppColors.gray200),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+              borderSide:
+                  const BorderSide(color: AppColors.purpleDeep, width: 2),
             ),
             filled: true,
-            fillColor: Colors.grey.shade50,
+            fillColor: AppColors.gray50,
           ),
           validator: (value) {
             if (value == null || value.isEmpty) {
@@ -278,7 +280,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF6366F1),
+              color: AppColors.purpleDeep,
             ),
           ),
         ),
@@ -299,10 +301,10 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
               await viewModel.login();
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: const Text(AppStrings.textLoginSuccessClassic),
-                    backgroundColor: Colors.green.shade600,
-                    duration: const Duration(seconds: 2),
+                  const SnackBar(
+                    content: Text(AppStrings.textLoginSuccessClassic),
+                    backgroundColor: AppColors.successDark,
+                    duration: Duration(seconds: 2),
                   ),
                 );
               }
@@ -314,23 +316,23 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
   }
 
   Widget _buildDivider() {
-    return Row(
+    return const Row(
       children: [
         Expanded(
-          child: Divider(color: Colors.grey.shade300, thickness: 1),
+          child: Divider(color: AppColors.gray200, thickness: 1),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             AppStrings.textOrContinueWithLower,
             style: TextStyle(
-              color: Colors.grey.shade600,
+              color: AppColors.gray600,
               fontSize: 14,
             ),
           ),
         ),
         Expanded(
-          child: Divider(color: Colors.grey.shade300, thickness: 1),
+          child: Divider(color: AppColors.gray200, thickness: 1),
         ),
       ],
     );
@@ -341,11 +343,11 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
+          const Text(
             AppStrings.textDontHaveAccount,
             style: TextStyle(
               fontSize: 14,
-              color: Colors.grey.shade600,
+              color: AppColors.gray600,
             ),
           ),
           TextButton(
@@ -367,7 +369,7 @@ class _ClassicLoginViewState extends State<ClassicLoginView> {
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,
-                color: Color(0xFF6366F1),
+                color: AppColors.purpleDeep,
               ),
             ),
           ),

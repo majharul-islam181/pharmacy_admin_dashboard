@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class AnimatedLoginButton extends StatefulWidget {
   final String text;
@@ -66,23 +67,21 @@ class _AnimatedLoginButtonState extends State<AnimatedLoginButton>
               gradient: widget.gradient ??
                   LinearGradient(
                     colors: [
-                      const Color(0xFF6366F1),
-                      _isHovered
-                          ? const Color(0xFF8B5CF6)
-                          : const Color(0xFF7C3AED),
+                      AppColors.purpleDeep,
+                      _isHovered ? AppColors.purple : AppColors.purpleDark,
                     ],
                   ),
               borderRadius: BorderRadius.circular(16),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFF6366F1).withOpacity(0.3),
+                  color: AppColors.purpleDeep.withOpacity(0.3),
                   blurRadius: _isHovered ? 20 : 12,
                   offset: Offset(0, _isHovered ? 8 : 4),
                 ),
               ],
             ),
             child: Material(
-              color: Colors.transparent,
+              color: AppColors.transparent,
               child: InkWell(
                 borderRadius: BorderRadius.circular(16),
                 onTap: widget.isLoading ? null : widget.onPressed,
@@ -92,7 +91,7 @@ class _AnimatedLoginButtonState extends State<AnimatedLoginButton>
                           width: 24,
                           height: 24,
                           child: CircularProgressIndicator(
-                            color: Colors.white,
+                            color: AppColors.white,
                             strokeWidth: 3,
                           ),
                         )
@@ -102,7 +101,7 @@ class _AnimatedLoginButtonState extends State<AnimatedLoginButton>
                             Text(
                               widget.text,
                               style: const TextStyle(
-                                color: Colors.white,
+                                color: AppColors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w700,
                                 letterSpacing: 0.5,
@@ -120,7 +119,7 @@ class _AnimatedLoginButtonState extends State<AnimatedLoginButton>
                                   offset: Offset(value * 4, 0),
                                   child: Icon(
                                     Icons.arrow_forward,
-                                    color: Colors.white.withOpacity(value),
+                                    color: AppColors.white.withOpacity(value),
                                     size: 20,
                                   ),
                                 );

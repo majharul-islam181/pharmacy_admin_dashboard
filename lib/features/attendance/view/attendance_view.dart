@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../view_model/attendance_view_model.dart';
 import '../view_model/employee_attendance_view_model.dart';
 import 'tabs/today_attendance_tab.dart';
@@ -38,7 +39,7 @@ class _AttendanceViewState extends State<AttendanceView>
       child: Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFF8FAFC), Color(0xFFE2E8F0)],
+            colors: [Color(0xFFF8FAFC), AppColors.borderLight],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
@@ -49,10 +50,10 @@ class _AttendanceViewState extends State<AttendanceView>
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: AppColors.white,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.04),
+                    color: AppColors.black.withOpacity(0.04),
                     blurRadius: 16,
                     offset: const Offset(0, 4),
                   ),
@@ -92,7 +93,7 @@ class _AttendanceViewState extends State<AttendanceView>
                           ),
                           child: const Icon(
                             Icons.access_time,
-                            color: Colors.white,
+                            color: AppColors.white,
                             size: 28,
                           ),
                         ),
@@ -114,7 +115,7 @@ class _AttendanceViewState extends State<AttendanceView>
                               'Track and manage employee attendance',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Color(0xFF64748B),
+                                color: AppColors.gray500,
                               ),
                             ),
                           ],
@@ -145,8 +146,8 @@ class _AttendanceViewState extends State<AttendanceView>
                         ],
                       ),
                       indicatorSize: TabBarIndicatorSize.tab,
-                      labelColor: Colors.white,
-                      unselectedLabelColor: const Color(0xFF64748B),
+                      labelColor: AppColors.white,
+                      unselectedLabelColor:  AppColors.gray500,
                       labelStyle: const TextStyle(
                         fontSize: 15,
                         fontWeight: FontWeight.w700,
@@ -156,7 +157,7 @@ class _AttendanceViewState extends State<AttendanceView>
                         fontSize: 15,
                         fontWeight: FontWeight.w600,
                       ),
-                      dividerColor: Colors.transparent,
+                      dividerColor: AppColors.transparent,
                       tabs: const [
                         Tab(
                           icon: Icon(Icons.today),

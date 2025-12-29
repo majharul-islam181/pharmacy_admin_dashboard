@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/utils/responsive_utils.dart';
 import '../widgets/crm_charts_section.dart';
@@ -28,7 +29,7 @@ class CrmPage extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF1F2937),
+                  color: AppColors.textDark,
                 ),
               ),
             ),

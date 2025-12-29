@@ -33,7 +33,7 @@ import '../../../../core/utils/responsive_utils.dart';
 //           ),
 //           child: Icon(
 //             Icons.eco,
-//             color: Colors.white,
+//             color: AppColors.white,
 //             size: logoSize * 0.6,
 //           ),
 //         ),
@@ -74,7 +74,7 @@ class AppLogo extends StatelessWidget {
           ),
           child: Icon(
             Icons.eco,
-            color: Colors.white,
+            color: AppColors.white,
             size: logoSize * 0.6,
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../view_model/login_view_model.dart';
 import 'widgets/animated_login_button.dart';
@@ -85,7 +86,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
     final isMobile = screenWidth < 600;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: AppColors.backgroundLight,
       body: Center(
         child: SingleChildScrollView(
           padding: EdgeInsets.all(isMobile ? 20 : 40),
@@ -93,11 +94,11 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
             width: isMobile ? double.infinity : 500,
             padding: EdgeInsets.all(isMobile ? 32 : 48),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: AppColors.black.withOpacity(0.08),
                   blurRadius: 30,
                   offset: const Offset(0, 15),
                 ),
@@ -154,12 +155,12 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                  colors: [AppColors.purpleDeep, AppColors.purple],
                 ),
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFF6366F1).withOpacity(0.3),
+                    color: AppColors.purpleDeep.withOpacity(0.3),
                     blurRadius: 20,
                     offset: const Offset(0, 10),
                   ),
@@ -168,7 +169,7 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
               child: const Icon(
                 Icons.admin_panel_settings,
                 size: 56,
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
           ),
@@ -194,23 +195,23 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
   }
 
   Widget _buildHeader() {
-    return Column(
+    return const Column(
       children: [
-        const Text(
+        Text(
           AppStrings.pageAnimatedLogin,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,
-            color: Color(0xFF1F2937),
+            color: AppColors.textDark,
             letterSpacing: -1,
           ),
         ),
-        const SizedBox(height: 8),
+        SizedBox(height: 8),
         Text(
           AppStrings.textExperienceSmoothAnimations,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey.shade600,
+            color: AppColors.gray600,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -230,27 +231,27 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             gradient: const LinearGradient(
-              colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+              colors: [AppColors.purpleDeep, AppColors.purple],
             ),
             borderRadius: BorderRadius.circular(8),
           ),
-          child:
-              const Icon(Icons.email_outlined, color: Colors.white, size: 20),
+          child: const Icon(Icons.email_outlined,
+              color: AppColors.white, size: 20),
         ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderSide: const BorderSide(color: AppColors.gray200),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: BorderSide(color: Colors.grey.shade300),
+          borderSide: const BorderSide(color: AppColors.gray200),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(16),
-          borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+          borderSide: const BorderSide(color: AppColors.purpleDeep, width: 2),
         ),
         filled: true,
-        fillColor: Colors.grey.shade50,
+        fillColor: AppColors.gray50,
       ),
       validator: (value) {
         if (value == null || value.isEmpty || !value.contains('@')) {
@@ -275,36 +276,37 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 gradient: const LinearGradient(
-                  colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                  colors: [AppColors.purpleDeep, AppColors.purple],
                 ),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: const Icon(Icons.lock_outlined,
-                  color: Colors.white, size: 20),
+                  color: AppColors.white, size: 20),
             ),
             suffixIcon: IconButton(
               icon: Icon(
                 viewModel.obscurePassword
                     ? Icons.visibility_outlined
                     : Icons.visibility_off_outlined,
-                color: Colors.grey.shade600,
+                color: AppColors.gray600,
               ),
               onPressed: viewModel.togglePasswordVisibility,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: AppColors.gray200),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: BorderSide(color: Colors.grey.shade300),
+              borderSide: const BorderSide(color: AppColors.gray200),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
-              borderSide: const BorderSide(color: Color(0xFF6366F1), width: 2),
+              borderSide:
+                  const BorderSide(color: AppColors.purpleDeep, width: 2),
             ),
             filled: true,
-            fillColor: Colors.grey.shade50,
+            fillColor: AppColors.gray50,
           ),
           validator: (value) {
             if (value == null || value.isEmpty || value.length < 6) {
@@ -330,9 +332,9 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
               await viewModel.login();
               if (mounted) {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: const Text(AppStrings.messageLoginSuccessAnimated),
-                    backgroundColor: Colors.green.shade600,
+                  const SnackBar(
+                    content: Text(AppStrings.messageLoginSuccessAnimated),
+                    backgroundColor: AppColors.successDark,
                   ),
                 );
               }
@@ -344,24 +346,24 @@ class _AnimatedLoginViewState extends State<AnimatedLoginView>
   }
 
   Widget _buildDivider() {
-    return Row(
+    return const Row(
       children: [
         Expanded(
-          child: Divider(color: Colors.grey.shade300, thickness: 1),
+          child: Divider(color: AppColors.gray200, thickness: 1),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16),
           child: Text(
             AppStrings.textOrContinueWith,
             style: TextStyle(
-              color: Colors.grey.shade600,
+              color: AppColors.gray600,
               fontWeight: FontWeight.w600,
               fontSize: 12,
             ),
           ),
         ),
         Expanded(
-          child: Divider(color: Colors.grey.shade300, thickness: 1),
+          child: Divider(color: AppColors.gray200, thickness: 1),
         ),
       ],
     );

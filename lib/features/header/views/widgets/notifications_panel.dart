@@ -14,7 +14,7 @@ class NotificationsPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: AppColors.transparent,
       child: Container(
         width: 360,
         decoration: BoxDecoration(
@@ -22,7 +22,7 @@ class NotificationsPanel extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: AppColors.black.withOpacity(0.08),
               blurRadius: 18,
               offset: const Offset(0, 8),
             ),

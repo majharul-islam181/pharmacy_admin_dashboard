@@ -43,7 +43,7 @@ class NotificationIcon extends StatelessWidget {
                   child: Text(
                     count > 99 ? '99+' : count.toString(),
                     style: const TextStyle(
-                      color: Colors.white,
+                      color: AppColors.white,
                       fontSize: 10,
                       fontWeight: FontWeight.w600,
                     ),

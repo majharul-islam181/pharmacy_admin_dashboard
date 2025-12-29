@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../model/attendance_model.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class FilterPanel extends StatelessWidget {
   final String searchQuery;
@@ -30,14 +31,14 @@ class FilterPanel extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFFE2E8F0),
+          color:  AppColors.borderLight,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.02),
+            color: AppColors.black.withOpacity(0.02),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),
@@ -85,7 +86,7 @@ class FilterPanel extends StatelessWidget {
         color: const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFFE2E8F0),
+          color:  AppColors.borderLight,
         ),
       ),
       child: TextField(
@@ -98,7 +99,7 @@ class FilterPanel extends StatelessWidget {
           ),
           prefixIcon: const Icon(
             Icons.search,
-            color: Color(0xFF64748B),
+            color: AppColors.gray500,
             size: 20,
           ),
           suffixIcon: searchQuery.isNotEmpty
@@ -124,7 +125,7 @@ class FilterPanel extends StatelessWidget {
         color: const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFFE2E8F0),
+          color:  AppColors.borderLight,
         ),
       ),
       child: DropdownButton<String>(
@@ -138,7 +139,7 @@ class FilterPanel extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        icon: const Icon(Icons.arrow_drop_down, color: Color(0xFF64748B)),
+        icon: const Icon(Icons.arrow_drop_down, color: AppColors.gray500),
         items: [
           const DropdownMenuItem<String>(
             value: null,
@@ -163,7 +164,7 @@ class FilterPanel extends StatelessWidget {
         color: const Color(0xFFF8FAFC),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(
-          color: const Color(0xFFE2E8F0),
+          color:  AppColors.borderLight,
         ),
       ),
       child: DropdownButton<AttendanceStatus>(
@@ -177,7 +178,7 @@ class FilterPanel extends StatelessWidget {
             fontSize: 14,
           ),
         ),
-        icon: const Icon(Icons.arrow_drop_down, color: Color(0xFF64748B)),
+        icon: const Icon(Icons.arrow_drop_down, color: AppColors.gray500),
         items: [
           const DropdownMenuItem<AttendanceStatus>(
             value: null,
@@ -202,8 +203,8 @@ class FilterPanel extends StatelessWidget {
       icon: const Icon(Icons.filter_alt_off, size: 18),
       label: const Text('Clear'),
       style: ElevatedButton.styleFrom(
-        backgroundColor: const Color(0xFFEF4444),
-        foregroundColor: Colors.white,
+        backgroundColor:  AppColors.errorDark,
+        foregroundColor: AppColors.white,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),

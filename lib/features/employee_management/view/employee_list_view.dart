@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../view_model/employee_view_model.dart';
 import '../model/employee_model.dart';
@@ -19,7 +20,7 @@ class EmployeeListView extends StatelessWidget {
         return Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFF8FAFC), Color(0xFFE2E8F0)],
+              colors: [AppColors.gray50, AppColors.borderLight],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -30,10 +31,10 @@ class EmployeeListView extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.all(24),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: AppColors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.04),
+                      color: AppColors.black.withOpacity(0.04),
                       blurRadius: 16,
                       offset: const Offset(0, 4),
                     ),

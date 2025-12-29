@@ -222,7 +222,7 @@ class HeaderView extends StatelessWidget {
 void _showNotifications(BuildContext context, HeaderViewModel viewModel) {
   showDialog(
     context: context,
-    barrierColor: Colors.black.withOpacity(0.05),
+    barrierColor: AppColors.black.withOpacity(0.05),
     builder: (dialogContext) {
       return Stack(
         children: [
@@ -255,7 +255,7 @@ void _showNotifications(BuildContext context, HeaderViewModel viewModel) {
 void _showProfileMenu(BuildContext context, HeaderViewModel viewModel) {
   showDialog(
     context: context,
-    barrierColor: Colors.transparent,
+    barrierColor: AppColors.transparent,
     builder: (dialogContext) {
       return Stack(
         children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/utils/responsive_utils.dart';
 import '../view_models/dashboard_stats_view_model.dart';
@@ -35,7 +36,7 @@ import 'widgets/responsive_stats_grid.dart';
 //                           style: TextStyle(
 //                             fontSize: 24,
 //                             fontWeight: FontWeight.w600,
-//                             color: Color(0xFF1F2937),
+//                             color: AppColors.textDark,
 //                           ),
 //                         ),
 //                       ),
@@ -92,7 +93,7 @@ class DashboardStatsView extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xFF1F2937),
+                              color: AppColors.textDark,
                             ),
                           ),
                         ),

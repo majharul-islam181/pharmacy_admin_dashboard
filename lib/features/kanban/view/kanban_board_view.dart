@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_dimensions.dart';
 import '../../../core/constants/app_strings.dart';
 import '../model/kanban_task.dart';
@@ -48,7 +49,7 @@ class KanbanBoardView extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF1F2937),
+              color: AppColors.textDark,
             ),
           ),
           const SizedBox(height: AppDimensions.paddingMedium),
@@ -56,7 +57,7 @@ class KanbanBoardView extends StatelessWidget {
             AppStrings.descTrackProductTasks,
             style: TextStyle(
               fontSize: 14,
-              color: Color(0xFF6B7280),
+              color: AppColors.textGray,
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
@@ -221,7 +222,7 @@ class KanbanBoardView extends StatelessWidget {
                 },
                 child: const Text(
                   AppStrings.buttonDelete,
-                  style: TextStyle(color: Colors.red),
+                  style: TextStyle(color: AppColors.error),
                 ),
               ),
             TextButton(
@@ -281,7 +282,7 @@ class KanbanBoardView extends StatelessWidget {
               onPressed: () => Navigator.of(context).pop(true),
               child: const Text(
                 AppStrings.buttonDelete,
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: AppColors.error),
               ),
             ),
           ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class ReportsViewPage extends StatelessWidget {
@@ -32,7 +33,7 @@ class ReportsViewPage extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF1F2937),
+                color: AppColors.textDark,
               ),
             ),
             const SizedBox(height: AppDimensions.paddingLarge),
@@ -42,7 +43,7 @@ class ReportsViewPage extends StatelessWidget {
                   child: _buildStatCard(
                     'Total Reports',
                     '24',
-                    const Color(0xFF3B82F6),
+                     AppColors.infoDark,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -50,7 +51,7 @@ class ReportsViewPage extends StatelessWidget {
                   child: _buildStatCard(
                     'Scheduled',
                     '8',
-                    const Color(0xFFF59E0B),
+                     AppColors.warningDark,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -58,7 +59,7 @@ class ReportsViewPage extends StatelessWidget {
                   child: _buildStatCard(
                     'Shared',
                     '15',
-                    const Color(0xFF10B981),
+                     AppColors.successDark,
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -66,7 +67,7 @@ class ReportsViewPage extends StatelessWidget {
                   child: _buildStatCard(
                     'Last 30 Days Exports',
                     '132',
-                    const Color(0xFF8B5CF6),
+                     AppColors.purple,
                   ),
                 ),
               ],
@@ -81,11 +82,11 @@ class ReportsViewPage extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),

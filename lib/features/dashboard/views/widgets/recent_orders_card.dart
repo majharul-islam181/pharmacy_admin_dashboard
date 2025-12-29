@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../models/recent_order_model.dart';
@@ -22,7 +23,7 @@ class RecentOrdersCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: AppColors.black.withOpacity(0.05),
             blurRadius: 10,
             offset: const Offset(0, 2),
           ),
@@ -47,21 +48,21 @@ class RecentOrdersCard extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: onSeeAll,
-                  child: Row(
+                  child: const Row(
                     children: [
                       Text(
                         AppStrings.buttonSeeAll,
                         style: TextStyle(
                           fontSize: 14,
-                          color: Colors.blue[600],
+                          color: AppColors.infoDark,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(width: 4),
+                      SizedBox(width: 4),
                       Icon(
                         Icons.arrow_forward_ios,
                         size: 12,
-                        color: Colors.blue[600],
+                        color: AppColors.infoDark,
                       ),
                     ],
                   ),
@@ -215,11 +216,11 @@ class RecentOrdersCard extends StatelessWidget {
   Color _getStatusColor(String status) {
     switch (status.toLowerCase()) {
       case 'delivered':
-        return Colors.blue[600]!;
+        return AppColors.infoDark;
       case 'pending':
-        return Colors.orange[600]!;
+        return AppColors.warningDark;
       case 'cancelled':
-        return Colors.red[600]!;
+        return AppColors.errorDark;
       default:
         return AppColors.textSecondary;
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 
 class SocialLoginButtons extends StatelessWidget {
@@ -12,7 +13,7 @@ class SocialLoginButtons extends StatelessWidget {
           child: _SocialButton(
             icon: Icons.g_mobiledata,
             label: AppStrings.socialGoogle,
-            color: const Color(0xFFDB4437),
+            color: AppColors.google,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -28,7 +29,7 @@ class SocialLoginButtons extends StatelessWidget {
           child: _SocialButton(
             icon: Icons.facebook,
             label: AppStrings.socialFacebook,
-            color: const Color(0xFF1877F2),
+            color: AppColors.facebook,
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -76,7 +77,7 @@ class _SocialButtonState extends State<_SocialButton> {
           style: ElevatedButton.styleFrom(
             backgroundColor:
                 _isHovered ? widget.color.withOpacity(0.9) : widget.color,
-            foregroundColor: Colors.white,
+            foregroundColor: AppColors.white,
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),

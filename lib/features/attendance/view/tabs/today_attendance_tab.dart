@@ -6,6 +6,7 @@ import '../widgets/filter_panel.dart';
 import '../widgets/attendance_table.dart';
 import '../widgets/attendance_card.dart';
 import '../widgets/pagination_widget.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class TodayAttendanceTab extends StatelessWidget {
   const TodayAttendanceTab({super.key});
@@ -155,7 +156,7 @@ class TodayAttendanceTab extends StatelessWidget {
           statusCounts['present'] ?? 0,
           Icons.check_circle,
           const LinearGradient(
-            colors: [Color(0xFF10B981), Color(0xFF059669)],
+            colors: [AppColors.successDark, Color(0xFF059669)],
           ),
         ),
         _buildSummaryCard(
@@ -163,7 +164,7 @@ class TodayAttendanceTab extends StatelessWidget {
           statusCounts['late'] ?? 0,
           Icons.access_time,
           const LinearGradient(
-            colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+            colors: [AppColors.warningDark, Color(0xFFD97706)],
           ),
         ),
         _buildSummaryCard(
@@ -171,7 +172,7 @@ class TodayAttendanceTab extends StatelessWidget {
           statusCounts['absent'] ?? 0,
           Icons.cancel,
           const LinearGradient(
-            colors: [Color(0xFFEF4444), Color(0xFFDC2626)],
+            colors: [AppColors.errorDark, Color(0xFFDC2626)],
           ),
         ),
         _buildSummaryCard(
@@ -179,7 +180,7 @@ class TodayAttendanceTab extends StatelessWidget {
           statusCounts['leave'] ?? 0,
           Icons.event_note,
           const LinearGradient(
-            colors: [Color(0xFF8B5CF6), Color(0xFF7C3AED)],
+            colors: [AppColors.purple, Color(0xFF7C3AED)],
           ),
         ),
       ],
@@ -209,14 +210,14 @@ class TodayAttendanceTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Colors.white, size: 32),
+          Icon(icon, color: AppColors.white, size: 32),
           const SizedBox(height: 12),
           Text(
             count.toString(),
             style: const TextStyle(
               fontSize: 32,
               fontWeight: FontWeight.w800,
-              color: Colors.white,
+              color: AppColors.white,
             ),
           ),
           const SizedBox(height: 4),
@@ -225,7 +226,7 @@ class TodayAttendanceTab extends StatelessWidget {
             style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: Colors.white70,
+              color: AppColors.white,
               letterSpacing: 0.5,
             ),
           ),
@@ -261,7 +262,7 @@ class TodayAttendanceTab extends StatelessWidget {
               child: const Icon(
                 Icons.search_off,
                 size: 56,
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
             const SizedBox(height: 24),
@@ -278,7 +279,7 @@ class TodayAttendanceTab extends StatelessWidget {
               'Try adjusting your filters to see more results',
               style: TextStyle(
                 fontSize: 14,
-                color: Color(0xFF64748B),
+                color: AppColors.gray500,
               ),
             ),
           ],

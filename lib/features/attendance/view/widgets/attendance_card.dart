@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../model/attendance_model.dart';
 import 'status_badge.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class AttendanceCard extends StatelessWidget {
   final AttendanceModel attendance;
@@ -35,7 +36,7 @@ class AttendanceCard extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
           side: const BorderSide(
-            color: Color(0xFFE2E8F0),
+            color: AppColors.borderLight,
             width: 1,
           ),
         ),
@@ -54,12 +55,12 @@ class AttendanceCard extends StatelessWidget {
                       height: 48,
                       decoration: BoxDecoration(
                         gradient: const LinearGradient(
-                          colors: [Color(0xFF3B82F6), Color(0xFF2563EB)],
+                          colors: [AppColors.infoDark, Color(0xFF2563EB)],
                         ),
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: const Color(0xFF3B82F6).withOpacity(0.3),
+                            color:  AppColors.infoDark.withOpacity(0.3),
                             blurRadius: 8,
                             offset: const Offset(0, 2),
                           ),
@@ -73,7 +74,7 @@ class AttendanceCard extends StatelessWidget {
                               .take(2)
                               .join(),
                           style: const TextStyle(
-                            color: Colors.white,
+                            color: AppColors.white,
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                           ),
@@ -98,7 +99,7 @@ class AttendanceCard extends StatelessWidget {
                             attendance.department,
                             style: const TextStyle(
                               fontSize: 13,
-                              color: Color(0xFF64748B),
+                              color: AppColors.gray500,
                             ),
                           ),
                         ],
@@ -108,7 +109,7 @@ class AttendanceCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 16),
-                const Divider(height: 1, color: Color(0xFFE2E8F0)),
+                const Divider(height: 1, color: AppColors.borderLight),
                 const SizedBox(height: 16),
                 Row(
                   children: [
@@ -177,7 +178,7 @@ class AttendanceCard extends StatelessWidget {
           child: Icon(
             icon,
             size: 16,
-            color: const Color(0xFF64748B),
+            color:  AppColors.gray500,
           ),
         ),
         const SizedBox(width: 8),

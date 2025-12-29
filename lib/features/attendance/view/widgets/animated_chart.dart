@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../model/chart_data_model.dart';
 
 class AnimatedAttendanceChart extends StatefulWidget {
@@ -57,12 +58,12 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
         return Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: const Color(0xFFE2E8F0)),
+            border: Border.all(color:  AppColors.borderLight),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.04),
+                color: AppColors.black.withOpacity(0.04),
                 blurRadius: 16,
                 offset: const Offset(0, 4),
               ),
@@ -88,7 +89,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
                     maxY: _getMaxY() * 1.2,
                     barTouchData: BarTouchData(
                       touchTooltipData: BarTouchTooltipData(
-                        tooltipBgColor: Colors.black87,
+                        tooltipBgColor: AppColors.black.withOpacity(0.8),
                         getTooltipItem: (group, groupIndex, rod, rodIndex) {
                           String label;
                           if (rodIndex == 0)
@@ -100,7 +101,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
                           return BarTooltipItem(
                             '$label\n${rod.toY.toInt()}',
                             const TextStyle(
-                              color: Colors.white,
+                              color: AppColors.white,
                               fontWeight: FontWeight.w600,
                             ),
                           );
@@ -123,7 +124,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
                                   style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.w600,
-                                    color: Color(0xFF64748B),
+                                    color: AppColors.gray500,
                                   ),
                                 ),
                               );
@@ -142,7 +143,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
                               style: const TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
-                                color: Color(0xFF64748B),
+                                color: AppColors.gray500,
                               ),
                             );
                           },
@@ -158,7 +159,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
                       drawVerticalLine: false,
                       getDrawingHorizontalLine: (value) {
                         return const FlLine(
-                          color: Color(0xFFE2E8F0),
+                          color: AppColors.borderLight,
                           strokeWidth: 1,
                         );
                       },
@@ -188,7 +189,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
           BarChartRodData(
             toY: widget.chartData.presentData[index].value * animationValue,
             gradient: const LinearGradient(
-              colors: [Color(0xFF10B981), Color(0xFF059669)],
+              colors: [AppColors.successDark, Color(0xFF059669)],
             ),
             width: 12,
             borderRadius: const BorderRadius.only(
@@ -199,7 +200,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
           BarChartRodData(
             toY: widget.chartData.lateData[index].value * animationValue,
             gradient: const LinearGradient(
-              colors: [Color(0xFFF59E0B), Color(0xFFD97706)],
+              colors: [AppColors.warningDark, Color(0xFFD97706)],
             ),
             width: 12,
             borderRadius: const BorderRadius.only(
@@ -210,7 +211,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
           BarChartRodData(
             toY: widget.chartData.absentData[index].value * animationValue,
             gradient: const LinearGradient(
-              colors: [Color(0xFFEF4444), Color(0xFFDC2626)],
+              colors: [AppColors.errorDark, Color(0xFFDC2626)],
             ),
             width: 12,
             borderRadius: const BorderRadius.only(
@@ -238,11 +239,11 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        _buildLegendItem('Present', const Color(0xFF10B981)),
+        _buildLegendItem('Present',  AppColors.successDark),
         const SizedBox(width: 24),
-        _buildLegendItem('Late', const Color(0xFFF59E0B)),
+        _buildLegendItem('Late',  AppColors.warningDark),
         const SizedBox(width: 24),
-        _buildLegendItem('Absent', const Color(0xFFEF4444)),
+        _buildLegendItem('Absent',  AppColors.errorDark),
       ],
     );
   }
@@ -264,7 +265,7 @@ class _AnimatedAttendanceChartState extends State<AnimatedAttendanceChart>
           style: const TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF64748B),
+            color: AppColors.gray500,
           ),
         ),
       ],

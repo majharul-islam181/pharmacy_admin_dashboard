@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 
 class LoginShowcaseView extends StatefulWidget {
@@ -58,8 +59,8 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
             colors: [
-              const Color(0xFF6366F1).withOpacity(0.05),
-              const Color(0xFF8B5CF6).withOpacity(0.05),
+              AppColors.purpleDeep.withOpacity(0.05),
+              AppColors.purple.withOpacity(0.05),
             ],
           ),
         ),
@@ -77,7 +78,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
-                        colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                        colors: [AppColors.purpleDeep, AppColors.purple],
                       ),
                     ),
                     child: Center(
@@ -87,17 +88,17 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                           Container(
                             padding: const EdgeInsets.all(20),
                             decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.2),
+                              color: AppColors.white.withOpacity(0.2),
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: Colors.white.withOpacity(0.3),
+                                color: AppColors.white.withOpacity(0.3),
                                 width: 2,
                               ),
                             ),
                             child: const Icon(
                               Icons.collections_bookmark,
                               size: 48,
-                              color: Colors.white,
+                              color: AppColors.white,
                             ),
                           ),
                           const SizedBox(height: 16),
@@ -106,7 +107,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                             style: TextStyle(
                               fontSize: isMobile ? 24 : 32,
                               fontWeight: FontWeight.w900,
-                              color: Colors.white,
+                              color: AppColors.white,
                               letterSpacing: -1,
                             ),
                           ),
@@ -115,7 +116,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                             AppStrings.textChooseLoginStyle,
                             style: TextStyle(
                               fontSize: isMobile ? 14 : 16,
-                              color: Colors.white.withOpacity(0.9),
+                              color: AppColors.white.withOpacity(0.9),
                               fontWeight: FontWeight.w500,
                             ),
                           ),
@@ -141,7 +142,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                       description: AppStrings.textClassicLoginDesc,
                       icon: Icons.business_center,
                       gradient: const LinearGradient(
-                        colors: [Color(0xFF2196F3), Color(0xFF1976D2)],
+                        colors: [AppColors.blue, AppColors.blueDark],
                       ),
                       route: '/login/classic',
                     ),
@@ -151,7 +152,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                       description: AppStrings.textModernLoginDesc,
                       icon: Icons.auto_awesome,
                       gradient: const LinearGradient(
-                        colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                        colors: [AppColors.purpleDeep, AppColors.purple],
                       ),
                       route: '/login/modern',
                     ),
@@ -161,7 +162,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                       description: AppStrings.textAnimatedLoginDesc,
                       icon: Icons.animation,
                       gradient: const LinearGradient(
-                        colors: [Color(0xFFEC4899), Color(0xFFF43F5E)],
+                        colors: [AppColors.pink, AppColors.pinkDark],
                       ),
                       route: '/login/animated',
                     ),
@@ -201,11 +202,11 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
           onTap: () => context.push(route),
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(24),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.08),
+                  color: AppColors.black.withOpacity(0.08),
                   blurRadius: 20,
                   offset: const Offset(0, 10),
                 ),
@@ -228,17 +229,17 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                     child: Container(
                       padding: const EdgeInsets.all(24),
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
+                        color: AppColors.white.withOpacity(0.2),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Colors.white.withOpacity(0.3),
+                          color: AppColors.white.withOpacity(0.3),
                           width: 2,
                         ),
                       ),
                       child: Icon(
                         icon,
                         size: 48,
-                        color: Colors.white,
+                        color: AppColors.white,
                       ),
                     ),
                   ),
@@ -255,15 +256,15 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                           style: const TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Color(0xFF1F2937),
+                            color: AppColors.textDark,
                           ),
                         ),
                         const SizedBox(height: 12),
                         Text(
                           description,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 14,
-                            color: Colors.grey.shade600,
+                            color: AppColors.gray600,
                             height: 1.5,
                           ),
                         ),
@@ -278,7 +279,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w700,
-                                  color: Colors.white,
+                                  color: AppColors.white,
                                 ),
                               ),
                             ),
@@ -288,7 +289,7 @@ class _LoginShowcaseViewState extends State<LoginShowcaseView>
                                   gradient.createShader(bounds),
                               child: const Icon(
                                 Icons.arrow_forward,
-                                color: Colors.white,
+                                color: AppColors.white,
                                 size: 20,
                               ),
                             ),

@@ -14,7 +14,7 @@ class ProfileMenuPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.transparent,
+      color: AppColors.transparent,
       child: Container(
         width: 260,
         decoration: BoxDecoration(
@@ -22,7 +22,7 @@ class ProfileMenuPanel extends StatelessWidget {
           borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.08),
+              color: AppColors.black.withOpacity(0.08),
               blurRadius: 18,
               offset: const Offset(0, 8),
             ),
@@ -90,7 +90,7 @@ class ProfileMenuPanel extends StatelessWidget {
               child: Text(
                 user.name.isNotEmpty ? user.name[0].toUpperCase() : 'U',
                 style: const TextStyle(
-                  color: Colors.white,
+                  color: AppColors.white,
                   fontWeight: FontWeight.w600,
                   fontSize: 14,
                 ),
@@ -206,7 +206,7 @@ class ProfileMenuPanel extends StatelessWidget {
                   SnackBar(
                     content: const Row(
                       children: [
-                        Icon(Icons.info_outline, color: Colors.white, size: 20),
+                        Icon(Icons.info_outline, color: AppColors.white, size: 20),
                         SizedBox(width: 12),
                         Expanded(
                           child: Text(
@@ -216,7 +216,7 @@ class ProfileMenuPanel extends StatelessWidget {
                         ),
                       ],
                     ),
-                    backgroundColor: const Color(0xFF6366F1),
+                    backgroundColor:  AppColors.purpleDeep,
                     behavior: SnackBarBehavior.floating,
                     shape: RoundedRectangleBorder(
                       borderRadius:
@@ -228,7 +228,7 @@ class ProfileMenuPanel extends StatelessWidget {
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.notificationRed,
-                foregroundColor: Colors.white,
+                foregroundColor: AppColors.white,
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
                   vertical: 12,

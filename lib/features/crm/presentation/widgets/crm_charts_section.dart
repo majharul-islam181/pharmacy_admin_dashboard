@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class CrmChartsRow extends StatelessWidget {
@@ -200,7 +201,7 @@ class _FlTotalSalesChart extends StatelessWidget {
               getDotPainter: (spot, percent, barData, index) =>
                   FlDotCirclePainter(
                 radius: 3,
-                color: Colors.white,
+                color: AppColors.white,
                 strokeWidth: 2,
                 strokeColor: const Color(0xFF9CA3AF),
               ),
@@ -217,7 +218,7 @@ class _FlTotalSalesChart extends StatelessWidget {
               getDotPainter: (spot, percent, barData, index) =>
                   FlDotCirclePainter(
                 radius: 3,
-                color: Colors.white,
+                color: AppColors.white,
                 strokeWidth: 2,
                 strokeColor: const Color(0xFF2563EB),
               ),

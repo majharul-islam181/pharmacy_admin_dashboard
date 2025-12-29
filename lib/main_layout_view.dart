@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'core/constants/app_colors.dart';
 import '../core/utils/responsive_utils.dart';
 import '../features/header/views/header_view.dart';
 import '../features/sidebar/views/sidebar_view.dart';
@@ -38,7 +39,7 @@ class MainLayoutView extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: double.infinity,
-                    color: const Color(0xFFF8F9FA),
+                    color: AppColors.backgroundLight,
                     child: child,
                   ),
                 ),
@@ -58,7 +59,7 @@ class MainLayoutView extends StatelessWidget {
         child: const HeaderView(),
       ),
       drawer: const MobileDrawer(),
-      backgroundColor: const Color(0xFFF8F9FA),
+      backgroundColor: AppColors.backgroundLight,
       body: child,
     );
   }

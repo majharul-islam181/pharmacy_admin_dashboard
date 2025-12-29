@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../model/attendance_model.dart';
 import 'status_badge.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class AttendanceTable extends StatelessWidget {
   final List<AttendanceModel> attendanceList;
@@ -15,14 +16,14 @@ class AttendanceTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
         border: Border.all(
-          color: const Color(0xFFE2E8F0),
+          color:  AppColors.borderLight,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: AppColors.black.withOpacity(0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -45,7 +46,7 @@ class AttendanceTable extends StatelessWidget {
               ),
               border: const Border(
                 bottom: BorderSide(
-                  color: Color(0xFFE2E8F0),
+                  color: AppColors.borderLight,
                   width: 2,
                 ),
               ),
@@ -92,7 +93,7 @@ class AttendanceTable extends StatelessWidget {
         style: const TextStyle(
           fontSize: 13,
           fontWeight: FontWeight.w700,
-          color: Color(0xFF475569),
+          color: AppColors.gray600,
           letterSpacing: 0.3,
         ),
       ),
@@ -116,7 +117,7 @@ class AttendanceTable extends StatelessWidget {
         decoration: BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: const Color(0xFFE2E8F0).withOpacity(0.5),
+              color:  AppColors.borderLight.withOpacity(0.5),
             ),
           ),
         ),
@@ -169,7 +170,7 @@ class AttendanceTable extends StatelessWidget {
         style: TextStyle(
           fontSize: 13,
           fontWeight: isName ? FontWeight.w600 : FontWeight.w500,
-          color: isName ? const Color(0xFF1E293B) : const Color(0xFF64748B),
+          color: isName ? const Color(0xFF1E293B) :  AppColors.gray500,
         ),
       ),
     );

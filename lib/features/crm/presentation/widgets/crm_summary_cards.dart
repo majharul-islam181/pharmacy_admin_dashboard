@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class CrmSummaryCards extends StatelessWidget {
@@ -132,7 +132,7 @@ class _CrmSummaryCard extends StatelessWidget {
                       child: Icon(
                         data.icon,
                         size: 20,
-                        color: const Color(0xFF3B82F6),
+                        color:  AppColors.infoDark,
                       ),
                     ),
                   ],
@@ -163,7 +163,7 @@ class _CrmSummaryCard extends StatelessWidget {
                           : Icons.arrow_downward_rounded,
                       size: 16,
                       color: data.deltaPositive
-                          ? const Color(0xFF10B981)
+                          ?  AppColors.successDark
                           : const Color(0xFFEF4444),
                     ),
                     const SizedBox(width: 4),
@@ -173,7 +173,7 @@ class _CrmSummaryCard extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                         color: data.deltaPositive
-                            ? const Color(0xFF10B981)
+                            ?  AppColors.successDark
                             : const Color(0xFFEF4444),
                       ),
                     ),

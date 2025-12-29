@@ -6,6 +6,8 @@ import '../../model/attendance_model.dart';
 import '../../model/chart_data_model.dart';
 import '../widgets/animated_chart.dart';
 import '../widgets/status_badge.dart';
+import '../../../../core/constants/app_colors.dart';
+
 
 class EmployeeAttendanceTab extends StatelessWidget {
   const EmployeeAttendanceTab({super.key});
@@ -115,12 +117,12 @@ class EmployeeAttendanceTab extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE2E8F0)),
+        border: Border.all(color:  AppColors.borderLight),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: AppColors.black.withOpacity(0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -144,11 +146,11 @@ class EmployeeAttendanceTab extends StatelessWidget {
               hintText: 'Choose an employee',
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
+                borderSide: const BorderSide(color: AppColors.borderLight),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
-                borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
+                borderSide: const BorderSide(color: AppColors.borderLight),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -183,7 +185,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
                           employee.department,
                           style: const TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF64748B),
+                            color: AppColors.gray500,
                           ),
                         ),
                       ],
@@ -216,25 +218,25 @@ class EmployeeAttendanceTab extends StatelessWidget {
           'Present',
           summary['present'] ?? 0,
           Icons.check_circle,
-          const Color(0xFF10B981),
+          AppColors.successDark,
         ),
         _buildSummaryTile(
           'Late',
           summary['late'] ?? 0,
           Icons.access_time,
-          const Color(0xFFF59E0B),
+          AppColors.warningDark,
         ),
         _buildSummaryTile(
           'Absent',
           summary['absent'] ?? 0,
           Icons.cancel,
-          const Color(0xFFEF4444),
+          AppColors.errorDark,
         ),
         _buildSummaryTile(
           'Leave',
           summary['leave'] ?? 0,
           Icons.event_note,
-          const Color(0xFF8B5CF6),
+          AppColors.purple,
         ),
       ],
     );
@@ -246,12 +248,12 @@ class EmployeeAttendanceTab extends StatelessWidget {
       width: 150,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: const Color(0xFFE2E8F0)),
+        border: Border.all(color:  AppColors.borderLight),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: AppColors.black.withOpacity(0.04),
             blurRadius: 12,
             offset: const Offset(0, 2),
           ),
@@ -284,7 +286,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
                   label,
                   style: const TextStyle(
                     fontSize: 12,
-                    color: Color(0xFF64748B),
+                    color: AppColors.gray500,
                   ),
                 ),
               ],
@@ -352,7 +354,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
           style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
-            color: isActive ? Colors.white : const Color(0xFF64748B),
+            color: isActive ? AppColors.white : AppColors.gray500,
           ),
         ),
       ),
@@ -370,12 +372,12 @@ class EmployeeAttendanceTab extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE2E8F0)),
+        border: Border.all(color:  AppColors.borderLight),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: AppColors.black.withOpacity(0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -415,7 +417,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: const Color(0xFFF8FAFC),
                     borderRadius: BorderRadius.circular(12),
-                    border: Border.all(color: const Color(0xFFE2E8F0)),
+                    border: Border.all(color:  AppColors.borderLight),
                   ),
                   child: Row(
                     children: [
@@ -437,7 +439,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
                               '${attendance.checkInTime} - ${attendance.checkOutTime}',
                               style: const TextStyle(
                                 fontSize: 12,
-                                color: Color(0xFF64748B),
+                                color: AppColors.gray500,
                               ),
                             ),
                           ],
@@ -484,7 +486,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
               child: const Icon(
                 Icons.person_search,
                 size: 56,
-                color: Colors.white,
+                color: AppColors.white,
               ),
             ),
             const SizedBox(height: 24),
@@ -501,7 +503,7 @@ class EmployeeAttendanceTab extends StatelessWidget {
               'Choose an employee from the dropdown above',
               style: TextStyle(
                 fontSize: 14,
-                color: Color(0xFF64748B),
+                color: AppColors.gray500,
               ),
             ),
           ],

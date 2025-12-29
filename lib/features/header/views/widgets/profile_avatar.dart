@@ -34,7 +34,7 @@ class ProfileAvatar extends StatelessWidget {
                 child: Text(
                   user.name.isNotEmpty ? user.name[0].toUpperCase() : 'U',
                   style: const TextStyle(
-                    color: Colors.white,
+                    color: AppColors.white,
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),

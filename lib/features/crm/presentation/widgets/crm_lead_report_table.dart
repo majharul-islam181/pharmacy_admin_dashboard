@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class CrmLeadReportTable extends StatelessWidget {
@@ -37,7 +37,7 @@ class CrmLeadReportTable extends StatelessWidget {
                 headingTextStyle: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
-                  color: Color(0xFF3B82F6),
+                  color: AppColors.infoDark,
                 ),
                 dataTextStyle: const TextStyle(
                   fontSize: 13,

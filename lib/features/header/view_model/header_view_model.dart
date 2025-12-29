@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/routes/app_routes.dart';
 import '../model/navigation_item_model.dart';
@@ -21,28 +22,28 @@ class HeaderViewModel extends ChangeNotifier {
   final List<NotificationModel> _notifications = const [
     NotificationModel(
       icon: Icons.shopping_bag_outlined,
-      iconColor: Color(0xFF10B981),
+      iconColor: AppColors.successDark,
       title: 'Your order is placed',
       message: 'If several languages coalesce the grammar.',
       timeAgo: '3 min ago',
     ),
     NotificationModel(
       icon: Icons.person_outline,
-      iconColor: Color(0xFFF59E0B),
+      iconColor: AppColors.warningDark,
       title: 'James Lemire',
       message: 'It will seem like simplified English.',
       timeAgo: '1 hour ago',
     ),
     NotificationModel(
       icon: Icons.check_circle_outline,
-      iconColor: Color(0xFF10B981),
+      iconColor: AppColors.successDark,
       title: 'Your item is shipped',
       message: 'If several languages coalesce the grammar.',
       timeAgo: '3 min ago',
     ),
     NotificationModel(
       icon: Icons.chat_bubble_outline,
-      iconColor: Color(0xFF3B82F6),
+      iconColor: AppColors.infoDark,
       title: 'Salena Layfield',
       message: 'As a skeptical Cambridge friend of mine.',
       timeAgo: '2 hours ago',

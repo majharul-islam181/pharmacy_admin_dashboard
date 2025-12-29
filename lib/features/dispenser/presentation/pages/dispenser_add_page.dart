@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class DispenserAddPage extends StatelessWidget {
@@ -31,7 +32,7 @@ class DispenserAddPage extends StatelessWidget {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF1F2937),
+              color: AppColors.textDark,
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
@@ -40,11 +41,11 @@ class DispenserAddPage extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLarge),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: AppColors.black.withOpacity(0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -55,7 +56,7 @@ class DispenserAddPage extends StatelessWidget {
                 Icon(
                   Icons.local_drink_outlined,
                   size: 64,
-                  color: Color(0xFF06B6D4),
+                  color: AppColors.cyan,
                 ),
                 SizedBox(height: 16),
                 Text(

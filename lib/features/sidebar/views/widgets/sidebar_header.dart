@@ -52,7 +52,7 @@ class SidebarHeader extends StatelessWidget {
             ),
             child: const Icon(
               Icons.eco,
-              color: Colors.white,
+              color: AppColors.white,
               size: 24,
             ),
           ),

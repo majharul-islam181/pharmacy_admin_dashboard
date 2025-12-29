@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../models/stats_card_model.dart';
 
@@ -50,7 +51,7 @@ import '../../models/stats_card_model.dart';
 //                   ),
 //                 ),
 //                 const SizedBox(width: 16),
-                
+
 //                 // Title and Value
 //                 Expanded(
 //                   child: Column(
@@ -62,19 +63,19 @@ import '../../models/stats_card_model.dart';
 //                         style: const TextStyle(
 //                           fontSize: 14,
 //                           fontWeight: FontWeight.w400,
-//                           color: Color(0xFF6B7280), // Gray-500
+//                           color: AppColors.textGray, // Gray-500
 //                           height: 1.3,
 //                         ),
 //                       ),
 //                       const SizedBox(height: 4),
-                      
+
 //                       // Large Value
 //                       Text(
 //                         card.value,
 //                         style: const TextStyle(
 //                           fontSize: 32,
 //                           fontWeight: FontWeight.w700,
-//                           color: Color(0xFF111827), // Gray-900
+//                           color: AppColors.gray700, // Gray-900
 //                           height: 1.1,
 //                         ),
 //                       ),
@@ -83,9 +84,9 @@ import '../../models/stats_card_model.dart';
 //                 ),
 //               ],
 //             ),
-            
+
 //             const SizedBox(height: 20),
-            
+
 //             // Show Details Link
 //             GestureDetector(
 //               onTap: card.onShowDetails,
@@ -94,7 +95,7 @@ import '../../models/stats_card_model.dart';
 //                 style: TextStyle(
 //                   fontSize: 12,
 //                   fontWeight: FontWeight.w500,
-//                   color: Color(0xFF10B981), // Exact green from design
+//                   color: AppColors.successDark, // Exact green from design
 //                 ),
 //               ),
 //             ),
@@ -152,7 +153,7 @@ class StatsCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 16),
-                
+
                 // Title and Value
                 Expanded(
                   child: Column(
@@ -164,19 +165,19 @@ class StatsCard extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
-                          color: Color(0xFF6B7280), // Gray-500
+                          color: AppColors.textGray, // Gray-500
                           height: 1.3,
                         ),
                       ),
                       const SizedBox(height: 4),
-                      
+
                       // Large Value
                       Text(
                         card.value,
                         style: const TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w700,
-                          color: Color(0xFF111827), // Gray-900
+                          color: AppColors.gray700, // Gray-900
                           height: 1.1,
                         ),
                       ),
@@ -185,9 +186,9 @@ class StatsCard extends StatelessWidget {
                 ),
               ],
             ),
-            
+
             const SizedBox(height: 20),
-            
+
             // Show Details Link
             GestureDetector(
               onTap: card.onShowDetails,
@@ -196,7 +197,7 @@ class StatsCard extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF10B981), // Exact green from design
+                  color: AppColors.successDark, // Exact green from design
                 ),
               ),
             ),

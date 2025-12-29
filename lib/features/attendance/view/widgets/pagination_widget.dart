@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class PaginationWidget extends StatelessWidget {
   final int currentPage;
@@ -25,10 +26,10 @@ class PaginationWidget extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: const BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         border: Border(
           top: BorderSide(
-            color: Color(0xFFE2E8F0),
+            color: AppColors.borderLight,
             width: 1,
           ),
         ),
@@ -65,7 +66,7 @@ class PaginationWidget extends StatelessWidget {
           'Show',
           style: TextStyle(
             fontSize: 14,
-            color: Color(0xFF64748B),
+            color: AppColors.gray500,
           ),
         ),
         const SizedBox(width: 8),
@@ -75,7 +76,7 @@ class PaginationWidget extends StatelessWidget {
             color: const Color(0xFFF8FAFC),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: const Color(0xFFE2E8F0),
+              color:  AppColors.borderLight,
             ),
           ),
           child: DropdownButton<int>(
@@ -104,7 +105,7 @@ class PaginationWidget extends StatelessWidget {
           'entries',
           style: TextStyle(
             fontSize: 14,
-            color: Color(0xFF64748B),
+            color: AppColors.gray500,
           ),
         ),
       ],
@@ -121,7 +122,7 @@ class PaginationWidget extends StatelessWidget {
       'Showing $start to $end of $totalRecords entries',
       style: const TextStyle(
         fontSize: 14,
-        color: Color(0xFF475569),
+        color: AppColors.gray600,
         fontWeight: FontWeight.w500,
       ),
     );
@@ -158,7 +159,7 @@ class PaginationWidget extends StatelessWidget {
       if (startPage > 2) {
         pages.add(const Padding(
           padding: EdgeInsets.symmetric(horizontal: 4),
-          child: Text('...', style: TextStyle(color: Color(0xFF64748B))),
+          child: Text('...', style: TextStyle(color: AppColors.gray500)),
         ));
       }
     }
@@ -171,7 +172,7 @@ class PaginationWidget extends StatelessWidget {
       if (endPage < totalPages - 1) {
         pages.add(const Padding(
           padding: EdgeInsets.symmetric(horizontal: 4),
-          child: Text('...', style: TextStyle(color: Color(0xFF64748B))),
+          child: Text('...', style: TextStyle(color: AppColors.gray500)),
         ));
       }
       pages.add(_buildPageNumberButton(totalPages));
@@ -199,7 +200,7 @@ class PaginationWidget extends StatelessWidget {
             color: isActive ? null : const Color(0xFFF8FAFC),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: isActive ? Colors.transparent : const Color(0xFFE2E8F0),
+              color: isActive ? AppColors.transparent :  AppColors.borderLight,
             ),
             boxShadow: isActive
                 ? [
@@ -216,7 +217,7 @@ class PaginationWidget extends StatelessWidget {
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
-              color: isActive ? Colors.white : const Color(0xFF475569),
+              color: isActive ? AppColors.white :  AppColors.gray600,
             ),
           ),
         ),
@@ -238,13 +239,13 @@ class PaginationWidget extends StatelessWidget {
           color: isEnabled ? const Color(0xFFF8FAFC) : const Color(0xFFF1F5F9),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
-            color: const Color(0xFFE2E8F0),
+            color:  AppColors.borderLight,
           ),
         ),
         child: Icon(
           icon,
           size: 20,
-          color: isEnabled ? const Color(0xFF475569) : const Color(0xFFCBD5E1),
+          color: isEnabled ?  AppColors.gray600 : const Color(0xFFCBD5E1),
         ),
       ),
     );

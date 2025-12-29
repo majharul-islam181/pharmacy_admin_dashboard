@@ -89,7 +89,7 @@ class SidebarView extends StatelessWidget {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withOpacity(0.03),
+                color: AppColors.black.withOpacity(0.03),
                 blurRadius: 10,
                 offset: const Offset(2, 0),
               ),

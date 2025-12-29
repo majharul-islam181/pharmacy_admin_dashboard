@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
 
 class WidgetsRatingBarPage extends StatelessWidget {
@@ -31,7 +32,7 @@ class WidgetsRatingBarPage extends StatelessWidget {
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w600,
-              color: Color(0xFF1F2937),
+              color: AppColors.textDark,
             ),
           ),
           const SizedBox(height: AppDimensions.paddingLarge),
@@ -39,11 +40,11 @@ class WidgetsRatingBarPage extends StatelessWidget {
             width: double.infinity,
             padding: const EdgeInsets.all(AppDimensions.paddingLarge),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: AppColors.white,
               borderRadius: BorderRadius.circular(AppDimensions.radiusLarge),
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05),
+                  color: AppColors.black.withOpacity(0.05),
                   blurRadius: 10,
                   offset: const Offset(0, 2),
                 ),
@@ -54,7 +55,7 @@ class WidgetsRatingBarPage extends StatelessWidget {
                 Icon(
                   icon,
                   size: 64,
-                  color: Colors.grey,
+                  color: AppColors.textSecondary,
                 ),
                 const SizedBox(height: 16),
                 Text(
@@ -69,7 +70,7 @@ class WidgetsRatingBarPage extends StatelessWidget {
                   description,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    color: Colors.grey,
+                    color: AppColors.textSecondary,
                   ),
                 ),
               ],

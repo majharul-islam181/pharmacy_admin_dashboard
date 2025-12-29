@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../model/attendance_model.dart';
+import '../../../../core/constants/app_colors.dart';
+
 
 class StatusBadge extends StatelessWidget {
   final AttendanceStatus status;
@@ -39,7 +41,7 @@ class StatusBadge extends StatelessWidget {
           Icon(
             config.icon,
             size: 14,
-            color: Colors.white,
+            color: AppColors.white,
           ),
           const SizedBox(width: 6),
           Text(
@@ -47,7 +49,7 @@ class StatusBadge extends StatelessWidget {
             style: const TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w700,
-              color: Colors.white,
+              color: AppColors.white,
               letterSpacing: 0.3,
             ),
           ),
@@ -79,25 +81,25 @@ class StatusBadge extends StatelessWidget {
     switch (status) {
       case AttendanceStatus.present:
         return _StatusConfig(
-          color: const Color(0xFF10B981),
+          color:  AppColors.successDark,
           icon: Icons.check_circle,
           label: 'Present',
         );
       case AttendanceStatus.late:
         return _StatusConfig(
-          color: const Color(0xFFF59E0B),
+          color:  AppColors.warningDark,
           icon: Icons.access_time,
           label: 'Late',
         );
       case AttendanceStatus.absent:
         return _StatusConfig(
-          color: const Color(0xFFEF4444),
+          color:  AppColors.errorDark,
           icon: Icons.cancel,
           label: 'Absent',
         );
       case AttendanceStatus.leave:
         return _StatusConfig(
-          color: const Color(0xFF8B5CF6),
+          color:  AppColors.purple,
           icon: Icons.event_note,
           label: 'Leave',
         );

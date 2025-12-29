@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_strings.dart';
 import '../../model/employee_model.dart';
 
@@ -19,12 +20,12 @@ class EmployeeTable extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.white,
         borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: const Color(0xFFE2E8F0), width: 2),
+        border: Border.all(color: AppColors.borderLight, width: 2),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.04),
+            color: AppColors.black.withOpacity(0.04),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -37,7 +38,7 @@ class EmployeeTable extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xFFF1F5F9), Color(0xFFE2E8F0)],
+                colors: [AppColors.gray100, AppColors.borderLight],
               ),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(14),
@@ -53,7 +54,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -65,7 +66,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -77,7 +78,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -89,7 +90,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -101,7 +102,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -114,7 +115,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -127,7 +128,7 @@ class EmployeeTable extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xFF1E293B),
+                      color: AppColors.textDarker,
                       letterSpacing: 0.3,
                     ),
                   ),
@@ -190,10 +191,10 @@ class _EmployeeRowState extends State<_EmployeeRow> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
         decoration: BoxDecoration(
-          color: _isHovered ? const Color(0xFFF8FAFC) : Colors.white,
+          color: _isHovered ? AppColors.gray50 : AppColors.white,
           border: Border(
             bottom: BorderSide(
-              color: const Color(0xFFE2E8F0).withOpacity(0.5),
+              color: AppColors.borderLight.withOpacity(0.5),
             ),
           ),
         ),
@@ -208,11 +209,11 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       gradient: const LinearGradient(
-                        colors: [Color(0xFF6366F1), Color(0xFF8B5CF6)],
+                        colors: [AppColors.purpleDeep, AppColors.purple],
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF6366F1).withOpacity(0.3),
+                          color:  AppColors.purpleDeep.withOpacity(0.3),
                           blurRadius: 8,
                           offset: const Offset(0, 2),
                         ),
@@ -233,14 +234,14 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                           style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFF1E293B),
+                            color: AppColors.textDarker,
                           ),
                         ),
                         Text(
                           widget.employee.id,
                           style: const TextStyle(
                             fontSize: 12,
-                            color: Color(0xFF64748B),
+                            color: AppColors.gray500,
                           ),
                         ),
                       ],
@@ -257,7 +258,7 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                 style: const TextStyle(
                   fontSize: 13,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xFF475569),
+                  color: AppColors.gray600,
                 ),
               ),
             ),
@@ -271,14 +272,14 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                     widget.employee.phone,
                     style: const TextStyle(
                       fontSize: 13,
-                      color: Color(0xFF475569),
+                      color: AppColors.gray600,
                     ),
                   ),
                   Text(
                     widget.employee.email,
                     style: const TextStyle(
                       fontSize: 12,
-                      color: Color(0xFF64748B),
+                      color: AppColors.gray500,
                     ),
                   ),
                 ],
@@ -312,7 +313,7 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                 DateFormat('dd MMM yyyy').format(widget.employee.joiningDate),
                 style: const TextStyle(
                   fontSize: 13,
-                  color: Color(0xFF475569),
+                  color: AppColors.gray600,
                 ),
               ),
             ),
@@ -326,15 +327,15 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                   decoration: BoxDecoration(
                     gradient: widget.employee.status == EmployeeStatus.active
                         ? const LinearGradient(
-                            colors: [Color(0xFF10B981), Color(0xFF059669)])
+                            colors: [AppColors.successDark, AppColors.successDarker])
                         : const LinearGradient(
-                            colors: [Color(0xFF64748B), Color(0xFF475569)]),
+                            colors: [AppColors.gray500, AppColors.gray600]),
                     borderRadius: BorderRadius.circular(6),
                     boxShadow: [
                       BoxShadow(
                         color: (widget.employee.status == EmployeeStatus.active
-                                ? const Color(0xFF10B981)
-                                : const Color(0xFF64748B))
+                                ?  AppColors.successDark
+                                :  AppColors.gray500)
                             .withOpacity(0.3),
                         blurRadius: 4,
                         offset: const Offset(0, 2),
@@ -346,7 +347,7 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                     style: const TextStyle(
                       fontSize: 11,
                       fontWeight: FontWeight.w700,
-                      color: Colors.white,
+                      color: AppColors.white,
                     ),
                   ),
                 ),
@@ -360,7 +361,7 @@ class _EmployeeRowState extends State<_EmployeeRow> {
                 children: [
                   IconButton(
                     icon: const Icon(Icons.edit_outlined, size: 18),
-                    color: const Color(0xFF6366F1),
+                    color:  AppColors.purpleDeep,
                     onPressed: widget.onEdit,
                     tooltip: AppStrings.buttonEdit,
                   ),
@@ -384,11 +385,11 @@ class _EmployeeRowState extends State<_EmployeeRow> {
       case EmployeeDepartment.sales:
         return const Color(0xFF3B82F6);
       case EmployeeDepartment.pharmacy:
-        return const Color(0xFF10B981);
+        return  AppColors.successDark;
       case EmployeeDepartment.operations:
         return const Color(0xFFF59E0B);
       case EmployeeDepartment.management:
-        return const Color(0xFF8B5CF6);
+        return  AppColors.purple;
       case EmployeeDepartment.support:
         return const Color(0xFFEC4899);
     }
