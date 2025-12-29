@@ -5,9 +5,15 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../view_model/crm_view_model.dart';
 
 class CrmChartsRow extends StatelessWidget {
-  const CrmChartsRow({super.key});
+  final CrmViewModel viewModel;
+
+  const CrmChartsRow({
+    super.key,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,21 +23,21 @@ class CrmChartsRow extends StatelessWidget {
         final isStacked = maxWidth < 1000;
 
         if (isStacked) {
-          return const Column(
+          return Column(
             children: [
-              TotalSalesChartCard(),
-              SizedBox(height: AppDimensions.paddingLarge),
-              RevenueForecastChartCard(),
+              TotalSalesChartCard(viewModel: viewModel),
+              const SizedBox(height: AppDimensions.paddingLarge),
+              RevenueForecastChartCard(viewModel: viewModel),
             ],
           );
         }
 
-        return const Row(
+        return Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Expanded(child: TotalSalesChartCard()),
-            SizedBox(width: AppDimensions.paddingLarge),
-            Expanded(child: RevenueForecastChartCard()),
+            Expanded(child: TotalSalesChartCard(viewModel: viewModel)),
+            const SizedBox(width: AppDimensions.paddingLarge),
+            Expanded(child: RevenueForecastChartCard(viewModel: viewModel)),
           ],
         );
       },
@@ -40,14 +46,21 @@ class CrmChartsRow extends StatelessWidget {
 }
 
 class TotalSalesChartCard extends StatelessWidget {
-  const TotalSalesChartCard({super.key});
+  final CrmViewModel viewModel;
+
+  const TotalSalesChartCard({
+    super.key,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final chartData = viewModel.salesChartData;
 
-    const revenue = <double>[50, 48, 55, 60, 70, 75, 80, 78, 72, 65, 58, 52];
-    const other = <double>[40, 38, 42, 45, 50, 55, 60, 58, 55, 50, 45, 42];
+    if (chartData == null) {
+      return const SizedBox();
+    }
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -88,11 +101,12 @@ class TotalSalesChartCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: AppDimensions.paddingMedium),
-            const SizedBox(
+            SizedBox(
               height: 220,
               child: _FlTotalSalesChart(
-                revenue: revenue,
-                other: other,
+                revenue: chartData.revenueData,
+                other: chartData.otherData,
+                months: chartData.months,
               ),
             ),
             const SizedBox(height: 16),
@@ -107,29 +121,16 @@ class TotalSalesChartCard extends StatelessWidget {
 class _FlTotalSalesChart extends StatelessWidget {
   final List<double> revenue;
   final List<double> other;
+  final List<String> months;
 
   const _FlTotalSalesChart({
     required this.revenue,
     required this.other,
+    required this.months,
   });
 
   @override
   Widget build(BuildContext context) {
-    final months = <String>[
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec'
-    ];
-
     List<FlSpot> spotsFor(List<double> values) {
       return [
         for (var i = 0; i < values.length; i++) FlSpot(i.toDouble(), values[i]),
@@ -279,14 +280,21 @@ class _LegendItem extends StatelessWidget {
 }
 
 class RevenueForecastChartCard extends StatelessWidget {
-  const RevenueForecastChartCard({super.key});
+  final CrmViewModel viewModel;
+
+  const RevenueForecastChartCard({
+    super.key,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final chartData = viewModel.revenueChartData;
 
-    const sales = <double>[18, 20, 24, 30, 28, 26, 24, 27, 29, 25, 22, 20];
-    const cost = <double>[12, 13, 15, 18, 17, 16, 15, 16, 18, 16, 14, 13];
+    if (chartData == null) {
+      return const SizedBox();
+    }
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -323,11 +331,12 @@ class RevenueForecastChartCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: AppDimensions.paddingMedium),
-            const SizedBox(
+            SizedBox(
               height: 220,
               child: _AnimatedBarChart(
-                sales: sales,
-                cost: cost,
+                sales: chartData.actualData,
+                cost: chartData.forecastData,
+                months: chartData.months,
               ),
             ),
           ],
@@ -340,10 +349,12 @@ class RevenueForecastChartCard extends StatelessWidget {
 class _AnimatedBarChart extends StatelessWidget {
   final List<double> sales;
   final List<double> cost;
+  final List<String> months;
 
   const _AnimatedBarChart({
     required this.sales,
     required this.cost,
+    required this.months,
   });
 
   @override

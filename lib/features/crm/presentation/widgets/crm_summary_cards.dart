@@ -1,54 +1,24 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../view_model/crm_view_model.dart';
+import '../../model/crm_summary_model.dart';
 
 class CrmSummaryCards extends StatelessWidget {
-  const CrmSummaryCards({super.key});
+  final CrmViewModel viewModel;
+
+  const CrmSummaryCards({
+    super.key,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final cards = <_SummaryCardData>[
-      const _SummaryCardData(
-        icon: Icons.group_outlined,
-        title: 'Total Leads',
-        value: '823',
-        deltaText: '15.78%',
-        deltaPositive: true,
-      ),
-      const _SummaryCardData(
-        icon: Icons.attach_money_outlined,
-        title: 'Total Revenue',
-        value: '1,235.75',
-        deltaText: '12.50%',
-        deltaPositive: true,
-      ),
-      const _SummaryCardData(
-        icon: Icons.pending_actions_outlined,
-        title: 'Pending Tasks',
-        value: '78',
-        deltaText: '-23.45%',
-        deltaPositive: false,
-      ),
-      const _SummaryCardData(
-        icon: Icons.assignment_turned_in_outlined,
-        title: 'Completed Contracts',
-        value: '543.60',
-        deltaText: '18.45%',
-        deltaPositive: true,
-      ),
-      const _SummaryCardData(
-        icon: Icons.person_add_alt_outlined,
-        title: 'New Subscribers',
-        value: '120',
-        deltaText: '9.25%',
-        deltaPositive: true,
-      ),
-    ];
-
     return LayoutBuilder(
       builder: (context, constraints) {
         final maxWidth = constraints.maxWidth;
         final isNarrow = maxWidth < 900;
+        final cards = viewModel.summaries;
 
         return Wrap(
           spacing: AppDimensions.paddingMedium,
@@ -70,30 +40,29 @@ class CrmSummaryCards extends StatelessWidget {
   }
 }
 
-class _SummaryCardData {
-  final IconData icon;
-  final String title;
-  final String value;
-  final String deltaText;
-  final bool deltaPositive;
-
-  const _SummaryCardData({
-    required this.icon,
-    required this.title,
-    required this.value,
-    required this.deltaText,
-    required this.deltaPositive,
-  });
-}
-
 class _CrmSummaryCard extends StatelessWidget {
-  final _SummaryCardData data;
+  final CrmSummaryModel data;
   final double maxWidth;
 
   const _CrmSummaryCard({
     required this.data,
     required this.maxWidth,
   });
+
+  IconData _getIconForType(CrmSummaryType type) {
+    switch (type) {
+      case CrmSummaryType.totalLeads:
+        return Icons.group_outlined;
+      case CrmSummaryType.totalRevenue:
+        return Icons.attach_money_outlined;
+      case CrmSummaryType.pendingTasks:
+        return Icons.pending_actions_outlined;
+      case CrmSummaryType.completedContracts:
+        return Icons.assignment_turned_in_outlined;
+      case CrmSummaryType.newSubscribers:
+        return Icons.person_add_alt_outlined;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,9 +99,9 @@ class _CrmSummaryCard extends StatelessWidget {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Icon(
-                        data.icon,
+                        _getIconForType(data.type),
                         size: 20,
-                        color:  AppColors.infoDark,
+                        color: AppColors.infoDark,
                       ),
                     ),
                   ],
@@ -163,7 +132,7 @@ class _CrmSummaryCard extends StatelessWidget {
                           : Icons.arrow_downward_rounded,
                       size: 16,
                       color: data.deltaPositive
-                          ?  AppColors.successDark
+                          ? AppColors.successDark
                           : const Color(0xFFEF4444),
                     ),
                     const SizedBox(width: 4),
@@ -173,7 +142,7 @@ class _CrmSummaryCard extends StatelessWidget {
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
                         color: data.deltaPositive
-                            ?  AppColors.successDark
+                            ? AppColors.successDark
                             : const Color(0xFFEF4444),
                       ),
                     ),

@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_colors.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../view_model/crm_view_model.dart';
+import '../../model/lead_model.dart';
 
 class CrmLeadReportTable extends StatelessWidget {
-  const CrmLeadReportTable({super.key});
+  final CrmViewModel viewModel;
+
+  const CrmLeadReportTable({
+    super.key,
+    required this.viewModel,
+  });
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final leads = viewModel.leads;
 
     return Card(
       clipBehavior: Clip.antiAlias,
@@ -51,51 +59,52 @@ class CrmLeadReportTable extends StatelessWidget {
                   DataColumn(label: Text('Status')),
                   DataColumn(label: Text('Location')),
                 ],
-                rows: const [
-                  DataRow(cells: [
-                    DataCell(Text('#1')),
-                    DataCell(Text('Erik')),
-                    DataCell(Text('Digitube')),
-                    DataCell(Text('957-550-9950')),
-                    DataCell(Text('Won Lead')),
-                    DataCell(Text('Tasouloukou')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('#2')),
-                    DataCell(Text('Sabina')),
-                    DataCell(Text('Kwinu')),
-                    DataCell(Text('612-207-4109')),
-                    DataCell(Text('Lost Lead')),
-                    DataCell(Text('Minneapolis')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('#3')),
-                    DataCell(Text('Andi')),
-                    DataCell(Text('Photojam')),
-                    DataCell(Text('410-936-5855')),
-                    DataCell(Text('Won Lead')),
-                    DataCell(Text('Masina')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('#4')),
-                    DataCell(Text('Kathy')),
-                    DataCell(Text('Quinu')),
-                    DataCell(Text('840-267-7381')),
-                    DataCell(Text('Won Lead')),
-                    DataCell(Text('Shashi')),
-                  ]),
-                  DataRow(cells: [
-                    DataCell(Text('#5')),
-                    DataCell(Text('Lenka')),
-                    DataCell(Text('Skaboo')),
-                    DataCell(Text('962-993-3146')),
-                    DataCell(Text('Won Lead')),
-                    DataCell(Text('Shireet')),
-                  ]),
-                ],
+                rows: leads
+                    .map((lead) => DataRow(
+                          cells: [
+                            DataCell(Text(lead.serialNumber)),
+                            DataCell(Text(lead.leadName)),
+                            DataCell(Text(lead.companyName)),
+                            DataCell(Text(lead.phoneNumber)),
+                            DataCell(_buildStatusBadge(lead.status)),
+                            DataCell(Text(lead.location)),
+                          ],
+                        ))
+                    .toList(),
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildStatusBadge(LeadStatus status) {
+    Color color;
+    switch (status) {
+      case LeadStatus.won:
+        color = AppColors.successDark;
+        break;
+      case LeadStatus.lost:
+        color = AppColors.errorDark;
+        break;
+      case LeadStatus.pending:
+        color = AppColors.warningDark;
+        break;
+    }
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: color.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Text(
+        status.displayName,
+        style: TextStyle(
+          fontSize: 12,
+          fontWeight: FontWeight.w600,
+          color: color,
         ),
       ),
     );
