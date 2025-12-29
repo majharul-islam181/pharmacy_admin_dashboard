@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/app_dimensions.dart';
+import '../../view/purchase_add_view.dart';
 
 class PurchaseAddPage extends StatelessWidget {
   const PurchaseAddPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const PurchaseAddView();
+  }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -160,4 +167,3 @@ class PurchaseAddPage extends StatelessWidget {
       ],
     );
   }
-}
