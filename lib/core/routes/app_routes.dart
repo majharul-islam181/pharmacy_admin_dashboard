@@ -40,6 +40,14 @@ class AppRoutes {
   // Chat
   static const String chat = '/chat';
 
+  // Charts
+  static const String chartsOverview = '/charts/overview';
+  static const String chartsLineArea = '/charts/line-area';
+  static const String chartsBarColumn = '/charts/bar-column';
+  static const String chartsFinancial = '/charts/financial';
+  static const String chartsCircular = '/charts/circular';
+  static const String chartsAdvanced = '/charts/advanced';
+
   // Hospital
   static const String hospitalDashboard = '/hospital/dashboard';
   static const String hospitalDoctor = '/hospital/doctor';

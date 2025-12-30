@@ -222,6 +222,53 @@ class SidebarViewModel extends ChangeNotifier {
           isActive: _activeRoute == AppRoutes.chat,
         ),
         SidebarItemModel(
+          id: 'charts',
+          title: 'Charts',
+          icon: Icons.bar_chart_rounded,
+          route: AppRoutes.chartsOverview,
+          hasSubItems: true,
+          isExpanded: _expandedItems['charts'] ?? false,
+          isActive: _activeRoute.startsWith('/charts'),
+          subItems: [
+            SidebarItemModel(
+              id: 'chartsOverview',
+              title: 'Overview',
+              icon: Icons.circle,
+              route: AppRoutes.chartsOverview,
+            ),
+            SidebarItemModel(
+              id: 'chartsLineArea',
+              title: 'Line & Area',
+              icon: Icons.circle,
+              route: AppRoutes.chartsLineArea,
+            ),
+            SidebarItemModel(
+              id: 'chartsBarColumn',
+              title: 'Bar & Column',
+              icon: Icons.circle,
+              route: AppRoutes.chartsBarColumn,
+            ),
+            SidebarItemModel(
+              id: 'chartsFinancial',
+              title: 'Financial Charts',
+              icon: Icons.circle,
+              route: AppRoutes.chartsFinancial,
+            ),
+            SidebarItemModel(
+              id: 'chartsCircular',
+              title: 'Pie & Circular',
+              icon: Icons.circle,
+              route: AppRoutes.chartsCircular,
+            ),
+            SidebarItemModel(
+              id: 'chartsAdvanced',
+              title: 'Advanced Charts',
+              icon: Icons.circle,
+              route: AppRoutes.chartsAdvanced,
+            ),
+          ],
+        ),
+        SidebarItemModel(
           id: 'hospital',
           title: AppStrings.menuHospital,
           icon: Icons.local_hospital_outlined,

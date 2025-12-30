@@ -54,6 +54,13 @@ import '../../features/login/view/modern_login_view.dart';
 import '../../features/login/view/animated_login_view.dart';
 import '../../features/login/view_model/login_view_model.dart';
 import '../../features/splash/view/animated_splash_view.dart';
+import '../../features/charts/view/charts_overview_view.dart';
+import '../../features/charts/view/line_area_chart_view.dart';
+import '../../features/charts/view/bar_column_chart_view.dart';
+import '../../features/charts/view/financial_chart_view.dart';
+import '../../features/charts/view/circular_chart_view.dart';
+import '../../features/charts/view/advanced_chart_view.dart';
+import '../../features/charts/view_model/chart_view_model.dart';
 import 'app_routes.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -249,6 +256,67 @@ final GoRouter appRouter = GoRouter(
             child: ChangeNotifierProvider(
               create: (_) => ChatViewModel(),
               child: const ChatView(),
+            ),
+            state: state,
+          ),
+        ),
+        // Charts
+        GoRoute(
+          path: AppRoutes.chartsOverview,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const ChartsOverviewView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.chartsLineArea,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const LineAreaChartView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.chartsBarColumn,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const BarColumnChartView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.chartsFinancial,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const FinancialChartView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.chartsCircular,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const CircularChartView(),
+            ),
+            state: state,
+          ),
+        ),
+        GoRoute(
+          path: AppRoutes.chartsAdvanced,
+          pageBuilder: (context, state) => PageTransitions.fadeSlide(
+            child: ChangeNotifierProvider(
+              create: (_) => ChartViewModel(),
+              child: const AdvancedChartView(),
             ),
             state: state,
           ),
