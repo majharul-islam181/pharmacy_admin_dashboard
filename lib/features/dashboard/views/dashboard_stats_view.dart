@@ -9,6 +9,7 @@ import 'package:easy_localization/easy_localization.dart';
 import '../../../core/localization/locale_keys.dart';
 import 'widgets/dashboard_tables_section.dart';
 import 'widgets/dashboard_charts_section.dart';
+import 'widgets/premium_charts_section.dart';
 
 class DashboardStatsView extends StatelessWidget {
   const DashboardStatsView({super.key});
@@ -61,6 +62,11 @@ class DashboardStatsView extends StatelessWidget {
 
                       // Dashboard Charts Section (Monthly Progress + Today's Report)
                       const DashboardChartsSection(),
+
+                      const SizedBox(height: AppDimensions.paddingLarge),
+
+                      // Premium Charts Section (Revenue, Gauge, Products, Real-time)
+                      const PremiumChartsSection(),
 
                       const SizedBox(height: AppDimensions.paddingLarge),
                     ],

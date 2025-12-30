@@ -275,7 +275,7 @@ class _TodaysReportCardState extends State<TodaysReportCard>
                   TweenAnimationBuilder<double>(
                     duration: Duration(milliseconds: 400 + (index * 100)),
                     tween: Tween<double>(begin: 0.0, end: 1.0),
-                    curve: Curves.elasticOut,
+                    curve: Curves.easeOutBack,
                     builder: (context, scaleValue, child) {
                       return Transform.scale(
                         scale: scaleValue,
