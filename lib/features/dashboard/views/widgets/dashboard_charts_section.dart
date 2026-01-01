@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../../core/utils/responsive_utils.dart';
 import '../../../../core/constants/app_dimensions.dart';
 import '../../view_models/dashboard_stats_view_model.dart';
-import 'monthly_progress_card.dart';
+import 'monthly_progress_syncfusion_card.dart';
 import 'todays_report_card.dart';
 
 class DashboardChartsSection extends StatelessWidget {
@@ -27,7 +27,7 @@ class DashboardChartsSection extends StatelessWidget {
   Widget _buildMobileLayout(DashboardStatsViewModel viewModel) {
     return Column(
       children: [
-        MonthlyProgressCard(
+        MonthlyProgressSyncfusionCard(
           data: viewModel.monthlyProgressData,
           selectedPeriod: viewModel.selectedPeriod,
           onPeriodChanged: viewModel.changePeriod,
@@ -43,7 +43,7 @@ class DashboardChartsSection extends StatelessWidget {
   Widget _buildTabletLayout(DashboardStatsViewModel viewModel) {
     return Column(
       children: [
-        MonthlyProgressCard(
+        MonthlyProgressSyncfusionCard(
           data: viewModel.monthlyProgressData,
           selectedPeriod: viewModel.selectedPeriod,
           onPeriodChanged: viewModel.changePeriod,
@@ -62,7 +62,7 @@ class DashboardChartsSection extends StatelessWidget {
       children: [
         Expanded(
           flex: 2,
-          child: MonthlyProgressCard(
+          child: MonthlyProgressSyncfusionCard(
             data: viewModel.monthlyProgressData,
             selectedPeriod: viewModel.selectedPeriod,
             onPeriodChanged: viewModel.changePeriod,
