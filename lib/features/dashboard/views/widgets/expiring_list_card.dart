@@ -196,7 +196,7 @@ class ExpiringListCard extends StatelessWidget {
           ),
           
           // Return
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Icon(
               Icons.refresh,

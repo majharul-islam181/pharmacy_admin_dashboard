@@ -50,7 +50,7 @@ class ConversationTile extends StatelessWidget {
                     backgroundColor: AppColors.primary.withOpacity(0.1),
                     child: Text(
                       conversation.userAvatar,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.primary,
                         fontWeight: FontWeight.w600,
                         fontSize: 16,

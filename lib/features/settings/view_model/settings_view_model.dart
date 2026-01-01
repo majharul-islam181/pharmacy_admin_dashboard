@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../model/setting_model.dart';
 import '../model/user_profile_model.dart';
 import '../model/notification_settings_model.dart';
 
