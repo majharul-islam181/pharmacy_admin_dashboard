@@ -202,6 +202,19 @@ class _RealTimeOrderChartState extends State<RealTimeOrderChart> {
               padding: const EdgeInsets.all(20),
               child: SfCartesianChart(
                 plotAreaBorderWidth: 0,
+                zoomPanBehavior: ZoomPanBehavior(
+                  enablePanning: true,
+                  enablePinching: true,
+                  zoomMode: ZoomMode.x,
+                ),
+                trackballBehavior: TrackballBehavior(
+                  enable: true,
+                  activationMode: ActivationMode.singleTap,
+                  tooltipSettings: const InteractiveTooltip(
+                    format: 'Time: point.x\nOrders: point.y',
+                  ),
+                  lineType: TrackballLineType.vertical,
+                ),
                 primaryXAxis: const NumericAxis(
                   isVisible: false,
                   majorGridLines: MajorGridLines(width: 0),
@@ -225,41 +238,56 @@ class _RealTimeOrderChartState extends State<RealTimeOrderChart> {
                   enable: true,
                   format: 'Orders: point.y',
                 ),
-                series: <CartesianSeries>[
-                  // Area with gradient
-                  SplineAreaSeries<OrderData, int>(
+                annotations: _chartData.isNotEmpty
+                    ? <CartesianChartAnnotation>[
+                        CartesianChartAnnotation(
+                          coordinateUnit: CoordinateUnit.point,
+                          x: _chartData.last.time,
+                          y: _chartData.last.orders,
+                          widget: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.blue.withOpacity(0.08),
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(color: Colors.blueAccent),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                const Icon(
+                                  Icons.flash_on,
+                                  color: Colors.blueAccent,
+                                  size: 14,
+                                ),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '${_chartData.last.orders}',
+                                  style: const TextStyle(
+                                    color: Colors.blueAccent,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          horizontalAlignment: ChartAlignment.near,
+                          verticalAlignment: ChartAlignment.center,
+                        ),
+                      ]
+                    : const <CartesianChartAnnotation>[],
+                series: <CartesianSeries<OrderData, int>>[
+                  FastLineSeries<OrderData, int>(
                     dataSource: _chartData,
                     xValueMapper: (data, _) => data.time,
                     yValueMapper: (data, _) => data.orders,
-                    gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [
-                        Colors.blue.withOpacity(0.3),
-                        Colors.blue.withOpacity(0.05),
-                        Colors.blue.withOpacity(0.0),
-                      ],
-                    ),
-                    borderColor: Colors.blue,
-                    borderWidth: 2,
-                    animationDuration: 500,
-                  ),
-                  // Line on top
-                  SplineSeries<OrderData, int>(
-                    dataSource: _chartData,
-                    xValueMapper: (data, _) => data.time,
-                    yValueMapper: (data, _) => data.orders,
-                    color: AppColors.primary,
+                    color: Colors.blueAccent,
                     width: 3,
-                    markerSettings: const MarkerSettings(
-                      isVisible: true,
-                      height: 6,
-                      width: 6,
-                      color: AppColors.primary,
-                      borderColor: Colors.white,
-                      borderWidth: 2,
-                    ),
-                    animationDuration: 500,
+                    enableTooltip: true,
+                    animationDuration: 400,
                   ),
                 ],
               ),
