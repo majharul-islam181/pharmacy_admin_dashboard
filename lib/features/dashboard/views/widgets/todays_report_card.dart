@@ -24,8 +24,6 @@ class _TodaysReportCardState extends State<TodaysReportCard>
   late Animation<double> _slideAnimation;
   late Animation<double> _fadeAnimation;
   late Animation<double> _chartScaleAnimation;
-  late Animation<double> _earningsAnimation;
-  late Animation<double> _growthAnimation;
 
   @override
   void initState() {
@@ -74,24 +72,6 @@ class _TodaysReportCardState extends State<TodaysReportCard>
     ).animate(CurvedAnimation(
       parent: _chartAnimationController,
       curve: Curves.elasticOut,
-    ));
-
-    // Earnings count animation
-    _earningsAnimation = Tween<double>(
-      begin: 0.0,
-      end: widget.report.totalEarning,
-    ).animate(CurvedAnimation(
-      parent: _contentAnimationController,
-      curve: Curves.easeOutCubic,
-    ));
-
-    // Growth percentage animation
-    _growthAnimation = Tween<double>(
-      begin: 0.0,
-      end: widget.report.growthPercentage,
-    ).animate(CurvedAnimation(
-      parent: _contentAnimationController,
-      curve: Curves.bounceOut,
     ));
 
     // Start animations with staggered timing
@@ -264,10 +244,11 @@ class _TodaysReportCardState extends State<TodaysReportCard>
       tween: Tween<double>(begin: 0.0, end: 1.0),
       curve: Curves.easeOutBack,
       builder: (context, value, child) {
+        final double v = value.clamp(0.0, 1.0);
         return Transform.translate(
-          offset: Offset(30 * (1 - value), 0),
+          offset: Offset(30 * (1 - v), 0),
           child: Opacity(
-            opacity: value,
+            opacity: v,
             child: Padding(
               padding: const EdgeInsets.only(bottom: 8),
               child: Row(
