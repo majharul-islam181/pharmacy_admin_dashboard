@@ -200,96 +200,98 @@ class _RealTimeOrderChartState extends State<RealTimeOrderChart> {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: SfCartesianChart(
-                plotAreaBorderWidth: 0,
-                zoomPanBehavior: ZoomPanBehavior(
-                  enablePanning: true,
-                  enablePinching: true,
-                  zoomMode: ZoomMode.x,
-                ),
-                trackballBehavior: TrackballBehavior(
-                  enable: true,
-                  activationMode: ActivationMode.singleTap,
-                  tooltipSettings: const InteractiveTooltip(
-                    format: 'Time: point.x\nOrders: point.y',
+              child: RepaintBoundary(
+                child: SfCartesianChart(
+                  plotAreaBorderWidth: 0,
+                  zoomPanBehavior: ZoomPanBehavior(
+                    enablePanning: true,
+                    enablePinching: true,
+                    zoomMode: ZoomMode.x,
                   ),
-                  lineType: TrackballLineType.vertical,
-                ),
-                primaryXAxis: const NumericAxis(
-                  isVisible: false,
-                  majorGridLines: MajorGridLines(width: 0),
-                ),
-                primaryYAxis: NumericAxis(
-                  minimum: 0,
-                  maximum: 60,
-                  interval: 10,
-                  axisLine: const AxisLine(width: 0),
-                  majorTickLines: const MajorTickLines(size: 0),
-                  majorGridLines: MajorGridLines(
-                    width: 1,
-                    color: Colors.grey.withOpacity(0.1),
-                    dashArray: const [5, 5],
+                  trackballBehavior: TrackballBehavior(
+                    enable: true,
+                    activationMode: ActivationMode.singleTap,
+                    tooltipSettings: const InteractiveTooltip(
+                      format: 'Time: point.x\nOrders: point.y',
+                    ),
+                    lineType: TrackballLineType.vertical,
                   ),
-                  labelStyle: const TextStyle(
-                    fontSize: 11,
+                  primaryXAxis: const NumericAxis(
+                    isVisible: false,
+                    majorGridLines: MajorGridLines(width: 0),
                   ),
-                ),
-                tooltipBehavior: TooltipBehavior(
-                  enable: true,
-                  format: 'Orders: point.y',
-                ),
-                annotations: _chartData.isNotEmpty
-                    ? <CartesianChartAnnotation>[
-                        CartesianChartAnnotation(
-                          coordinateUnit: CoordinateUnit.point,
-                          x: _chartData.last.time,
-                          y: _chartData.last.orders,
-                          widget: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.blue.withOpacity(0.08),
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(color: Colors.blueAccent),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Icon(
-                                  Icons.flash_on,
-                                  color: Colors.blueAccent,
-                                  size: 14,
-                                ),
-                                const SizedBox(width: 4),
-                                Text(
-                                  '${_chartData.last.orders}',
-                                  style: const TextStyle(
+                  primaryYAxis: NumericAxis(
+                    minimum: 0,
+                    maximum: 60,
+                    interval: 10,
+                    axisLine: const AxisLine(width: 0),
+                    majorTickLines: const MajorTickLines(size: 0),
+                    majorGridLines: MajorGridLines(
+                      width: 1,
+                      color: Colors.grey.withOpacity(0.1),
+                      dashArray: const [5, 5],
+                    ),
+                    labelStyle: const TextStyle(
+                      fontSize: 11,
+                    ),
+                  ),
+                  tooltipBehavior: TooltipBehavior(
+                    enable: true,
+                    format: 'Orders: point.y',
+                  ),
+                  annotations: _chartData.isNotEmpty
+                      ? <CartesianChartAnnotation>[
+                          CartesianChartAnnotation(
+                            coordinateUnit: CoordinateUnit.point,
+                            x: _chartData.last.time,
+                            y: _chartData.last.orders,
+                            widget: Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.blue.withOpacity(0.08),
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(color: Colors.blueAccent),
+                              ),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  const Icon(
+                                    Icons.flash_on,
                                     color: Colors.blueAccent,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
+                                    size: 14,
                                   ),
-                                ),
-                              ],
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '${_chartData.last.orders}',
+                                    style: const TextStyle(
+                                      color: Colors.blueAccent,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
+                            horizontalAlignment: ChartAlignment.near,
+                            verticalAlignment: ChartAlignment.center,
                           ),
-                          horizontalAlignment: ChartAlignment.near,
-                          verticalAlignment: ChartAlignment.center,
-                        ),
-                      ]
-                    : const <CartesianChartAnnotation>[],
-                series: <CartesianSeries<OrderData, int>>[
-                  FastLineSeries<OrderData, int>(
-                    dataSource: _chartData,
-                    xValueMapper: (data, _) => data.time,
-                    yValueMapper: (data, _) => data.orders,
-                    color: Colors.blueAccent,
-                    width: 3,
-                    enableTooltip: true,
-                    animationDuration: 400,
-                  ),
-                ],
+                        ]
+                      : const <CartesianChartAnnotation>[],
+                  series: <CartesianSeries<OrderData, int>>[
+                    FastLineSeries<OrderData, int>(
+                      dataSource: _chartData,
+                      xValueMapper: (data, _) => data.time,
+                      yValueMapper: (data, _) => data.orders,
+                      color: Colors.blueAccent,
+                      width: 3,
+                      enableTooltip: true,
+                      animationDuration: 400,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

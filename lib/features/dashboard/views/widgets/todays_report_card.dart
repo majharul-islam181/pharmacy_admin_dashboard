@@ -149,19 +149,21 @@ class _TodaysReportCardState extends State<TodaysReportCard>
                           flex: 1,
                           child: SizedBox(
                             height: 120,
-                            child: AnimatedBuilder(
-                              animation: _chartAnimationController,
-                              builder: (context, child) {
-                                return Transform.scale(
-                                  scale: _chartScaleAnimation.value,
-                                  child: CustomPaint(
-                                    painter: AnimatedDonutChartPainter(
-                                      widget.report.chartData,
-                                      _chartAnimationController.value,
+                            child: RepaintBoundary(
+                              child: AnimatedBuilder(
+                                animation: _chartAnimationController,
+                                builder: (context, child) {
+                                  return Transform.scale(
+                                    scale: _chartScaleAnimation.value,
+                                    child: CustomPaint(
+                                      painter: AnimatedDonutChartPainter(
+                                        widget.report.chartData,
+                                        _chartAnimationController.value,
+                                      ),
                                     ),
-                                  ),
-                                );
-                              },
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),

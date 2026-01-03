@@ -80,48 +80,50 @@ class MonthlyProgressSyncfusionCard extends StatelessWidget {
 
             SizedBox(
               height: 260,
-              child: SfCartesianChart(
-                plotAreaBorderWidth: 0,
-                tooltipBehavior: TooltipBehavior(
-                  enable: true,
-                  format: 'point.x: point.yk',
-                ),
-                primaryXAxis: const CategoryAxis(
-                  axisLine: AxisLine(width: 0),
-                  majorGridLines: MajorGridLines(width: 0),
-                  labelStyle:
-                      TextStyle(fontSize: 12, color: AppColors.textSecondary),
-                ),
-                primaryYAxis: const NumericAxis(
-                  axisLine: AxisLine(width: 0),
-                  majorTickLines: MajorTickLines(size: 0),
-                  majorGridLines:
-                      MajorGridLines(width: 1, color: Color(0x11000000)),
-                  labelStyle: TextStyle(fontSize: 11),
-                ),
-                series: <CartesianSeries<MonthlyProgressModel, String>>[
-                  ColumnSeries<MonthlyProgressModel, String>(
-                    dataSource: data,
-                    xValueMapper: (d, _) => d.month,
-                    yValueMapper: (d, _) => d.value,
-                    pointColorMapper: (d, _) => d.isHighlighted
-                        ? Colors.black87
-                        : Colors.green.shade400,
-                    width: 0.7,
-                    borderRadius: const BorderRadius.all(Radius.circular(6)),
-                    animationDuration: 1200,
-                    dataLabelSettings: const DataLabelSettings(
-                      isVisible: true,
-                      labelAlignment: ChartDataLabelAlignment.outer,
-                      textStyle: TextStyle(
-                        fontSize: 11,
-                        color: AppColors.textPrimary,
-                      ),
-                      useSeriesColor: false,
-                      showZeroValue: false,
-                    ),
+              child: RepaintBoundary(
+                child: SfCartesianChart(
+                  plotAreaBorderWidth: 0,
+                  tooltipBehavior: TooltipBehavior(
+                    enable: true,
+                    format: 'point.x: point.yk',
                   ),
-                ],
+                  primaryXAxis: const CategoryAxis(
+                    axisLine: AxisLine(width: 0),
+                    majorGridLines: MajorGridLines(width: 0),
+                    labelStyle:
+                        TextStyle(fontSize: 12, color: AppColors.textSecondary),
+                  ),
+                  primaryYAxis: const NumericAxis(
+                    axisLine: AxisLine(width: 0),
+                    majorTickLines: MajorTickLines(size: 0),
+                    majorGridLines:
+                        MajorGridLines(width: 1, color: Color(0x11000000)),
+                    labelStyle: TextStyle(fontSize: 11),
+                  ),
+                  series: <CartesianSeries<MonthlyProgressModel, String>>[
+                    ColumnSeries<MonthlyProgressModel, String>(
+                      dataSource: data,
+                      xValueMapper: (d, _) => d.month,
+                      yValueMapper: (d, _) => d.value,
+                      pointColorMapper: (d, _) => d.isHighlighted
+                          ? Colors.black87
+                          : Colors.green.shade400,
+                      width: 0.7,
+                      borderRadius: const BorderRadius.all(Radius.circular(6)),
+                      animationDuration: 1200,
+                      dataLabelSettings: const DataLabelSettings(
+                        isVisible: true,
+                        labelAlignment: ChartDataLabelAlignment.outer,
+                        textStyle: TextStyle(
+                          fontSize: 11,
+                          color: AppColors.textPrimary,
+                        ),
+                        useSeriesColor: false,
+                        showZeroValue: false,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
 
@@ -142,7 +144,7 @@ class MonthlyProgressSyncfusionCard extends StatelessWidget {
                     style: TextStyle(
                         fontSize: 12, color: AppColors.textSecondary)),
               ],
-            )
+            ),
           ],
         ),
       ),

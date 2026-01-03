@@ -138,9 +138,10 @@ class _RevenueAnalyticsChartState extends State<RevenueAnalyticsChart>
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: FadeTransition(
-                opacity: _animation,
-                child: SfCartesianChart(
+              child: RepaintBoundary(
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: SfCartesianChart(
                   plotAreaBorderWidth: 0,
                   primaryXAxis: const CategoryAxis(
                     majorGridLines: MajorGridLines(width: 0),
@@ -237,7 +238,7 @@ class _RevenueAnalyticsChartState extends State<RevenueAnalyticsChart>
                 ),
               ),
             ),
-          ),
+          ),),
         ],
       ),
     );

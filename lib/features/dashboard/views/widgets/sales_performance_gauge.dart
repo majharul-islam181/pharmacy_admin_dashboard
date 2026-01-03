@@ -123,116 +123,118 @@ class _SalesPerformanceGaugeState extends State<SalesPerformanceGauge>
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: FadeTransition(
-                opacity: _animation,
-                child: SfRadialGauge(
-                  axes: <RadialAxis>[
-                    RadialAxis(
-                      minimum: 0,
-                      maximum: 100,
-                      showLabels: false,
-                      showTicks: false,
-                      startAngle: 180,
-                      endAngle: 360,
-                      radiusFactor: 0.9,
-                      axisLineStyle: AxisLineStyle(
-                        thickness: 0.15,
-                        cornerStyle: CornerStyle.bothCurve,
-                        color: Colors.grey.withOpacity(0.1),
-                        thicknessUnit: GaugeSizeUnit.factor,
-                      ),
-                      pointers: <GaugePointer>[
-                        RangePointer(
-                          value: percentage.toDouble(),
-                          width: 0.15,
-                          sizeUnit: GaugeSizeUnit.factor,
+              child: RepaintBoundary(
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: SfRadialGauge(
+                    axes: <RadialAxis>[
+                      RadialAxis(
+                        minimum: 0,
+                        maximum: 100,
+                        showLabels: false,
+                        showTicks: false,
+                        startAngle: 180,
+                        endAngle: 360,
+                        radiusFactor: 0.9,
+                        axisLineStyle: AxisLineStyle(
+                          thickness: 0.15,
                           cornerStyle: CornerStyle.bothCurve,
-                          gradient: SweepGradient(
-                            colors: isOverTarget
-                                ? [
-                                    AppColors.success,
-                                    AppColors.success.withOpacity(0.7),
-                                  ]
+                          color: Colors.grey.withOpacity(0.1),
+                          thicknessUnit: GaugeSizeUnit.factor,
+                        ),
+                        pointers: <GaugePointer>[
+                          RangePointer(
+                            value: percentage.toDouble(),
+                            width: 0.15,
+                            sizeUnit: GaugeSizeUnit.factor,
+                            cornerStyle: CornerStyle.bothCurve,
+                            gradient: SweepGradient(
+                              colors: isOverTarget
+                                  ? [
+                                      AppColors.success,
+                                      AppColors.success.withOpacity(0.7),
+                                    ]
+                                  : percentage > 70
+                                      ? [
+                                          AppColors.primary,
+                                          Colors.blue,
+                                        ]
+                                      : [
+                                          Colors.orange,
+                                          Colors.orangeAccent,
+                                        ],
+                            ),
+                            enableAnimation: true,
+                            animationDuration: 1500,
+                            animationType: AnimationType.easeOutBack,
+                          ),
+                          MarkerPointer(
+                            value: percentage.toDouble(),
+                            markerHeight: 20,
+                            markerWidth: 20,
+                            markerType: MarkerType.circle,
+                            color: Colors.white,
+                            borderWidth: 4,
+                            borderColor: isOverTarget
+                                ? AppColors.success
                                 : percentage > 70
-                                    ? [
-                                        AppColors.primary,
-                                        Colors.blue,
-                                      ]
-                                    : [
-                                        Colors.orange,
-                                        Colors.orangeAccent,
-                                      ],
+                                    ? AppColors.primary
+                                    : Colors.orange,
+                            enableAnimation: true,
+                            animationDuration: 1500,
+                            animationType: AnimationType.easeOutBack,
                           ),
-                          enableAnimation: true,
-                          animationDuration: 1500,
-                          animationType: AnimationType.easeOutBack,
-                        ),
-                        MarkerPointer(
-                          value: percentage.toDouble(),
-                          markerHeight: 20,
-                          markerWidth: 20,
-                          markerType: MarkerType.circle,
-                          color: Colors.white,
-                          borderWidth: 4,
-                          borderColor: isOverTarget
-                              ? AppColors.success
-                              : percentage > 70
-                                  ? AppColors.primary
-                                  : Colors.orange,
-                          enableAnimation: true,
-                          animationDuration: 1500,
-                          animationType: AnimationType.easeOutBack,
-                        ),
-                      ],
-                      annotations: <GaugeAnnotation>[
-                        GaugeAnnotation(
-                          widget: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text(
-                                '${percentage.toStringAsFixed(0)}%',
-                                style: TextStyle(
-                                  fontSize: 48,
-                                  fontWeight: FontWeight.bold,
-                                  foreground: Paint()
-                                    ..shader = LinearGradient(
-                                      colors: isOverTarget
-                                          ? [
-                                              AppColors.success,
-                                              AppColors.success
-                                                  .withOpacity(0.7),
-                                            ]
-                                          : percentage > 70
-                                              ? [
-                                                  AppColors.primary,
-                                                  Colors.blue,
-                                                ]
-                                              : [
-                                                  Colors.orange,
-                                                  Colors.orangeAccent,
-                                                ],
-                                    ).createShader(
-                                      const Rect.fromLTWH(0, 0, 200, 70),
-                                    ),
+                        ],
+                        annotations: <GaugeAnnotation>[
+                          GaugeAnnotation(
+                            widget: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  '${percentage.toStringAsFixed(0)}%',
+                                  style: TextStyle(
+                                    fontSize: 48,
+                                    fontWeight: FontWeight.bold,
+                                    foreground: Paint()
+                                      ..shader = LinearGradient(
+                                        colors: isOverTarget
+                                            ? [
+                                                AppColors.success,
+                                                AppColors.success
+                                                    .withOpacity(0.7),
+                                              ]
+                                            : percentage > 70
+                                                ? [
+                                                    AppColors.primary,
+                                                    Colors.blue,
+                                                  ]
+                                                : [
+                                                    Colors.orange,
+                                                    Colors.orangeAccent,
+                                                  ],
+                                      ).createShader(
+                                        const Rect.fromLTWH(0, 0, 200, 70),
+                                      ),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                'Achievement',
-                                style: theme.textTheme.bodyMedium?.copyWith(
-                                  color: theme.colorScheme.onSurface
-                                      .withOpacity(0.6),
-                                  fontWeight: FontWeight.w500,
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Achievement',
+                                  style: theme.textTheme.bodyMedium?.copyWith(
+                                    color: theme.colorScheme.onSurface
+                                        .withOpacity(0.6),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
+                            angle: 270,
+                            positionFactor: 0.1,
                           ),
-                          angle: 270,
-                          positionFactor: 0.1,
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

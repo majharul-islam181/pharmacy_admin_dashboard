@@ -138,95 +138,97 @@ class _TopProductsChartState extends State<TopProductsChart>
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(20),
-              child: FadeTransition(
-                opacity: _animation,
-                child: SfCartesianChart(
-                  plotAreaBorderWidth: 0,
-                  primaryXAxis: const CategoryAxis(
-                    majorGridLines: MajorGridLines(width: 0),
-                    axisLine: AxisLine(width: 0),
-                    labelStyle: TextStyle(
-                      fontSize: 11,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  primaryYAxis: NumericAxis(
-                    axisLine: const AxisLine(width: 0),
-                    majorTickLines: const MajorTickLines(size: 0),
-                    labelFormat: '{value}',
-                    majorGridLines: MajorGridLines(
-                      width: 1,
-                      color: Colors.grey.withOpacity(0.1),
-                      dashArray: const [5, 5],
-                    ),
-                  ),
-                  tooltipBehavior: TooltipBehavior(
-                    enable: true,
-                    elevation: 3,
-                    format: 'point.x\nSales: point.y units',
-                  ),
-                  onSelectionChanged: (SelectionArgs args) {
-                    setState(() {
-                      _selectedIndex = args.pointIndex;
-                    });
-                  },
-                  selectionGesture: ActivationMode.singleTap,
-                  series: <CartesianSeries>[
-                    ColumnSeries<ProductSalesData, String>(
-                      dataSource: widget.products,
-                      xValueMapper: (data, _) => data.productName,
-                      yValueMapper: (data, _) => data.sales,
-                      pointColorMapper: (data, index) {
-                        if (_selectedIndex == index) {
-                          return data.color;
-                        }
-                        return data.color.withOpacity(0.8);
-                      },
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(8),
+              child: RepaintBoundary(
+                child: FadeTransition(
+                  opacity: _animation,
+                  child: SfCartesianChart(
+                    plotAreaBorderWidth: 0,
+                    primaryXAxis: const CategoryAxis(
+                      majorGridLines: MajorGridLines(width: 0),
+                      axisLine: AxisLine(width: 0),
+                      labelStyle: TextStyle(
+                        fontSize: 11,
+                        fontWeight: FontWeight.w500,
                       ),
-                      width: 0.7,
-                      spacing: 0.2,
-                      animationDuration: 1200,
-                      dataLabelSettings: DataLabelSettings(
-                        isVisible: true,
-                        labelAlignment: ChartDataLabelAlignment.top,
-                        textStyle: const TextStyle(
-                          fontSize: 11,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        builder:
-                            (data, point, series, pointIndex, seriesIndex) {
-                          return Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: widget.products[pointIndex].color,
-                              borderRadius: BorderRadius.circular(12),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: widget.products[pointIndex].color
-                                      .withOpacity(0.3),
-                                  blurRadius: 8,
-                                  spreadRadius: 1,
-                                ),
-                              ],
-                            ),
-                            child: Text(
-                              '${widget.products[pointIndex].sales}',
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          );
+                    ),
+                    primaryYAxis: NumericAxis(
+                      axisLine: const AxisLine(width: 0),
+                      majorTickLines: const MajorTickLines(size: 0),
+                      labelFormat: '{value}',
+                      majorGridLines: MajorGridLines(
+                        width: 1,
+                        color: Colors.grey.withOpacity(0.1),
+                        dashArray: const [5, 5],
+                      ),
+                    ),
+                    tooltipBehavior: TooltipBehavior(
+                      enable: true,
+                      elevation: 3,
+                      format: 'point.x\nSales: point.y units',
+                    ),
+                    onSelectionChanged: (SelectionArgs args) {
+                      setState(() {
+                        _selectedIndex = args.pointIndex;
+                      });
+                    },
+                    selectionGesture: ActivationMode.singleTap,
+                    series: <CartesianSeries>[
+                      ColumnSeries<ProductSalesData, String>(
+                        dataSource: widget.products,
+                        xValueMapper: (data, _) => data.productName,
+                        yValueMapper: (data, _) => data.sales,
+                        pointColorMapper: (data, index) {
+                          if (_selectedIndex == index) {
+                            return data.color;
+                          }
+                          return data.color.withOpacity(0.8);
                         },
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(8),
+                        ),
+                        width: 0.7,
+                        spacing: 0.2,
+                        animationDuration: 1200,
+                        dataLabelSettings: DataLabelSettings(
+                          isVisible: true,
+                          labelAlignment: ChartDataLabelAlignment.top,
+                          textStyle: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          builder:
+                              (data, point, series, pointIndex, seriesIndex) {
+                            return Container(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                                vertical: 4,
+                              ),
+                              decoration: BoxDecoration(
+                                color: widget.products[pointIndex].color,
+                                borderRadius: BorderRadius.circular(12),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: widget.products[pointIndex].color
+                                        .withOpacity(0.3),
+                                    blurRadius: 8,
+                                    spreadRadius: 1,
+                                  ),
+                                ],
+                              ),
+                              child: Text(
+                                '${widget.products[pointIndex].sales}',
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
